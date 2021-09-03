@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personalblog.dao.manual.ArticleManualMapper">
+  <resultMap id="BaseResultMap" type="com.personalblog.dataobject.ArticleDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="img_type" jdbcType="VARCHAR" property="imgType" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="read_count" jdbcType="INTEGER" property="readCount" />
+    <result column="like_count" jdbcType="INTEGER" property="likeCount" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.personalblog.dataobject.ArticleDO">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="img_base64" jdbcType="LONGVARCHAR" property="imgBase64" />
+  </resultMap>
+
+  <select id="getCategoryByGroup" resultType="com.personalblog.bo.CategoryGroupBO">
+    select category, count(1) "count" from article where status=1 group by category;
+  </select>
+
+  <update id="updateLikeCountInc">
+    update article set like_count=like_count+1 where id=#{articleId}
+  </update>
+
+  <update id="updateReadCountInc">
+    update article set read_count=read_count+1 where id=#{articleId}
+  </update>
+
+</mapper>

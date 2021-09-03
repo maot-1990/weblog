@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>发布</title>
+
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/slick.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/autoStyle.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/myStyle.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/colors.css">
+
+    <link rel="stylesheet" href="/editormd/css/editormd.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/editormd/editormd.min.js"></script>
+    <script type="text/javascript">
+        var editorPub;
+        $(function() {
+            var editor = editormd("editormd", {
+                width  : "100%",
+                height : "1200",
+                emoji : true,
+                codeFold : true,
+                path   : "/editormd/lib/",
+                saveHTMLToTextarea : true,
+                lineNumbers     : true,
+                mode            : "markdown",
+                gotoLine        : true,
+                theme           : "CodeMirror",
+                imageUpload : true,
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL : "/upload-img",
+                htmlDecode : true,
+                htmlDecode : "style,script,iframe,sub,sup|on*",
+            });
+            editorPub = editor;
+            /*$("#get-html-btn").bind('click', function() {
+                var html = editor.getValue();
+                $("#content").val(html);
+            });*/
+
+        });
+
+        function handleContent() {
+            var html = editorPub.getValue();
+            $("#content").val(html);
+        }
+
+    </script>
+</head>
+
+<body>
+<header id="header" class="movetop sticky my-header" style="background-color: white;">
+    <div class="stick-holder my-header-hidden-m my-header-app">
+        <div>
+            <a href="/" style="position:fixed;top:1px;left: -10px;"><img src="/images/myzs.png" style="height: 48px;"></a>
+        </div>
+
+        <span th:if="${session.user!=null}" class="login-button">
+                <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+
+            </span>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-9 col-sm-10 nav-holder">
+                    <nav id="nav" class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" style="position: fixed; top: 2px; right: 1px;" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active" data-drop="drop-right">
+                                    <a class="app-menu" href="/">主页</a>
+                                    <a class="app-menu" th:if="${session.user==null}" href="/login-page">登陆</a>
+                                    <a class="app-menu" th:if="${session.user!=null}" href="/login-out">注销</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-header-hidden-w my-header-web">
+        <div style="position: relative;background-color: white;">
+            <a href="/"><img src="/images/myzs.png" height="48px"></a>
+            <span th:if="${session.user==null}">
+                    <a href="/login-page" class="login-button">登陆</a>
+                <!--
+                                    <div class="register-button"><a style="color: white;" href="/register-page">注册</a></div>
+                -->
+                </span>
+
+            <span th:if="${session.user!=null}" class="login-button">
+                    <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+                <!--
+                                    <span th:text="${session.user.nickName}" style="margin-left: 67%;color: black;text-decoration-line: none;"></span>
+                -->
+                    <a href="/login-out" style="cursor: pointer;"><img style="width: 15px;height: 15px;" src="/images/login-out.jpg"></a>
+                </span>
+            <!--
+                            <a href="/admin/add" style="padding-right: 20px;text-decoration-line: none;position: absolute;right: 0px;"><img style="width: 40px; height: 40px;color: black;" src="/images/pen.png" />写文章</a>
+            -->
+            <div class="article-add">
+                <a href="/admin/add">
+                    <span style="color: white;vertical-align: middle;" class="glyphicon glyphicon-pencil">写作</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<div style="margin-top: 56px; padding-left: 15px;">
+    <form method="post" action="/admin/publish" enctype="multipart/form-data" onsubmit="handleContent()">
+        <span>标题: </span><input style="width: 500px;" class="margin-top-bottom-5" id="title" name="title" placeholder="标题" /> <br />
+        <span>简介: </span><textarea class="margin-top-bottom-5" id="intro" name="intro" placeholder="简介" style="height: 100px;width: 800px"></textarea><br />
+        <span>分类: </span><input class="margin-top-bottom-5" id="category" name="category" placeholder="分类标签"/><br />
+        <span>类型: </span><input class="margin-top-bottom-5" id="type" name="type" placeholder="类型"/><br />
+        <span>是否原创: </span><input class="margin-top-bottom-5" type="checkbox" name="original" value="1" placeholder="是否原创"/> <br />
+        <span>是否发布: </span><input class="margin-top-bottom-5" type="checkbox" name="status" value="1" placeholder="是否发布"/> <br />
+        <span>设置封面图片: </span><input class="margin-top-bottom-5" style="display: inline;" id="file" name="file" type="file" /><span style="padding: 5px 0 0 0;color: red; font-size: 14px;">文章封面建议图片尺寸宽高：120px * 105px</span><br />
+        <textarea id="content" hidden style="display: none;" name="content"></textarea>
+        <input class="margin-top-bottom-5" type="submit" value="提交" style="width: 78px;" />
+    </form>
+
+</div>
+
+<div style="padding: 5px 0 0 15px;color: red; font-size: 14px;">文章中建议图片尺寸宽高：685px * 240px</div>
+
+<div class="editormd" id="editormd" style="margin-top: 15px;">
+
+    <textarea id="editormd-markdown-doc" class="editormd-markdown-textarea" name="editormd-markdown-doc"></textarea>
+
+    <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
+    <textarea class="editormd-html-textarea" name="editormd-html-code"></textarea>
+</div>
+</body>
+
+</html>

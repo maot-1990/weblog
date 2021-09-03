@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personalblog.dao.TodoListMapper">
+  <resultMap id="BaseResultMap" type="com.personalblog.dataobject.TodoListDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date_at" jdbcType="VARCHAR" property="dateAt" />
+    <result column="is_finish" jdbcType="TINYINT" property="isFinish" />
+    <result column="notice_at" jdbcType="TIMESTAMP" property="noticeAt" />
+    <result column="notice_enabled" jdbcType="VARCHAR" property="noticeEnabled" />
+    <result column="notice_time" jdbcType="INTEGER" property="noticeTime" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, open_id, content, date_at, is_finish, notice_at, notice_enabled, notice_time, 
+    created_at, updated_at
+  </sql>
+  <insert id="insertSelective" parameterType="com.personalblog.dataobject.TodoListDO">
+    insert into todo_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="dateAt != null">
+        date_at,
+      </if>
+      <if test="isFinish != null">
+        is_finish,
+      </if>
+      <if test="noticeAt != null">
+        notice_at,
+      </if>
+      <if test="noticeEnabled != null">
+        notice_enabled,
+      </if>
+      <if test="noticeTime != null">
+        notice_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="dateAt != null">
+        #{dateAt,jdbcType=VARCHAR},
+      </if>
+      <if test="isFinish != null">
+        #{isFinish,jdbcType=TINYINT},
+      </if>
+      <if test="noticeAt != null">
+        #{noticeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="noticeEnabled != null">
+        #{noticeEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTime != null">
+        #{noticeTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="com.personalblog.dataobject.TodoListDO">
+    insert into todo_list (id, open_id, content, 
+      date_at, is_finish, notice_at, 
+      notice_enabled, notice_time) values 
+    <foreach collection="items" item="item" separator=",">
+      (#{item.id,jdbcType=INTEGER},#{item.openId,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},
+        #{item.dateAt,jdbcType=VARCHAR},#{item.isFinish,jdbcType=TINYINT},#{item.noticeAt,jdbcType=TIMESTAMP},
+        #{item.noticeEnabled,jdbcType=VARCHAR},#{item.noticeTime,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.personalblog.dataobject.TodoListDO">
+    update todo_list
+    <set>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="dateAt != null">
+        date_at = #{dateAt,jdbcType=VARCHAR},
+      </if>
+      <if test="isFinish != null">
+        is_finish = #{isFinish,jdbcType=TINYINT},
+      </if>
+      <if test="noticeAt != null">
+        notice_at = #{noticeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="noticeEnabled != null">
+        notice_enabled = #{noticeEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTime != null">
+        notice_time = #{noticeTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByExampleSelective" parameterType="map">
+    update todo_list
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.openId != null">
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dateAt != null">
+        date_at = #{record.dateAt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isFinish != null">
+        is_finish = #{record.isFinish,jdbcType=TINYINT},
+      </if>
+      <if test="record.noticeAt != null">
+        notice_at = #{record.noticeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.noticeEnabled != null">
+        notice_enabled = #{record.noticeEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noticeTime != null">
+        notice_time = #{record.noticeTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from todo_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.personalblog.dataobject.TodoListDOExample">
+    delete from todo_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from todo_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByExample" parameterType="com.personalblog.dataobject.TodoListDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from todo_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="com.personalblog.dataobject.TodoListDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from todo_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+     limit 1
+  </select>
+  <select id="countByExample" parameterType="com.personalblog.dataobject.TodoListDOExample" resultType="java.lang.Long">
+    select count(*) from todo_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

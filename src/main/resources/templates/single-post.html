@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- set the encoding of your site -->
+    <meta charset="utf-8">
+    <!-- set the viewport width and initial-scale on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${'微客阁 - ' + article.title}"></title>
+    <meta name="Keywords" th:content="@{'个人博客,个人网站,技术分享' + ${article.type} + ',' + ${article.category} + ',' + ${article.title}}"/>
+    <meta name="Description" th:content="${'微客阁,技术分享,' + article.intro}"/>
+    <meta http-equiv="Cache-Control" content="max-age=14400"/>
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/autoStyle.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/myStyle.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/css/smohan-face.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/editormd/css/editormd.css">
+    <link rel="stylesheet" href="/editormd/css/editormd.min.css">
+    <style>
+        .container img {
+            width: auto;
+        }
+    </style>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/editormd/lib/marked.min.js"></script>
+    <script src="/editormd/lib/prettify.min.js"></script>
+    <script src="/editormd/editormd.min.js"></script>
+</head>
+<body class="version-ii js_darkmode__0">
+
+<div class="circle_zan">
+    <div class="circle">
+        <img class="like" src="/images/zan.png"
+             th:onclick="'like(this, ' + ${article.id} + ');'">
+    </div>
+    <span style="margin-left: 10px;" class="icon" th:text="${article.likeCount}"></span><span> 赞</span>
+</div>
+<!-- main container of all the page elements -->
+<div id="wrapper">
+    <header id="header" class="movetop sticky my-header" style="background-color: white;">
+        <div class="stick-holder my-header-hidden-m my-header-app">
+            <div>
+                <a href="/" style="position:fixed;top:1px;left: -10px;"><img src="/images/myzs.png" style="height: 48px;"></a>
+            </div>
+
+            <span th:if="${session.user!=null}" class="login-button">
+                <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+
+            </span>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-9 col-sm-10 nav-holder">
+                        <nav id="nav" class="navbar navbar-default">
+                            <div class="navbar-header">
+                                <button type="button" style="position: fixed; top: 2px; right: 1px;" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active" data-drop="drop-right">
+                                        <a class="app-menu" href="/">主页</a>
+                                        <a class="app-menu" th:if="${session.user==null}" href="/login-page">登陆</a>
+                                        <a class="app-menu" th:if="${session.user!=null}" href="/login-out">注销</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-header-hidden-w my-header-web">
+            <div style="position: relative;background-color: white;">
+                <a href="/"><img src="/images/myzs.png" height="48px"></a>
+                <span th:if="${session.user==null}">
+                    <a href="/login-page" class="login-button">登陆</a>
+                    <!--
+                                        <div class="register-button"><a style="color: white;" href="/register-page">注册</a></div>
+                    -->
+                </span>
+
+                <span th:if="${session.user!=null}" class="login-button">
+                    <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+                    <!--
+                                        <span th:text="${session.user.nickName}" style="margin-left: 67%;color: black;text-decoration-line: none;"></span>
+                    -->
+                    <a href="/login-out" style="cursor: pointer;"><img style="width: 15px;height: 15px;" src="/images/login-out.jpg"></a>
+                </span>
+                <!--
+                                <a href="/admin/add" style="padding-right: 20px;text-decoration-line: none;position: absolute;right: 0px;"><img style="width: 40px; height: 40px;color: black;" src="/images/pen.png" />写文章</a>
+                -->
+                <div class="article-add">
+                    <a th:href="@{'/admin/edit/' + ${article.id}}">
+                        <span style="color: white;vertical-align: middle;" class="glyphicon glyphicon-pencil">写作</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main of the page -->
+    <main id="main" role="main" style="margin-top: 68px;">
+        <!-- Container of the page -->
+        <div class="container">
+            <div class="row">
+                <!-- Content of the page -->
+                <div id="content" style="margin-bottom: 0px;" class="col-xs-12 col-md-9 index-content">
+                    <!-- Post Block of the page -->
+                    <div class="post-block single-post wow fadeInUp" style="margin-bottom: 0px;">
+                        <div class="post-holder">
+                            <div style="margin-left: 18px;font-size: 28px; font-weight: 800;" class="my-title"
+                                 th:text="${article.title}"></div>
+
+                            <div style="margin-left: 18px;margin-top: 20px;">
+                                <div style="display: inline-block; width: 45px; height: 37px;">
+                                    <img style="border-radius: 60px;width: 40px; height: 40px;"
+                                         th:src="@{'/show-img/' + ${article.headImg}}">
+                                </div>
+                                <div style="display: inline-block;width: auto; height: 45px;line-height: 19px;">
+                                    <span th:text="${article.author}" style="display: block;"></span>
+                                    <div th:if="${article.original==1}" class="article-original">原创</div>
+                                    <!--<span style="font-size: 8px;color: silver;">共计 <span th:text="${article.articleTotal}"></span> 篇</span>-->
+                                    <span th:style="${article.original==1} ? 'font-size: 10px;color: silver;margin-left: 6px;' : 'font-size: 10px;color: silver;'"
+                                          th:text="${article.createdAt}"></span>
+                                </div>
+                            </div>
+
+                            <div id="question-view" style="padding-top: 2px;">
+                                <textarea style="display:none;" th:text="${article.content}"></textarea>
+                            </div>
+
+                            <div style="color: silver; font-size: 14px;padding: 0 20px 0 20px;">版权声明:
+                                文章著作权归作者所有，分享、转载请联系作者并标明原文出处。
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Post Block of the page end -->
+
+                    <section id="articleComment" style="margin-top: 5px;position: relative;">
+                        <div style="margin-top: 10px;">
+                            <textarea class="submit_content" placeholder="写下你的评论…"
+                                      onfocus="myLeaveButtonFocus()"></textarea>
+                        </div>
+                        <div class="face_box Smohan_FaceBox face-box" style="line-height: 0;">
+                            <a onclick="showOrHide(this)" class="face" title="表情"></a>
+                        </div>
+
+                        <div id="myLeave" class="myLeave" style="display: none;">
+                            <div style="cursor:pointer;color: white;"
+                                 th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\');'}">
+                                发&nbsp;&nbsp;布
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- Comment of the page -->
+                    <section style="margin-top: 5px;" class="section comments wow fadeInUp" data-wow-delay="0.1s">
+                        <header class="widget-head" style="padding: 8px 0 0 15px;position: relative;">
+                            <h4 style="display: inline;">全部评论</h4>
+                            <span id="leaveCount" style="margin-left: 10px;color: #ea6f5a;"
+                                  th:text="${articleLeavePage.items.size()}"></span>
+                            <!--<div class="articleComment" onclick="articleComment(this)">评论</div>-->
+                        </header>
+                        <!-- Comment list of the page -->
+                        <div class="commentlist" id="commentlist">
+                            <!-- Comment list item of the page -->
+                            <div class="commentlist-item padding-top-0" th:each="item,itemStart : ${articleLeavePage.items}">
+                                <div class="comment even thread-even depth-1 padding-top-5" id="comment-2">
+                                    <div class="avatar-holder">
+                                        <img alt="image description"
+                                             th:src="${item.parent.headImg}==null ? '/images/img57.jpg' : @{'/show-img/' + ${item.parent.headImg}}"
+                                             class="avatar avatar-48 photo avatar-default leave-head-img">
+                                    </div>
+                                    <div class="commentlist-holder">
+
+                                        <strong class="name"><p th:text="${item.parent.nickName}"></p></strong>
+                                        <div class="articleLeaveMsg" th:text="${item.parent.msg}"
+                                             style="margin-top: -16px;"></div>
+                                        <div style="margin-top: 0;" th:text="${item.parent.createAtStr}"></div>
+                                        <a style="cursor:pointer; color: #ea6f5a;" class="comment-reply-link"
+                                           onclick="reply(this)">回复</a>
+                                        <div style="margin-top: 5px;display: none;" class="reply_info">
+                                            <div style="margin-bottom: 35px; margin-top: 10px;">
+                                                <textarea class="submit_content" placeholder="写下你的回复…"></textarea>
+                                            </div>
+
+                                            <div class="Smohan_FaceBox face_box" style="line-height: 0;">
+                                                <a onclick="showOrHide(this)" class="face" title="表情"></a>
+                                            </div>
+
+                                            <div class="leave_repay">
+                                                <div th:onclick="@{'leave(this,\'' + ${article.id} + '\',\''+ ${item.parent.id} +'\');'}">
+                                                    发&nbsp;&nbsp;布
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="sub_commentlist">
+                                            <div class="commentlist-item padding-top-0"
+                                                 th:each="item2,itemStart : ${item.children}">
+                                                <div class="comment even thread-even depth-1"
+                                                     style="padding-left: 0;padding-top: 10px;">
+                                                    <div class="avatar-holder">
+                                                        <img alt="image description"
+                                                             th:src="${item2.headImg}==null ? '/images/img57.jpg' : @{'/show-img/' + ${item2.headImg}}"
+                                                             class="avatar avatar-48 photo avatar-default leave-head-img">
+                                                    </div>
+                                                    <div class="commentlist-holder">
+
+                                                        <strong class="name"><p th:text="${item2.nickName}"></p>
+                                                        </strong>
+                                                        <div class="articleLeaveMsg" th:text="${item2.msg}"
+                                                             style="margin-top: -16px;"></div>
+                                                        <div style="margin-top: 0;"
+                                                             th:text="${item2.createAtStr}"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Comment list item of the page end -->
+                        </div>
+                        <nav th:if="${articleLeavePage.items.size() > 0}" id="comment-hasMore" class="comment-hasMore" onclick="hasMore()">
+                            <input id="hasMoreIndex" th:value="${articleLeavePage.currentPage}" type="hidden"/>
+                            <input id="articleId" th:value="${article.id}" type="hidden"/>
+                            <span style="cursor: pointer;font-size: 16px;">展开更多评论</span>
+                        </nav>
+                        <!-- Comment list of the page end -->
+                    </section>
+                    <!-- Comment of the page end -->
+
+                    <!-- Comment Respond of the page end -->
+                </div>
+                <!-- Content of the page end -->
+                <!-- Sidebar of the page -->
+                <aside id="sidebar" class="col-xs-12 col-md-3 my-edge-detail marginLeft-10 my-header-hidden-w">
+
+                    <section id="personal-profile" class="widget recent-posts-widget wow fadeInUp div_bg_white" data-wow-delay="0.1s"
+                             style="padding-bottom:27px;position: relative;">
+                        <img style="border-radius: 60px;width: 50px; height: 50px; display: inline;"
+                             th:src="@{'/show-img/' + ${user.headImg}}">
+                        <div style="display: inline;font-size: 15px;position: absolute;left: 90px;line-height: 2;">
+                            <span th:text="${user.nickName}"></span>
+                            <span style="font-size: 8px;color: silver;display: block;">共计 <span th:text="${user.articleTotal}"></span> 篇</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span th:text="${user.intro}"></span>
+                        </div>
+                    </section>
+
+                    <!-- Widget of the page -->
+                    <section id="relation" class="widget recent-posts-widget wow fadeInUp div_bg_white" data-wow-delay="0.1s"
+                             style="padding-bottom:27px;">
+                        <header class="widget-head">
+                            <h3>相关文章</h3>
+                        </header>
+                        <ul style="margin-top:10px;font-size: 14px;">
+                            <li style="margin: 0 0;" th:each="item,itemStart : ${related}">
+                                <a class="my-title" style="font-size: 14px;font-weight: 500;"
+                                   th:href="@{'/articles/show/' + ${item.id}}" th:text="${item.title}"><br></a>
+                                <span class="post-tag my-desc" th:text="${item.createAtStr}"></span>
+                            </li>
+                        </ul>
+                    </section>
+                    <!-- Widget of the page end -->
+                </aside>
+                <!-- Sidebar of the page end -->
+            </div>
+        </div>
+        <!-- Instagram Slider of the page -->
+        <!--<div class="instagram-slider version-ii container-fluid">
+            <div class="row">
+                <div class="mask">
+                    <div class="slideset">
+                        <div class="slide">
+                            <a href="#"><img src="/images/img30.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img31.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img35.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img32.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img33.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img36.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img34.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img src="/images/img30.jpg" alt="image description"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="#"><img  src="/images/img31.jpg" alt="image description"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- Instagram Slider of the page end -->
+    </main>
+    <!-- Main of the page end -->
+    <!-- Footer of the page -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                    <span style="color:#939393;">© 2020 版权所有 ICP证：<a href="http://beian.miit.gov.cn/"
+                                                                     target="_blank">蜀ICP备2020026041号-1</a></span>
+                    <a target="_blank" class="my-header-hidden-w"
+                       href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51018002000062"
+                       style="text-decoration:none;height:15px;line-height:15px;margin-left: 15px;"><img
+                            src="/images/beian.png"/><span
+                            style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">川公网安备 51018002000062号</span></a>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer of the page end -->
+    <span id="back-top" class="fa fa-angle-up"></span>
+</div>
+
+<script src="/js/jquery.main.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/smohan.face.js"></script>
+<script src="/js/plugins.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $(window).scroll(function() {
+            var currTop = $(window).scrollTop();
+            var header_hei = $('#personal-profile').height();
+            if (currTop >= (header_hei+65)) { //判断小于则为向上滚动
+                $('#relation').addClass("relation-detail");
+            }else{
+                $('#relation').removeClass("relation-detail");
+            }
+        });
+
+        /* 表情包 */
+        $("a.face").smohanfacebox();
+
+        $(".articleLeaveMsg").each(function () {
+            $(this).replaceface($(this).html());
+        });
+
+
+        var mkEditor = editormd.markdownToHTML("question-view", {
+            //htmlDecode      : "style,script,iframe",  // you can filter tags decode
+            htmlDecode: true,
+            emoji: true,
+            taskList: true,
+            theme: "dark",
+            previewTheme: "dark",
+            editorTheme: "pastel-on-dark",
+            codeFold: true,
+            tex: true,  // 默认不解析
+            flowChart: true,  // 默认不解析
+            sequenceDiagram: true,  // 默认不解析
+            lineNumbers: true,
+            mode: "markdown",
+            gotoLine: true
+        });
+
+    });
+
+    function like(obj, id) {
+        $.get("/like-inc?articleId=" + id, function (data) {
+            if (data.code == 307) {
+                alert(data.msg);
+            } else {
+                var current = $(obj).parent().next().text();
+                $(obj).parent().next().text(parseInt(current) + 1);
+            }
+
+        });
+    }
+
+    function leave(obj, articleId, replyId) {
+        var content = $(obj).parent().prev().prev().children(".submit_content").val();
+        if (content == '') {
+            alert("请输入内容");
+            return;
+        }
+        var contentFace = replacefaceContent(content);
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            url: "/article-leave",
+            data: "msg=" + content + "&articleId=" + articleId + "&replyId=" + replyId,
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                // 追加html
+                if (replyId == '') {
+                    var content = '<div class="commentlist-item padding-top-0">'
+                        + '<div class="comment even thread-even depth-1 padding-top-5" id="comment-2">'
+                        + '<div class="avatar-holder">';
+                    if (data.data.headImg == null) {
+                        content += '<img alt="image description" src="/images/img57.jpg" class="avatar avatar-48 photo avatar-default leave-head-img">';
+                    } else {
+                        content += '<img alt="image description"  src="/show-img/' + data.data.headImg + '" class="avatar avatar-48 photo avatar-default leave-head-img">';
+                    }
+                    content += '</div>'
+                        + '<div class="commentlist-holder">'
+                        + '<strong class="name"><p>' + data.data.nickName + '</p></strong>'
+                        + '<div class="articleLeaveMsg" style="margin-top: -16px;">' + contentFace + '</div>'
+                        + '<div style="margin-top: 0;">' + data.data.createAtStr + '</div>'
+                        + '<a style="cursor:pointer; color: #ea6f5a;" class="comment-reply-link" onclick="reply(this)">回复</a>'
+                        + '<div style="margin-top: 5px;display: none;" class="reply_info">'
+                        + '<div style="margin-bottom: 35px; margin-top: 10px;">'
+                        + '<textarea class="submit_content" placeholder="写下你的回复…"></textarea>'
+                        + '</div>'
+                        + '<div class="Smohan_FaceBox face_box" style="line-height: 0;">'
+                        + '<a onclick="showOrHide(this)" class="face" title="表情"></a>'
+                        + '</div>'
+                        + '<div class="leave_repay">'
+                        + '<div onclick="leave(this,\'' + articleId + '\',\'' + data.data.id + '\');">'
+                        + '发&nbsp;&nbsp;布'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>'
+                        + '<div id="sub_commentlist"></div>';
+                    alert("评论成功");
+                    $("#commentlist").prepend(content);
+                    var leaveCount = $("#leaveCount").text();
+                    $("#leaveCount").text(parseInt(leaveCount) + 1);
+
+
+                } else {
+
+                    var content = '<div class="commentlist-item padding-top-0">'
+                        + '<div class="comment even thread-even depth-1" style="padding-left: 0;padding-top: 10px;">'
+                        + '<div class="avatar-holder">';
+                    if (data.data.headImg == null) {
+                        content += '<img alt="image description" src="/images/img57.jpg" class="avatar avatar-48 photo avatar-default leave-head-img">';
+                    } else {
+                        content += '<img alt="image description" src="/show-img/' + data.data.headImg + '" class="avatar avatar-48 photo avatar-default leave-head-img">';
+                    }
+                    content += '</div>'
+                        + '<div class="commentlist-holder">'
+                        + '<strong class="name"><p>' + data.data.nickName + '</p></strong>'
+                        + '<div class="articleLeaveMsg" style="margin-top: -16px;">' + data.data.msg + '</div>'
+                        + '<div style="margin-top: 0;">' + data.data.createAtStr + '</div>'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>';
+                    alert("评论成功")
+                    $(obj).parent().parent().next().prepend(content);
+                    $(obj).parent().parent().hide();
+                }
+            }
+        })
+        $(obj).parent().prev().prev().children(".submit_content").val("");
+    }
+
+    function hasMore() {
+        var hasMoreIndex = $('#hasMoreIndex').val();
+        var articleId = $('#articleId').val();
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            url: "/article-leave/has-more",
+            data: 'currentIndex=' + (parseInt(hasMoreIndex) + 1) + '&articleId=' + articleId,
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+
+                if (data.items.length == 0) {
+                    $("#comment-hasMore").hide(360);
+                }
+                var content = "";
+                for (var i = 0; i < data.items.length; i++) {
+                    var obj = data.items[i];
+                    content += '<div class="commentlist-item padding-top-0">'
+                        +'<div class="comment even thread-even depth-1 padding-top-5" id="comment-2">'
+                        +'<div class="avatar-holder">';
+                    if (obj.parent.headImg == null) {
+                        content +='<img alt="image description"'
+                        +'src="/images/img57.jpg"'
+                        +'class="avatar avatar-48 photo avatar-default leave-head-img">';
+                    } else {
+                        content +='<img alt="image description"'
+                        +'src="/show-img/' + obj.parent.headImg +'"'
+                        +'class="avatar avatar-48 photo avatar-default leave-head-img">';
+                    }
+                    content +='</div>'
+                    +'<div class="commentlist-holder">'
+                    +'<strong class="name"><p>'+obj.parent.nickName+'</p></strong>'
+                    +'<div class="articleLeaveMsg" '
+                    +'style="margin-top: -16px;">'+obj.parent.msg+'</div>'
+                    +'<div style="margin-top: 0;">'+obj.parent.createAtStr+'</div>'
+                    +'<a style="cursor:pointer; color: #ea6f5a;" class="comment-reply-link"'
+                    +'onclick="reply(this)">回复</a>'
+                    +'<div style="margin-top: 5px;display: none;" class="reply_info">'
+                    +'<div style="margin-bottom: 35px; margin-top: 10px;">'
+                    +'<textarea class="submit_content" placeholder="写下你的回复…"></textarea>'
+                    +'</div>'
+
+                    +'<div class="Smohan_FaceBox face_box" style="line-height: 0;">'
+                    +'<a onclick="showOrHide(this)" class="face" title="表情"></a>'
+                    +'</div>'
+
+                    +'<div class="leave_repay">'
+                    +'<div onclick="leave(this,\'' + obj.parent.articleId + '\',\''+ obj.parent.id +'\');">'
+                    +'发&nbsp;&nbsp;布'
+                    +'</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'<div id="sub_commentlist">';
+                    for(var j = 0; j < obj.children.length; j++) {
+                        var obj2 = obj.children[j];
+                        content +='<div class="commentlist-item padding-top-0">'
+                        +'<div class="comment even thread-even depth-1"'
+                        +'style="padding-left: 0;padding-top: 10px;">'
+                        +'<div class="avatar-holder">';
+                        if (obj2.headImg == null) {
+                            content +='<img alt="image description"'
+                            +'src="/images/img57.jpg"'
+                            +'class="avatar avatar-48 photo avatar-default leave-head-img">';
+                        } else {
+                            content +='<img alt="image description"'
+                            +'src="/show-img/' + obj2.headImg+'"'
+                            +'class="avatar avatar-48 photo avatar-default leave-head-img">';
+                        }
+
+                        content +='</div>'
+                        +'<div class="commentlist-holder">'
+
+                        +'<strong class="name"><p>'+obj2.nickName+'</p>'
+                        +'</strong>'
+                        +'<div class="articleLeaveMsg"'
+                        +'style="margin-top: -16px;">'+obj2.msg+'</div>'
+                        +'<div style="margin-top: 0;"'
+                        +'>'+obj2.createAtStr+'</div>'
+                        +'</div>'
+                        +'</div>'
+                        +'</div>';
+                    }
+                    content +='</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'</div>';
+                }
+                $("#commentlist").append(content);
+                $("#hasMoreIndex").val(data.currentPage);
+            }
+        })
+    }
+
+
+</script>
+
+<script>
+    (function(){
+        // 百度收录
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else{
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+<script>
+    (function(){
+        var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
+</body>
+</html>

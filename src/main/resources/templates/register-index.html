@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- set the encoding of your site -->
+	<meta charset="utf-8">
+	<!-- set the viewport width and initial-scale on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>注册</title>
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/animate.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/autoStyle.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/myStyle.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/responsive.css">
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="/css/colors.css">
+</head>
+<body class="version-ii">
+	<!-- main container of all the page elements -->
+	<div id="wrapper">
+		<!-- w1 of the page -->
+		<div class="w1">
+			<!-- header of the page -->
+			<header id="header" class="movetop sticky my-header" style="background-color: white;">
+				<div class="stick-holder my-header-hidden-m my-header-app">
+					<div>
+						<a href="/" style="position:fixed;top:1px;left: -10px;"><img src="/images/myzs.png" style="height: 48px;"></a>
+					</div>
+
+					<span th:if="${session.user!=null}" class="login-button">
+                <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+
+            </span>
+
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-9 col-sm-10 nav-holder">
+								<nav id="nav" class="navbar navbar-default">
+									<div class="navbar-header">
+										<button type="button" style="position: fixed; top: 2px; right: 1px;" class="navbar-toggle collapsed" data-toggle="collapse"
+												data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav navbar-right">
+											<li class="active" data-drop="drop-right">
+												<a class="app-menu" href="/">主页</a>
+												<a class="app-menu" th:if="${session.user==null}" href="/login-page">登陆</a>
+												<a class="app-menu" th:if="${session.user!=null}" href="/login-out">注销</a>
+											</li>
+										</ul>
+									</div>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="my-header-hidden-w my-header-web">
+					<div style="position: relative;background-color: white;">
+						<a href="/"><img src="/images/myzs.png" height="48px"></a>
+						<span th:if="${session.user==null}">
+                    <a href="/login-page" class="login-button">登陆</a>
+							<!--
+                                                <div class="register-button"><a style="color: white;" href="/register-page">注册</a></div>
+                            -->
+                </span>
+
+						<span th:if="${session.user!=null}" class="login-button">
+                    <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+							<!--
+                                                <span th:text="${session.user.nickName}" style="margin-left: 67%;color: black;text-decoration-line: none;"></span>
+                            -->
+                    <a href="/login-out" style="cursor: pointer;"><img style="width: 15px;height: 15px;" src="/images/login-out.jpg"></a>
+                </span>
+						<!--
+                                        <a href="/admin/add" style="padding-right: 20px;text-decoration-line: none;position: absolute;right: 0px;"><img style="width: 40px; height: 40px;color: black;" src="/images/pen.png" />写文章</a>
+                        -->
+						<div class="article-add">
+							<a href="/admin/add">
+								<span style="color: white;vertical-align: middle;" class="glyphicon glyphicon-pencil">写作</span>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</header>
+			<!-- Header of the page end -->
+			<!-- Main of the page -->
+			<main id="main" role="main">
+				<!-- Page head of the page -->
+				<header class="page-head wow fadeInUp" data-wow-delay="0.6s" style="background-image: url(images/img75.jpg);">
+					<!--<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h1>Contact Us</h1>
+								<ol class="breadcrumb">
+									<li><a href="home.html">Home</a></li>
+									<li class="active">Contact</li>
+								</ol>
+							</div>
+						</div>
+					</div>-->
+				</header>
+				<!-- Page head of the page end -->
+				<!-- Contact Sec of the page -->
+				<div class="contact-sec">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-md-8">
+								<!-- Comment respond of the page -->
+								<section class="comment-respond contact-form wow fadeInUp" data-wow-delay="0.6s">
+									<header class="header">
+										<h3 id="reply-title" class="comment-reply-title">博客</h3>
+										<p>博客，记录与分享</p>
+									</header>
+									<form action="/register" method="post" enctype="multipart/form-data" id="commentform"
+										  class="comment-form" onsubmit="return preCheck()">
+										<div class="wrap form-group">
+											<div class="comment-form-author">
+												<label for="userName">用户名 <span class="required">*</span></label>
+												<input type="text" id="userName" name="userName" size="30" aria-required="true" placeholder="enter your userName">
+											</div>
+											<div class="comment-form-email">
+												<label for="passWord">密码 <span class="required">*</span></label>
+												<input type="password" id="passWord" name="passWord" size="30" aria-required="true" placeholder="enter your passWord">
+											</div>
+										</div>
+										<div class="wrap form-group">
+											<div class="comment-form-tel">
+												<label for="nickName">昵称 <span class="required">*</span></label>
+												<input type="tel" id="nickName" name="nickName" placeholder="enter your nick name" size="30">
+											</div>
+											<div class="comment-form-url">
+												<label for="weixin">微信号</label>
+												<input type="text" id="weixin" name="weixin" size="30">
+											</div>
+										</div>
+										<div class="wrap form-group">
+											<div class="comment-form-tel">
+												<label>注册类型 </label>
+												成为读者: <input type="radio" name="type" checked="checked" value="user" size="30" style="margin-right: 20px;">
+												成为作者: <input type="radio" name="type" value="author" size="30" ><br />
+												<span style="font-size: 10px;color: orangered;">*成为作者需要管理员审核，1-3个工作日反馈</span>
+											</div>
+											<div class="comment-form-url">
+												<label for="file">头像 <span class="required">*</span></label>
+												<input type="file" id="file" name="file" size="30">
+												<span style="font-size: 10px;color: orangered;">*建议头像尺寸宽高：100px * 100px</span>
+											</div>
+										</div>
+										<div class="wrap form-group">
+											<div class="comment-form-tel">
+												<label for="email">邮箱</label>
+												<input type="text" id="email" name="email" placeholder="邮箱" size="30">
+											</div>
+											<div class="comment-form-url">
+												<label for="phone">手机号</label>
+												<input type="text" id="phone" name="phone" size="30" placeholder="手机号">
+											</div>
+										</div>
+										<div class="wrap form-group">
+											<div class="comment-form-tel">
+												<label for="code">验证码 <span class="required">*</span></label>
+												<input type="text" class="register-code-input" id="code" name="code" size="30" aria-required="true" placeholder="enter your code">
+												<img src="/get-verify-code" class="register-code" name="verifyCode" onclick="this.src=this.src+'?'" />
+											</div>
+										</div>
+
+										<div class="form-submit">
+											<input type="submit" class="login-app-button" value="注册">
+										</div>
+									</form>
+								</section>
+								<!-- Comment respond of the page end -->
+							</div>
+							<aside class="col-xs-12 col-md-4 pull-right">
+								<!-- Widget of the page -->
+								<section class="widget profile-widget version-ii wow fadeInUp" data-wow-delay="0.6s">
+									<div class="profile-pic">
+										<a href="#">
+											<img src="images/zhanzhang.jpeg" alt="微客阁">
+										</a>
+									</div>
+									<h3>微客阁</h3>
+									<p>坚持十年!!!</p>
+									<p>路漫漫其修远兮，吾将上下而求索!</p>
+								</section>
+								<!-- Widget of the page end -->
+								<!-- Widget of the page -->
+								<div class="widget tel-widget version-ii contact-widget wow fadeInUp" data-wow-delay="0.6s">
+									<p>
+										<a><span class="ico-card icon"></span>779396604@qq.com</a>
+										<br>
+										<!--<a><span class="ico-mobile icon"></span>13522521751</a>-->
+									</p>
+								</div>
+								<!-- Widget of the page end -->
+							</aside>
+						</div>
+					</div>
+				</div>
+				<!-- Contact Sec of the page end -->
+			</main>
+			<!-- Main of the page end -->
+
+			<!-- Aside of the page end -->
+			<!-- Footer of the page -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12" style="text-align: center;">
+							<span style="color:#939393;">© 2020 版权所有 ICP证：<a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2020026041号-1</a></span>
+							<a target="_blank" class="my-header-hidden-w"
+							   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51018002000062"
+							   style="text-decoration:none;height:15px;line-height:15px;margin-left: 15px;"><img
+									src="/images/beian.png"/><span
+									style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">川公网安备 51018002000062号</span></a>
+
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer of the page end -->
+			<!-- Back Top of the page -->
+	    	<span id="back-top" class="fa fa-angle-up"></span>
+		</div>
+	</div>
+	<script src="/js/jquery.main.js"></script>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/smohan.face.js"></script>
+	<script src="/js/plugins.js"></script>
+
+	<script>
+		function preCheck() {
+		    var userName = $("#userName").val();
+		    if (userName == '') {
+		        alert("用户名不能为空")
+                return false;
+            }
+            var passWord = $("#passWord").val();
+            if (passWord == '') {
+                alert("密码不能为空")
+                return false;
+            }
+            var nickName = $("#nickName").val();
+            if (nickName == '') {
+                alert("昵称不能为空")
+                return false;
+            }
+            var file = $("#file").val();
+            if (file == '') {
+                alert("头像不能为空")
+                return false;
+            }
+			return true;
+        }
+		
+	</script>
+</body>
+</html>

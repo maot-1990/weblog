@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="kucoin-mybatis-gen" defaultModelType="flat"
+        targetRuntime="com.kucoin.mybatis.generator.KucoinIntrospectedTableMyBatis3Impl">
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+        <property name="javaFileEncoding" value="UTF-8" />
+
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <plugin
+            type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
+        <commentGenerator
+            type="com.kucoin.mybatis.generator.comment.KucoinCommentGenerator">
+            <property name="suppressAllComments" value="false" />
+            <property name="suppressDate" value="false" />
+            <property name="addRemarkComments" value="true" />
+            <property name="dateFormat"
+                value="yyyy-MM-dd HH:mm:ss" />
+        </commentGenerator>
+        <jdbcConnection
+            connectionURL="jdbc:mysql://47.108.148.188:3306/personalblog?characterEncoding=UTF-8"
+            driverClass="com.mysql.jdbc.Driver" password="maot123"
+            userId="maot" />
+        <javaTypeResolver
+            type="com.kucoin.mybatis.generator.javatype.KucoinJavaTypeResolver">
+            <!-- true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型 false：默认, scale>0;length>18：使用BigDecimal; 
+                scale=0;length[10,18]：使用Long； scale=0;length[5,9]：使用Integer； scale=0;length<5：使用Short； -->
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+        <javaModelGenerator
+            targetPackage="com.personalblog.dataobject"
+            targetProject="src/main/java">
+        </javaModelGenerator>
+        <sqlMapGenerator
+            targetPackage="mybatis"
+            targetProject="src/main/resources" />
+        <javaClientGenerator
+            targetPackage="com.personalblog.dao"
+            targetProject="src/main/java" type="XMLMAPPER" />
+
+        <table tableName="todo_list" enableCountByExample="true"
+            enableUpdateByExample="true" enableDeleteByExample="true"
+            enableSelectByExample="true" selectByExampleQueryId="true">
+            <columnOverride column="created_at"
+                isGeneratedAlways="true"></columnOverride>
+            <columnOverride column="updated_at"
+                isGeneratedAlways="true"></columnOverride>
+        </table>
+    </context>
+</generatorConfiguration>

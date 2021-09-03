@@ -1,0 +1,67 @@
+server:
+  port: 80
+  tomcat:
+    max-connections: 1000
+    max-threads: 300
+    min-spare-threads: 20
+    uri-encoding: UTF-8
+  ssl:
+    enabled: true
+    key-store: classpath:cert/6209428_www.weblog.icu.jks
+    key-password: iuU1UmNp
+    key-store-type: JKS
+  servlet:
+    session:
+      timeout: 30M
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm
+    time-zone: GMT+8
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: true
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  profiles:
+    active: dev
+  cache:
+    cache-names: blog
+    caffeine:
+      spec: initialCapacity=1000,maximumSize=100000,expireAfterWrite=120s
+    type: caffeine
+
+mybatis:
+  mapper-locations: classpath:mybatis/**/*Mapper.xml
+
+blog:
+  weixin:
+    todolist:
+      appId: wx13c150ad0afd267b
+      appSecret: 4c78c21eae967a5d17c9a62ab69a68dc
+  config:
+    baiduIpInfoUrl: https://api.map.baidu.com/location/ip?ak=Y06xludec8KI7L7vg4ulk6lXwrk1IdtE&ip=%s
+    ignoreIps:
+      - 127.0.0.1
+      - 0:0:0:0:0:0:0:1
+      # company
+      - 182.150.63.184
+      # mobile
+      - 117.136.62.*
+      - 117.136.70.*
+      # spider
+      - 14.152.92.*
+      - 220.181.51.118
+      - 103.85.85.110
+      - 111.177.18.*
+      - 171.210.133.*
+      - 1.192.195.*
+
+
