@@ -1,2 +1,2 @@
-# personal-blog
-个人博客
+# weblog
+weblog
