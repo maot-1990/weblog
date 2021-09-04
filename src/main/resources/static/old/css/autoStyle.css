@@ -1,0 +1,1752 @@
+/* 大屏幕 ：大于等于1200px*/
+@media (min-width: 1200px) {
+
+
+    .swiper-contione {
+        width: 805px;
+        overflow: hidden;
+        margin: 0 0 10px 0;
+        position: relative;
+    }
+
+    .swiper-item {
+        width: 805px;
+        float: left;
+        position: relative;
+        border-radius: 5px;
+        border-bottom: 1px solid white;
+        box-shadow: 0px 20px 20px -20px #d86d65;
+        background-color: #F0F0F0;
+    }
+
+    .swiper-item img {
+        width: 805px;
+        max-height: 300px;
+    }
+
+    .relation {
+        top: 60px;
+        position: fixed;
+        width: 26%;
+        z-index: 99999;
+    }
+
+    .relation-detail {
+        top: 60px;
+        position: fixed;
+        width: 22.3%;
+        z-index: 99999;
+    }
+
+    .relation {
+        top: 60px;
+        position: fixed;
+        width: 26%;
+        z-index: 99999;
+    }
+
+    .img-right {
+        width: 120px !important;
+        height: 105px !important;
+        border-radius: 5px;
+    }
+
+    .login-app-button {
+        width: 120px;
+    }
+
+    .verify-code {
+        width: 74% !important;
+        display: inline !important;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 12px;
+        margin-left: 3px;
+    }
+
+    .register-code-input {
+        display: inline !important;
+        width: 180px !important;
+    }
+
+    .register-code {
+        display: inline !important;;
+        cursor: pointer;
+        margin-top: 33px;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 30px;
+        margin-left: 3px;
+    }
+
+    .verify-code {
+        width: 65%;
+        display: inline;
+    }
+
+    .data-info-table {
+        position: relative;
+        min-height: 120px;
+        max-height: 160px;
+        width: 100%;
+        padding: 0 15px 0 15px;
+    }
+
+    .data-info-table-img {
+        position: relative;
+        min-height: 120px;
+        max-height: 300px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .register-button {
+        width: 45px;
+        height: 30px;
+        background-color: #d86d65;
+        position: absolute;
+        border-radius: 10px;
+        text-align: center;
+        top: 6px;
+        right: 142px;
+        text-decoration-line: none;
+    }
+
+    .login-button {
+        margin-left: 67%;
+        color: #969696;
+        text-decoration-line: none;
+    }
+
+    .my-desc {
+        color: #888888;
+        width:100%;
+        font-size: 14px;
+        height:38px;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+    }
+
+    .my-desc-img {
+        left: 83%;
+        display: block;
+        position: absolute;
+        top:10px;
+    }
+
+    .my-intro {
+        margin: 0 0;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        line-height: 22px;
+        height: 52px;
+        color: #888888;
+        min-height: 50px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 2;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+        min-height: 29px;
+        max-height: 58px;
+        padding-top: 2px;
+    }
+
+    .my-title a {
+        color: black;
+    }
+
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 32px;
+        margin-top: 16px;
+        color: white;
+    }
+
+    .comment-hasMore{
+        background: #F0F0F0;
+        border-radius: 12px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        color: silver;
+    }
+
+
+    .autoWidth {
+        width: 100%;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 146px;
+    }
+
+    .my-header-hidden-m {
+        display: none;
+    }
+
+    .my-header-web{
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        color: white;
+        width: 100%;
+
+    }
+
+    .my-edge {
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        right: 29px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .marginLeft-10 {
+        margin-left: 0px !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 220px;
+        left: 95px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+    }
+
+    .text-wrap-padding {
+        padding-right: 130px !important;
+    }
+
+    .leave-button {
+        position: relative;
+
+    }
+
+    .face-box {
+        top: 138px;
+    }
+
+    .index-content {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-bottom: 5px;
+        min-height: 676px;
+    }
+
+}
+
+/*默认*/
+@media (min-width: 980px) and (max-width: 1199px) {
+
+    .img-right {
+        width: 120px !important;
+        height: 105px !important;
+        border-radius: 5px;
+    }
+
+    .my-desc {
+        color: #999;
+        width:100%;
+        height:25px;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .my-desc-img {
+        left: 80%;
+        display: block;
+        position: absolute;
+        top:9px;
+    }
+
+    .my-intro {
+        color: #999;
+        font-size: 13px;
+        margin: 0 0;
+        line-height: 20px;
+        height: 60px;
+        color: silver;
+
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        color: white;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 32px;
+        margin-top: 16px;
+
+    }
+
+    .comment-hasMore{
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        color: white;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 32px;
+        margin-top: 16px;
+    }
+
+    .autoWidth {
+        width: 100%;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 146px;
+    }
+
+    .my-header-hidden-m {
+        display: none;
+    }
+
+    .my-header-web{
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        color: white;
+        width: 100%;
+
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        left: 644px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .marginLeft-10 {
+        margin-left: 0px !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 220px;
+        left: 95px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+    }
+
+    .text-wrap-padding {
+        padding-right: 130px !important;
+    }
+
+    .face-box {
+        top: 138px;
+    }
+}
+
+/*默认*/
+@media (min-width: 896px) and (max-width: 979px) {
+
+    .img-right {
+        width: 120px !important;
+        height: 105px !important;
+        border-radius: 5px;
+    }
+
+    .login-app-button {
+        width: 120px;
+    }
+
+    .verify-code {
+        width: 74% !important;
+        display: inline !important;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 12px;
+        margin-left: 3px;
+    }
+
+    .register-code-input {
+        display: inline !important;
+        width: 180px !important;
+    }
+
+    .register-code {
+        display: inline !important;;
+        cursor: pointer;
+        margin-top: 33px;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 30px;
+        margin-left: 3px;
+    }
+
+    .verify-code {
+        width: 65%;
+        display: inline;
+    }
+
+    .data-info-table {
+        position: relative;
+        min-height: 120px;
+        max-height: 160px;
+        width: 100%;
+        padding: 0 15px 0 15px;
+    }
+
+    .data-info-table-img {
+        position: relative;
+        min-height: 120px;
+        max-height: 300px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .register-button {
+        width: 45px;
+        height: 30px;
+        background-color: #d86d65;
+        position: absolute;
+        border-radius: 10px;
+        text-align: center;
+        top: 6px;
+        right: 142px;
+        text-decoration-line: none;
+    }
+
+    .login-button {
+        margin-left: 55%;
+        color: #969696;
+        text-decoration-line: none;
+    }
+
+    .my-desc {
+        color: #888888;
+        width:100%;
+        font-size: 14px;
+        height:38px;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+    }
+
+    .my-desc-img {
+        left: 84%;
+        display: block;
+        position: absolute;
+        top:10px;
+    }
+
+    .my-intro {
+        margin: 0 0;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        line-height: 22px;
+        height: 54px;
+        color: #888888;
+        min-height: 50px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 2;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+        min-height: 29px;
+        max-height: 58px;
+        padding-top: 2px;
+    }
+
+    .my-title a {
+        color: black;
+    }
+
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 32px;
+        margin-top: 16px;
+        color: white;
+    }
+
+    .comment-hasMore{
+        background: #F0F0F0;
+        border-radius: 12px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        color: silver;
+    }
+
+
+    .autoWidth {
+        width: 100%;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 146px;
+    }
+
+    .my-header-hidden-m {
+        display: none;
+    }
+
+    .my-header-web{
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        color: white;
+        width: 100%;
+
+    }
+
+    .my-edge {
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        left: 644px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .marginLeft-10 {
+        margin-left: 0px !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 220px;
+        left: 95px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+    }
+
+    .text-wrap-padding {
+        padding-right: 130px !important;
+    }
+
+    .leave-button {
+        position: relative;
+
+    }
+
+    .face-box {
+        top: 138px;
+    }
+
+    .index-content {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-bottom: 5px;
+        min-height: 676px;
+    }
+
+
+    .swiper-contione {
+        width: 885px;
+        overflow: hidden;
+        margin: 0 0 10px 0;
+        position: relative;
+    }
+
+    .swiper-item {
+        width: 885px;
+        float: left;
+        position: relative;
+        border-radius: 5px;
+        border-bottom: 1px solid white;
+        box-shadow: 0px 20px 20px -20px #d86d65;
+        background-color: #F0F0F0;
+    }
+
+    .swiper-item img {
+        width: 885px;
+        max-height: 300px;
+    }
+
+}
+
+/*默认*/
+@media (min-width: 768px) and (max-width: 895px) {
+
+    .img-right {
+        width: 120px !important;
+        height: 105px !important;
+        border-radius: 5px;
+    }
+
+    .login-app-button {
+        width: 120px;
+    }
+
+    .verify-code {
+        width: 74% !important;
+        display: inline !important;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 12px;
+        margin-left: 3px;
+    }
+
+    .register-code-input {
+        display: inline !important;
+        width: 180px !important;
+    }
+
+    .register-code {
+        display: inline !important;;
+        cursor: pointer;
+        margin-top: 33px;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 30px;
+        margin-left: 3px;
+    }
+
+    .verify-code {
+        width: 65%;
+        display: inline;
+    }
+
+    .data-info-table {
+        position: relative;
+        min-height: 120px;
+        max-height: 160px;
+        width: 100%;
+        padding: 0 15px 0 15px;
+    }
+
+    .data-info-table-img {
+        position: relative;
+        min-height: 120px;
+        max-height: 300px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .register-button {
+        width: 45px;
+        height: 30px;
+        background-color: #d86d65;
+        position: absolute;
+        border-radius: 10px;
+        text-align: center;
+        top: 6px;
+        right: 142px;
+        text-decoration-line: none;
+    }
+
+    .login-button {
+        margin-left: 55%;
+        color: #969696;
+        text-decoration-line: none;
+    }
+
+    .my-desc {
+        color: #888888;
+        width:100%;
+        font-size: 14px;
+        height:38px;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+    }
+
+    .my-desc-img {
+        left: 84%;
+        display: block;
+        position: absolute;
+        top:10px;
+    }
+
+    .my-intro {
+        margin: 0 0;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        line-height: 22px;
+        height: 54px;
+        color: #888888;
+        min-height: 50px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 2;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+        min-height: 29px;
+        max-height: 58px;
+        padding-top: 2px;
+    }
+
+    .my-title a {
+        color: black;
+    }
+
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 32px;
+        margin-top: 16px;
+        color: white;
+    }
+
+    .comment-hasMore{
+        background: #F0F0F0;
+        border-radius: 12px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        color: silver;
+    }
+
+
+    .autoWidth {
+        width: 100%;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 146px;
+    }
+
+    .my-header-hidden-m {
+        display: none;
+    }
+
+    .my-header-web{
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        color: white;
+        width: 100%;
+
+    }
+
+    .my-edge {
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        left: 644px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .marginLeft-10 {
+        margin-left: 0px !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 220px;
+        left: 95px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+    }
+
+    .text-wrap-padding {
+        padding-right: 130px !important;
+    }
+
+    .leave-button {
+        position: relative;
+
+    }
+
+    .face-box {
+        top: 138px;
+    }
+
+    .index-content {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-bottom: 5px;
+        min-height: 676px;
+    }
+
+
+    .swiper-contione {
+        width: 885px;
+        overflow: hidden;
+        margin: 0 0 10px 0;
+        position: relative;
+    }
+
+    .swiper-item {
+        width: 885px;
+        float: left;
+        position: relative;
+        border-radius: 5px;
+        border-bottom: 1px solid white;
+        box-shadow: 0px 20px 20px -20px #d86d65;
+        background-color: #F0F0F0;
+    }
+
+    .swiper-item img {
+        width: 885px;
+        max-height: 300px;
+    }
+}
+
+/* 横向放置的手机及分辨率更小的设备 */
+@media (min-width: 480px) and (max-width: 767px) {
+    .swiper-contione {
+        width: 725px;
+        overflow: hidden;
+        margin: 0 0 10px 0;
+        position: relative;
+    }
+
+    .swiper-item {
+        width: 725px;
+        float: left;
+        position: relative;
+        border-radius: 5px;
+        border-bottom: 1px solid white;
+        box-shadow: 0px 20px 20px -20px #d86d65;
+        background-color: #F0F0F0;
+    }
+
+    .swiper-item img {
+        width: 725px;
+        max-height: 300px;
+    }
+
+    .relation {
+
+    }
+
+    .img-right {
+        width: 120px !important;
+        height: 105px !important;
+        border-radius: 5px;
+    }
+
+    .login-app-button {
+        width: 120px;
+    }
+
+    .verify-code {
+        width: 74% !important;
+        display: inline !important;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 12px;
+        margin-left: 3px;
+    }
+
+    .register-code-input {
+        display: inline !important;
+        width: 180px !important;
+    }
+
+    .register-code {
+        display: inline !important;;
+        cursor: pointer;
+        margin-top: 33px;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 30px;
+        margin-left: 3px;
+    }
+
+    .verify-code {
+        width: 65%;
+        display: inline;
+    }
+
+    .data-info-table {
+        position: relative;
+        min-height: 120px;
+        max-height: 160px;
+        width: 100%;
+        padding: 0 15px 0 15px;
+    }
+
+    .data-info-table-img {
+        position: relative;
+        min-height: 120px;
+        max-height: 300px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .register-button {
+        width: 45px;
+        height: 30px;
+        background-color: #d86d65;
+        position: absolute;
+        border-radius: 10px;
+        text-align: center;
+        top: 6px;
+        right: 142px;
+        text-decoration-line: none;
+    }
+
+    .login-button {
+        margin-left: 45%;
+        color: #969696;
+        text-decoration-line: none;
+    }
+
+    .my-desc {
+        color: #888888;
+        width:100%;
+        font-size: 14px;
+        height:38px;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+    }
+
+    .my-desc-img {
+        left: 81%;
+        display: block;
+        position: absolute;
+        top:10px;
+    }
+
+    .my-intro {
+        margin: 0 0;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        line-height: 22px;
+        height: 54px;
+        color: #888888;
+        min-height: 50px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 2;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+        min-height: 29px;
+        max-height: 58px;
+        padding-top: 2px;
+    }
+
+    .my-title a {
+        color: black;
+    }
+
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 32px;
+        margin-top: 16px;
+        color: white;
+    }
+
+    .comment-hasMore{
+        background: #F0F0F0;
+        border-radius: 12px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        color: silver;
+    }
+
+
+    .autoWidth {
+        width: 100%;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 146px;
+    }
+
+    .my-header-hidden-m {
+        display: none;
+    }
+
+    .my-header-web{
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        color: white;
+        width: 100%;
+
+    }
+
+    .my-edge {
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        left: 644px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .marginLeft-10 {
+        margin-left: 0px !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 220px;
+        left: 95px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+    }
+
+    .text-wrap-padding {
+        padding-right: 130px !important;
+    }
+
+    .leave-button {
+        position: relative;
+
+    }
+
+    .face-box {
+        top: 138px;
+    }
+
+    .index-content {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-bottom: 5px;
+        min-height: 676px;
+    }
+
+}
+
+
+
+/* 横向放置的手机及分辨率更小的设备 */
+@media (min-width: 414px) and (max-width: 479px) {
+
+    .img-right {
+        width: 100px !important;
+        height: 90px !important;
+        border-radius: 5px;
+    }
+
+    .login-button {
+        margin-left: 78%;
+        color: #d86d65;
+        text-decoration-line: none;
+        position: absolute;
+        top: 4px;
+    }
+
+    .register-code-input {
+        display: inline !important;
+        width: 235px !important;
+    }
+
+    .register-code {
+        display: inline !important;;
+        cursor: pointer;
+        margin-top: 11px;
+    }
+
+    .login-app-button {
+        width: 120px;
+    }
+
+    .verify-code {
+        width: 65% !important;
+        display: inline !important;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 12px;
+        margin-left: 3px;
+    }
+
+    .my-desc {
+        color: #888888;
+        width:100%;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+        font-size: 14px;
+        height: 38px;
+    }
+
+    .my-desc-img {
+        left: 73%;
+        display: block;
+        position: absolute;
+        top:23px;
+    }
+
+    .data-info-table {
+        position: relative;
+        min-height: 130px;
+        max-height: 180px;
+        width: 100%;
+    }
+
+    .my-intro {
+        font-size: 14px;
+        line-height: 25px;
+        max-height: 65px;
+        color: #888888;
+        min-height: 50px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .my-title a {
+        color: black;
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+        min-height: 29px;
+        max-height: 70px;
+        padding-top: 15px;
+    }
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 43%;
+    }
+
+    .autoWidth {
+        width: 37% !important;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 145px;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        color: white;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 25px;
+        margin-top: 10px;
+
+    }
+
+    .comment-hasMore {
+        background: #F0F0F0;
+        border-radius: 12px;
+        width: 99%;
+        padding: 3px 0 0 0;
+        color: silver;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 16px;
+        margin-left: 2px;
+    }
+
+    .my-edge {
+        width: 43.5% !important;
+    }
+
+    .my-edge-detail {
+        width: 100% !important;
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        left: 321px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .my-header-hidden-w {
+        display: none;
+    }
+
+    .my-header-app {
+        /*margin-top: -9px;*/
+        color: black;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 280px;
+        left: 0px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+        width: 50px;
+        height: 80px;
+    }
+
+    .text-wrap-padding {
+        padding-right: 110px !important;
+    }
+
+    .index-content {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        min-height: 686px;
+        margin-bottom: 5px;
+    }
+
+    .index-content-padding {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+
+    }
+
+    .face-box {
+        top: 145px;
+    }
+
+}
+
+
+/* 横向放置的手机及分辨率更小的设备 */
+@media (min-width: 375px) and (max-width: 413px) {
+
+    .img-right {
+        width: 100px !important;
+        height: 90px !important;
+        border-radius: 5px;
+    }
+
+    .login-button {
+        margin-left: 78%;
+        color: #d86d65;
+        text-decoration-line: none;
+        position: absolute;
+        top: 4px;
+    }
+
+    .register-code-input {
+        display: inline !important;
+        width: 235px !important;
+    }
+
+    .register-code {
+        display: inline !important;;
+        cursor: pointer;
+        margin-top: 11px;
+    }
+
+    .login-app-button {
+        width: 120px;
+    }
+
+    .verify-code {
+        width: 65% !important;
+        display: inline !important;
+    }
+
+    .verify-code-img{
+        display: inline;
+        cursor: pointer;
+        margin-top: 12px;
+        margin-left: 3px;
+    }
+
+    .my-desc {
+        color: #888888;
+        width:100%;
+        position: relative;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+        font-size: 14px;
+        height: 38px;
+    }
+
+    .my-desc-img {
+        left: 70%;
+        display: block;
+        position: absolute;
+        top:23px;
+    }
+
+    .data-info-table {
+        position: relative;
+        min-height: 130px;
+        max-height: 180px;
+        width: 100%;
+    }
+
+    .my-intro {
+        font-size: 14px;
+        line-height: 25px;
+        max-height: 65px;
+        color: #888888;
+        min-height: 50px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .my-title a {
+        color: black;
+    }
+
+    .my-title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #333 !important;
+        cursor: pointer;
+        text-decoration: none;
+        min-height: 29px;
+        max-height: 70px;
+        padding-top: 15px;
+    }
+
+    .text-wrap {
+        text-align: left;
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        width: 40%;
+    }
+
+    .autoWidth {
+        width: 37% !important;
+    }
+
+    .myLeave {
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color: #d86d65;
+        right: 0px;
+        height: auto;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+        top: 147px;
+    }
+
+    .hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 100%;
+        padding: 3px 0 0 0;
+        color: white;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 25px;
+        margin-top: 10px;
+
+    }
+
+    .comment-hasMore {
+        background: silver;
+        border-radius: 15px;
+        width: 38%;
+        padding: 3px 0 0 0;
+        color: white;
+        height: 33px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        margin-left: 12px;
+    }
+
+    .my-edge {
+        width: 43.5% !important;
+    }
+
+    .my-edge-detail {
+        width: 100% !important;
+    }
+
+    .leave_repay {
+        color: white;
+        cursor:pointer;
+        padding:0 10px;
+        vertical-align:middle ;
+        text-align:center;
+        background-color:#d86d65;
+        left: 321px;
+        width: auto;
+        margin-top: -36px;
+        position: absolute;
+        border-radius: 8px;
+    }
+
+    .padding-left-0 {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .my-header-hidden-w {
+        display: none;
+    }
+
+    .my-header-app {
+        /*margin-top: -9px;*/
+        color: black;
+    }
+
+    .circle_zan {
+        position: fixed;
+        top: 280px;
+        left: 0px;
+        z-index: 8;
+        color: #999;
+        font-size: 12px;
+        display: block;
+        width: 50px;
+        height: 80px;
+    }
+
+    .text-wrap-padding {
+        padding-right: 107px !important;
+    }
+
+    .index-content {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+
+    .index-content-padding {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+
+    }
+
+    .face-box {
+        top: 145px;
+    }
+
+}
