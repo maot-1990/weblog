@@ -3,8 +3,8 @@ package com.personalblog.controller;
 import com.personalblog.bo.ArticleLeaveBO;
 import com.personalblog.bo.CategoryGroupBO;
 import com.personalblog.dataobject.ArticleDO;
+import com.personalblog.dataobject.ArticleLeaveDO;
 import com.personalblog.dataobject.QuickLinkDO;
-import com.personalblog.dataobject.UserDO;
 import com.personalblog.enums.IntroTypeEnum;
 import com.personalblog.exception.BaseException;
 import com.personalblog.pagehelper.Page;
@@ -53,15 +53,18 @@ public class ArticleController {
         page.setSearchKey(request.getSearchKey());
         List<CategoryGroupBO> category = articleService.getCategoryByGroup();
 
-        // List<ArticleDO> recent = articleService.getByIntroType(IntroTypeEnum.RECENT.toString());
-        // List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+        List<ArticleDO> recent = articleService.getByIntroType(IntroTypeEnum.RECENT.toString());
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
 
         List<QuickLinkDO> links = commonService.getQuickLinks();
 
+        List<ArticleLeaveDO> articleLeaveRecent = articleLeaveService.getRecent(5);
+
         List<UserVO> authors = userService.getAuthors(5);
 
-        // mode.addAttribute("recent", recent);
-        // mode.addAttribute("popular", popular);
+        mode.addAttribute("recent", recent);
+        mode.addAttribute("popular", popular);
+        mode.addAttribute("articleLeaveRecent", articleLeaveRecent);
 
         mode.addAttribute("page", page);
 
@@ -104,7 +107,7 @@ public class ArticleController {
         mode.addAttribute("article", articleVO);
         mode.addAttribute("articleLeavePage", articleLeavePage);
         mode.addAttribute("user", user);
-        return "single-post";
+        return "detail";
     }
 
 

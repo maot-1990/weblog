@@ -1,668 +1,258 @@
+<!doctype html>
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta name="baidu-site-verification" content="code-DdU8tIhZw4" />
-    <meta name="sogou_site_verification" content="E2wRaCPXEZ"/>
-    <meta name="360-site-verification" content="9a3bb1fa8d4a3d2b94c4e5e06a54ed98" />
-    <!-- set the encoding of your site -->
-    <meta charset="utf-8">
-    <!-- set the viewport width and initial-scale on mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN">
 
-    <title>微客阁 - 个人博客</title>
-    <meta name="Keywords" content="街角下的蚂蚁,个人博客,个人网站,Java编程,技术分享,文章创作," />
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <title>Weblog - 个人博客</title>
+    <meta name="Keywords" content="街角下的蚂蚁,个人博客,个人网站,Java编程,技术分享,文章创作" />
     <meta name="Description" content="在一个属于自己的地方,记录下自己感兴趣的事,一直坚持走下去" />
     <!-- 设置缓存2小时，max-age指最大缓存的秒数 -->
     <meta http-equiv="Cache-Control" content="max-age=14400" />
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/slick.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/animate.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/autoStyle.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/myStyle.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/responsive.css">
-    <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/css/colors.css">
+
+    <link rel="shortcut icon" href="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/favicon.ico">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <!--[if lt IE 9]><div><p class="ie9">您的IE浏览器版本过低</p></div><![endif]-->
+    <script src="/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <style type="text/css"></style>
 </head>
-<body class="js_darkmode__0">
-<!--<div class="loader-holder">
-    <div class="loader">
-        <div class="side"></div>
-        <div class="side"></div>
-        <div class="side"></div>
-        <div class="side"></div>
-        <div class="side"></div>
-        <div class="side"></div>
-        <div class="side"></div>
-        <div class="side"></div>
-    </div>
-</div>-->
-<!-- main container of all the page elements -->
-<div id="wrapper">
-    <!-- header of the page -->
-    <header id="header" class="movetop sticky my-header" style="background-color: white;">
-        <div class="stick-holder my-header-hidden-m my-header-app">
-            <div>
-                <a href="/" style="position:fixed;top:1px;left: -10px;"><img src="/images/myzs.png" style="height: 48px;"></a>
-            </div>
 
-            <span th:if="${session.user!=null}" class="login-button">
-                <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
-            </span>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-9 col-sm-10 nav-holder">
-                        <nav id="nav" class="navbar navbar-default">
-                            <div class="navbar-header">
-                                <button type="button" style="position: fixed; top: 2px; right: 1px;" class="navbar-toggle collapsed" data-toggle="collapse"
-                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                    <span class="sr-only"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="active" data-drop="drop-right">
-                                        <a class="app-menu" href="/">主页</a>
-                                        <a class="app-menu" th:if="${session.user==null}" href="/login-page">登陆</a>
-                                        <a class="app-menu" th:if="${session.user!=null}" href="/login-out">注销</a>
-                                    </li>
+<body>
+    <header class="header">
+        <div class="containe">
+            <div id="nav-box" class="nav-bar header-nav right" data-type="index" data-infoid="index">
+                <div class="container">
+                    <h1 class="logo"> <a href="/" title="Weblog"> <img src="img/logo.png" alt="Weblog"> </a> </h1>
+                    <nav class="nav-bar">
+                        <ul class="nav">
+                            <li id="nvabar-item-index"><a href="/">首页</a></li>
+                            <li id="navbar-category-1"><a href="/cyzx/">创业资讯</a></li>
+                            <li id="navbar-category-2"><a href="/cyzd/">创业指导</a></li>
+                            <li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
                                 </ul>
-                            </div>
-                        </nav>
+                            </li>
+                            <li id="navbar-category-28"><a href="/gywm/">关于我们</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-28"><a href="/gywm/lxwm/">联系我们</a></li>
+                                    <li id="navbar-category-28"><a href="/gywm/gghz/">广告合作</a></li>
+                                    <li id="navbar-category-28"><a href="/gywm/tgxz/">投稿须知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="mnav">
+                            <li id="nvabar-item-index"><a href="/">首页</a></li>
+                            <li id="navbar-category-1"><a href="/cyzx/">创业资讯</a></li>
+                            <li id="navbar-category-2"><a href="/cyzd/">创业指导</a></li>
+                            <li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                                </ul>
+                            </li>
+                            <li id="navbar-category-28"><a href="/gywm/">关于我们</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-28"><a href="/gywm/lxwm/">联系我们</a></li>
+                                    <li id="navbar-category-28"><a href="/gywm/gghz/">广告合作</a></li>
+                                    <li id="navbar-category-28"><a href="/gywm/tgxz/">投稿须知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div id="m-btn" class="m-btn"><i class="fa fa-bars"></i></div>
+                    <script src="http://zly2021010118_31.demo.mxyhn.xyz:8020/e/member/login/loginjs.php"></script>
+                    <div class="pull-right">
+                        <form onsubmit="return checkSearchForm()" method="post" name="searchform" id="searchform" class="searchform" action="/e/search/index.php">
+                            <input type="text" name="keyboard" id="s" class="search-input" placeholder="搜索...">
+                            <button><i class="fa fa-search"></i></button>
+                            <input type="hidden" value="title" name="show">
+                            <input type="hidden" value="1" name="tempid">
+                            <input type="hidden" value="news" name="tbname">
+                            <input name="mid" value="1" type="hidden">
+                            <input name="dopost" value="search" type="hidden">
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="my-header-hidden-w my-header-web">
-            <div style="position: relative;background-color: white;">
-                <a href="/"><img src="/images/myzs.png" height="48px"></a>
-                <span th:if="${session.user==null}">
-                    <a href="/login-page" class="login-button">登陆</a>
-<!--
-                    <div class="register-button"><a style="color: white;" href="/register-page">注册</a></div>
--->
-                </span>
-
-                <span th:if="${session.user!=null}" class="login-button">
-                    <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
-<!--
-                    <span th:text="${session.user.nickName}" style="margin-left: 67%;color: black;text-decoration-line: none;"></span>
--->
-                    <a href="/login-out" style="cursor: pointer;"><img style="width: 15px;height: 15px;" src="/images/login-out.jpg"></a>
-                </span>
-<!--
-                <a href="/admin/add" style="padding-right: 20px;text-decoration-line: none;position: absolute;right: 0px;"><img style="width: 40px; height: 40px;color: black;" src="/images/pen.png" />写文章</a>
--->
-                <div class="article-add">
-                    <a href="/admin/add">
-                        <span style="color: white;vertical-align: middle;" class="glyphicon glyphicon-pencil">写作</span>
-                    </a>
-                </div>
-            </div>
-
         </div>
     </header>
-    <!-- header of the page end -->
-    <!-- main of the page -->
-    <main id="main" role="main" style="margin-top: 68px";>
-        <!-- twocolumns of the page -->
-        <div id="twocolumns">
-            <div class="container">
-                <div class="row">
-                    <!-- Content of the page -->
-
-                    <div class="my-header-hidden-m app-category-head" data-wow-delay="0.1s">
-                        <a class="app-category" onclick="categoryList('')">全部</a>
-
-                        <a class="app-category" th:each="item,itemStart : ${category}" th:onclick="@{'categoryList(\'' + ${item.category} + '\');'}" th:text="${item.category}"></a>
-
-                    </div>
-
-                    <div id="content" class="col-xs-12 col-md-8 index-content" style="background-color: white;">
-
-                        <div data-wow-delay="0.1s" class="data-info-table-img box-shadow-div index-content-padding my-header-hidden-w">
-                            <div class="swiper-contione">
-                                <div class="swiper">
-                                    <div class="swiper-item">
-                                        <img src="images/7.jpeg">
-                                    </div>
-                                    <div class="swiper-item">
-                                        <img src="images/8.jpeg">
-                                    </div>
-                                    <div class="swiper-item">
-                                        <img src="images/1.jpeg">
-                                    </div>
-                                    <div class="swiper-item">
-                                        <img src="images/6.jpeg">
-                                    </div>
-                                </div>
-                                <div class="swiper-point">
-                                    <div class="swiper-point-item">
-                                        <div class="point active"></div>
-                                        <div class="point"></div>
-                                        <div class="point"></div>
-                                        <div class="point"></div>
-                                    </div>
-                                </div>
-                                <div class="swiper-left">
-                                    <img src="images/left.png">
-                                </div>
-                                <div class="swiper-right">
-                                    <img src="images/right.png">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="indexContent" class="cols-holder">
-
-                            <!-- post of the page -->
-                            <div data-wow-delay="0.1s" th:each="item,itemStart : ${page.items}" class="data-info-table box-shadow-div index-content-padding">
-
-                                <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'text-wrap-padding' : ''">
-                                    <div class="my-title" >
-                                        <a target="_blank" th:href="@{'/articles/show/' + ${item.id}}"
-                                                                   th:text="${item.title}">item</a>
-                                    </div>
-
-                                    <div class="my-intro" th:text="${item.intro}"></div>
-
-                                    <div class="my-desc">
-                                        <footer>
-                                            <strong class="text"><span
-                                                    class="glyphicon" th:text="${item.author}"></span></strong>
-                                            <strong class="text" style="padding-left: 15px;"><span
-                                                    class="glyphicon glyphicon-time"
-                                                    th:text="${item.createAtStr}"></span></strong>
-                                            <strong class="text" style="padding-left: 15px;"><span
-                                                    class="glyphicon glyphicon-eye-open"
-                                                    th:text="${item.readCount}"></span></strong>
-                                        </footer>
-                                    </div>
-                                </div>
-
-                                <div class="my-desc-img" th:if="${not #strings.isEmpty(item.imgPath)}">
-                                    <img class="img-right" th:src="@{'/show-img/' + ${item.imgPath}}" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- cols holder of the page end -->
-
-
-                        <!-- Navigation of the page -->
-                        <nav class="hasMore" onclick="hasMore()">
-                            <input id="hasMoreIndex" th:value="${page.currentPage}" type="hidden"/>
-                            <input id="hasMoreCategory" th:value="${page.category}" type="hidden"/>
-                            <input id="searchKey" th:value="${page.searchKey}" type="hidden"/>
-                            <span id="hasMore" style="cursor: pointer;font-size: 16px;">点开我</span>
-                        </nav>
-                        <!-- Navigation of the page end -->
-                    </div>
-                    <!-- Content of the page end -->
-                    <!-- Sidebar of the page -->
-                    <aside id="sidebar" class="col-xs-12 col-md-4 my-edge marginLeft-10 my-header-hidden-w">
-
-                        <div id="search" class="widget widget_search div_bg_white">
-                            <form method="get" class="search-form" action="#">
-                                <fieldset>
-                                    <input type="search" id="searchKeyValue" name="searchKey" placeholder="🔍">
-                                    <button type="button" onclick="mySearch();" class="ico-search"></button>
-                                </fieldset>
-                            </form>
-                        </div>
-
-                        <!-- Widget of the page -->
-                        <!--<section class="widget recent-posts-widget wow fadeInUp div_bg_white" data-wow-delay="0.1s" style="padding-bottom:27px;">
-                            <header class="widget-head">
-                                <h3>最近更新</h3>
-                            </header>
-                            <ul style="margin-top:10px;font-size: 14px;">
-                                <li style="margin: 0 0;" th:each="item,itemStart : ${recent}">
-                                    <a class="my-title" style="font-size: 14px;font-weight: 500;" th:href="@{'/articles/show/' + ${item.id}}" th:text="${item.title}"><br></a>
-                                    <span class="post-tag my-desc" th:text="${item.createAtStr}"></span>
-                                </li>
+    <p class="index-breadcrumb"></p>
+    <main class="container">
+        <div class="content-wrap">
+            <section class="article">
+                <div class="slider">
+                    <div id="slideBox" class="slideBox">
+                        <div class="bd">
+                            <ul>
+                                <li> <a href="/cyzx/535.html" target="_blank"> <img src="img/e925e3153ee839b671172120445a231e.jpeg"> </a> </li>
+                                <li> <a href="/cyzx/534.html" target="_blank"> <img src="img/5e10c7e0e88c1bace5a4c87d5102388b.jpeg"> </a> </li>
+                                <li> <a href="/cyzx/533.html" target="_blank"> <img src="img/f5adf55221b582d611701894317cc875.jpeg"> </a> </li>
                             </ul>
-                        </section>-->
-
-                        <div id="categories" class="widget widget_categories tabs wow fadeInUp div_bg_white" data-wow-delay="0.1s">
-                            <header class="widget-head">
-                                <h3>分类</h3>
-                            </header>
-                            <div class="lists-holder">
-                                <ul>
-                                    <li class="cat-item cat-item-1" th:each="item,itemStart : ${category}"
-                                        th:if="${itemStart.even}">
-                                        <a style="cursor: pointer;" th:onclick="@{'categoryList(\'' + ${item.category} + '\');'}" th:text="${item.category}"></a>
-                                        (<span th:text="${item.count}"></span>)
-                                    </li>
-                                </ul>
-
-                                <ul style="margin-left: 30%;">
-                                    <li class="cat-item cat-item-1" th:each="item,itemStart : ${category}"
-                                        th:if="not ${itemStart.even}">
-                                        <a style="cursor: pointer;" th:onclick="@{'categoryList(\'' + ${item.category} + '\');'}" th:text="${item.category}"></a>
-                                        (<span th:text="${item.count}"></span>)
-                                    </li>
-                                </ul>
-
-                            </div>
                         </div>
-
-                        <section class="widget recent-posts-widget wow fadeInUp div_bg_white" data-wow-delay="0.1s" style="padding-bottom:27px;">
-                            <header class="widget-head">
-                                <h3>本站作者</h3>
-                            </header>
-                            <ul style="margin-top:10px;font-size: 14px;">
-                                <li style="margin: 0 0;" th:each="item,itemStart : ${authors}">
-                                    <div style="display: inline-block; width: 45px; height: 37px;">
-                                        <img style="border-radius: 60px;width: 40px; height: 40px;" th:src="@{'/show-img/' + ${item.headImg}}">
-                                    </div>
-                                    <div style="display: inline-block;width: auto; height: 45px;">
-                                        <span th:text="${item.nickName}"></span><br />
-                                        <span style="font-size: 8px;color: silver;">共计 <span th:text="${item.articleTotal}"></span> 篇</span>
-                                    </div>
-                                </li>
+                        <div class="hd">
+                            <ul>
+                                <li><i class="fa fa-circle"></i></li>
+                                <li><i class="fa fa-circle"></i></li>
+                                <li><i class="fa fa-circle"></i></li>
                             </ul>
-                        </section>
-                        <!-- Widget of the page end -->
-                        <!-- Widget of the page -->
-                        <!--<div class="widget promo-widget wow fadeInUp" data-wow-delay="0.1s">
-                            <a href="#"><img src="images/ad-placeholder.jpg" alt="“Place your Advertisement here”"></a>
-                        </div>-->
-                        <!-- Widget of the page end -->
-                        <!-- Widget of the page -->
-
-                        <div class="widget widget_categories tabs wow fadeInUp div_bg_white" data-wow-delay="0.1s">
-                            <header class="widget-head">
-                                <h3>快速入口</h3>
-                            </header>
-                            <div class="lists-holder">
-                                <ul>
-                                    <li class="cat-item cat-item-1" th:each="item,itemStart : ${links}"
-                                        th:if="${itemStart.even}">
-                                        <a style="cursor: pointer;" target="_blank" th:href="${item.site}" th:text="${item.name}"></a>
-                                    </li>
-                                </ul>
-
-                                <ul style="margin-left: 40%;">
-                                    <li class="cat-item cat-item-1" th:each="item,itemStart : ${links}"
-                                        th:if="not ${itemStart.even}">
-                                        <a style="cursor: pointer;" target="_blank" th:href="${item.site}" th:text="${item.name}"></a>
-                                    </li>
-                                </ul>
-
-                            </div>
                         </div>
-                        <!-- Widget of the page end -->
-                    </aside>
-                    <!-- Sidebar of the page end -->
+                        <a class="prev" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a><a class="next" href="javascript:void(0)"><i class="fa fa-angle-right"></i></a>
+                    </div>
                 </div>
-            </div>
+                <!-- 广告位AD1  -->
+                <!-- 首页推荐  -->
+                <div class="recommend">
+                    <div class="first_pro fl" th:each="item,itemStart : ${popular}" th:if="${itemStart.index < 2}">
+                        <div class="first_pic"> <a th:href="@{'/articles/show/' + ${item.id}}"><img class="img-cover br" src="img/278d462e5f473b21361eb865b6383412.jpeg" alt="" title=""></a>
+                            <div class="first_article">
+                                <h2 class="ellipsis"><a th:href="@{'/articles/show/' + ${item.id}}"><span th:text="${item.title}"></span></a></h2>
+                                <p th:text="${item.intro}"></p>
+                                <div class="article_bottom"> <span><i class="fa fa-user fa-fw"></i><span th:text="${item.author}"></span></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i><span th:text="${item.createAtStr}"></span></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <article class="post" th:each="item,itemStart : ${page.items}">
+                    <div class="post-img" th:if="${not #strings.isEmpty(item.imgPath)}">
+                        <a class="pic float-left" th:href="@{'/articles/show/' + ${item.id}}"><img th:src="@{'/show-img/' + ${item.imgPath}}"></a>
+                        <div class="mask-tags"> <a href="/cyzd/">创业指导</a> </div>
+                    </div>
+                    <header>
+                        <h2 class="ellipsis"> <a th:href="@{'/articles/show/' + ${item.id}}" th:text="${item.title}"></a> </h2>
+                    </header>
+                    <p class="post-text" th:text="${item.intro}"></p>
+                    <footer> <span class="author"><i class="fa fa-user fa-fw"></i><span th:text="${item.author}"></span></span></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i><span th:text="${item.createAtStr}"></span></span></span> <span class="view"><i class="fa fa-eye fa-fw"></i><span th:text="${item.readCount}"></span></span></span> <span class="comment"><i class="fa fa-comment-o fa-fw"></i><span>4</span></span> </footer>
+                </article>
+
+                <!-- 广告位AD2  -->
+            </section>
         </div>
-        <!-- twocolumns of the page end -->
-        <!-- Instagram Slider of the page -->
-        <!--<div class="instagram-slider container-fluid">
-            <div class="row">
-                <div class="mask">
-                    <div class="slideset">
-                        <div class="slide">
-                            <a href="#"><img src="images/img30.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img31.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img35.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img32.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img33.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img36.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img34.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img30.jpg" alt="image description"></a>
-                        </div>
-                        <div class="slide">
-                            <a href="#"><img src="images/img31.jpg" alt="image description"></a>
+        <aside class="sidebar" id="sidebar">
+            <dl class="function" id="about_intro">
+                <dt style="display:none;"></dt>
+                <dd class="function_c">
+                    <div>
+                        <div class="widget widget-tie social" id="a">
+                            <div class="about_img">
+                                <div class="about_bg"> <img src="img/userbg.png"> </div>
+                                <div class="about_avatar"><img src="img/avatar.jpeg"></div>
+                            </div>
+                            <div class="about_name"> 关于本站<span>草根站长</span> </div>
+                            <div class="ul ul_distance">
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" target="_blank" class="social_a social_contact social_qq" rel="nofollow" title="联系站长"><i class="fa fa-qq f-contact"></i></a>
+                                <a class="social_a social_contact social_weixin" href="#" title="加我微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="img/wx.png" alt="扫描微信"></span></a>
+                                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=123456789@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给我写信"><i class="fa fa-envelope f-contact"></i></a>
+                                <a href="http://weibo.com/" target="_blank" class="social_a social_contact social_weibo" rel="nofollow" title="新浪微博"><i class="fa fa-weibo f-contact"></i></a>
+                            </div>
+                            <p class="about_tag">专注网站优化+网络营销，只做有思想的高价值网站，只提供有担当的营销服务!</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>-->
-        <!-- Instagram Slider of the page end -->
-    </main>
-    <!-- main of the page end -->
-    <!-- footer of the page -->
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12" style="text-align: center;">
-                    <span style="color:#939393;">© 2020 版权所有 ICP证：<a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2020026041号-1</a></span>
-                    <a target="_blank" class="my-header-hidden-w"
-                       href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51018002000062"
-                       style="text-decoration:none;height:15px;line-height:15px;margin-left: 15px;"><img
-                            src="/images/beian.png"/><span
-                            style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">川公网安备 51018002000062号</span></a>
+                </dd>
+            </dl>
 
-                </div>
-            </div>
+            <dl class="function" id="aside_ad">
+                <script src="js/thea1.js"></script>
+            </dl>
+            <dl class="function" id="aside_hot">
+                <dt class="function_t">热门文章</dt>
+                <dd class="function_c">
+                    <ul>
+                        <li th:each="item,itemStart : ${popular}">
+                            <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
+                                <a target="_blank" th:href="@{'/articles/show/' + ${item.id}}">
+                                    <img src="img/2495e46bb60ab13f9e3fdc4accc59630.jpeg" class="" alt=""></a>
+                            </div>
+                            <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
+                                <h4 class="title"><a target="_blank" th:href="@{'/articles/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
+                                <span class="info"><i class="fa fa-calendar"></i> <span th:text="${item.createAtStr}"></span> </span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea2.js"></script>
+            </dl>
+            <dl class="function" id="aside_hot">
+                <dt class="function_t">最近更新</dt>
+                <dd class="function_c">
+                    <ul>
+                        <li th:each="item,itemStart : ${recent}">
+                            <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
+                                <a target="_blank" th:href="@{'/articles/show/' + ${item.id}}" title="">
+                                    <img src="img/2495e46bb60ab13f9e3fdc4accc59630.jpeg" class="" alt=""></a>
+                            </div>
+                            <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
+                                <h4 class="title"><a target="_blank" th:href="@{'/articles/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
+                                <span class="info"><i class="fa fa-calendar"></i> <span th:text="${item.createAtStr}"></span> </span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="function" id="aside_ad">
+                <script src="js/thea3.js"></script>
+            </dl>
+            <dl class="function" id="divComments">
+                <dt class="function_t">最新评论</dt>
+                <dd class="function_c">
+                    <ul>
+                        <li th:each="item,itemStart : ${articleLeaveRecent}">
+                            <a href="javascript:void(0);" th:text="${item.msg}"></a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="function" id="aside_ad">
+                <script src="js/thea6.js"></script>
+            </dl>
+            <dl class="function" id="divLinkage">
+                <dt class="function_t">友情链接</dt>
+                <dd class="function_c">
+                    <ul>
+                        <li th:each="item,itemStart : ${links}">
+                            <a target="_blank" th:href="${item.site}" th:text="${item.name}"></a>
+                        </li>
+
+                    </ul>
+                </dd>
+            </dl>
+        </aside>
+    </main>
+    <footer class="footer">
+        <div class="footer-ju">
+            <p> <a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a><br>
+            </p>
+            <p> Copyright © 2019 <a href="/">微客阁</a><br>
+                备案号：京ICP1234567-2号 统计代码</p>
         </div>
     </footer>
-    <!-- footer of the page end -->
-    <!-- Back Top of the page -->
-    <span id="back-top" class="fa fa-angle-up"></span>
+    <div id="mask" style="display: none;"></div>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/function.js"></script>
+    <script src="/js/navigation.js"></script>
+    <div id="backtoTop" data-action="gototop">
+        <canvas id="backtoTopCanvas" width="45" height="45"></canvas>
+        <div class="per"> </div>
+    </div>
+    <!--[if lt IE 9]><script src="/skin/ecms218/js/html5shiv.min.js"></script><![endif]-->
 
-</div>
-
-<!--<script src="/js/jquery.js"></script>
-<script src="/js/plugins.js"></script>
-<script src="/js/jquery.main.js"></script>-->
-<script src="/js/jquery.js"></script>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/jquery.main.js"></script>
-<script src="/js/plugins.js"></script>
-
-<script type="text/javascript">
-    class Swiper {
-        constructor() {
-            this.w = $('.swiper-item').width();
-            this.num = 0;
-            this.len = $('.swiper .swiper-item').length - 1;
-            this.timer = null;
-        }
-        init() {
-            //设置定时器
-            this.setTime();
-            //滑上停止定时器
-            this.hover();
-            //点击指示
-            this.pointClick();
-            //点击左右箭头
-            this.lrClick();
-        }
-        setTime() {
-            this.timer = setInterval(() => {
-                this.num++;
-            if (this.num > this.len) {
-                this.num = 0;
-            }
-            let cssTrx = -this.num * this.w;
-            $('.swiper-point-item .point').eq(this.num).addClass('active').siblings().removeClass('active');
-            $('.swiper').css({transform: `translateX(${cssTrx}px)`})
-        }, 3000)
-        }
-        hover() {
-            $('.swiper-contione').hover(() => {
-                clearInterval(this.timer)
-        }, () => {
-                this.setTime();
-            });
-        }
-        pointClick() {
-            let that = this;
-            $('.swiper-point-item .point').click(function() {
-                that.num = $(this).index();
-                let cssTrx = -that.num * that.w;
-                $(this).addClass('active').siblings().removeClass('active');
-                $('.swiper').css({
-                    transform: `translateX(${cssTrx}px)`
-                })
-            })
-        }
-        lrClick() {
-            $('.swiper-left img').click(() => {
-                this.num--;
-            if (this.num < 0) {
-                this.num = this.len;
-            };
-            console.log(this.num)
-            let cssTrx = -this.num * this.w;
-            $('.swiper-point-item .point').eq(this.num).addClass('active').siblings().removeClass('active');
-            $('.swiper').css({
-                transform: `translateX(${cssTrx}px)`
-            })
-        });
-
-            $('.swiper-right img').click(() => {
-                this.num++;
-            if (this.num > this.len) {
-                this.num = 0;
-            }
-            let cssTrx = -this.num * this.w;
-            $('.swiper-point-item .point').eq(this.num).addClass('active').siblings().removeClass('active');
-            $('.swiper').css({
-                transform: `translateX(${cssTrx}px)`
-            })
-        })
-        }
-    }
-    let sw = new Swiper();
-    sw.init();
-</script>
-
-<script type="text/javascript">
-    $(function(){
-        jelly();
-
-        $(window).scroll(function() {
-            var currTop = $(window).scrollTop();
-            var header_hei = $('#search').height();
-            if (currTop >= (header_hei+65)) { //判断小于则为向上滚动
-                $('#categories').addClass("relation");
-            }else{
-                $('#categories').removeClass("relation");
-            }
-        });
-    });
-    
-    function jelly() {
-        /*$(".data-info-table").mouseover(function(){
-            $(this).animate({"width":"98%"},100);
-            $(this).animate({"width":"99%"},100);
-        }).mouseout(function(){
-            $(this).animate({"width":"100%"},100);
-        });*/
-
-        $(".data-info-table").bind("mouseover", function(){
-            $(this).stop().animate({right:"10px"}, "100");
-            $(this).addClass("content-hover");
-            $(this).children().children().first().children().css("color", "#f5ab35")
-        });
-
-        $(".data-info-table").bind("mouseout", function(){
-            $(this).stop().animate({right:"0"}, "100");
-            $(this).removeClass("content-hover");
-            $(this).children().children().first().children().css("color", "#333")
-        });
-
-    }
-
-    function hasMore() {
-        var hasMoreIndex = $('#hasMoreIndex').val();
-        var hasMoreCategory = $('#hasMoreCategory').val();
-        var searchKey = $('#searchKey').val();
-        $.ajax({
-            type: "get",
-            dataType: "json",
-            url: "/articles/has-more",
-            data: 'currentIndex=' + (parseInt(hasMoreIndex) + 1) + '&category=' + hasMoreCategory + '&searchKey=' + searchKey,
-            contentType: "application/json;charset=utf-8",
-            success: function (data) {
-                var content = "";
-                for (var i = 0; i < data.items.length; i++) {
-                    var obj = data.items[i];
-                    content += '<div data-wow-delay="0.1s" class="data-info-table box-shadow-div index-content-padding">';
-
-                    if (obj.imgPath != null && obj.imgPath != '') {
-                        content += '<div class="text-wrap-padding">';
-                    } else {
-                        content += '<div>';
-                    }
-                    content += '<div class="my-title"><a target="_blank" href="/articles/show/' + obj.id + '">' + obj.title + '</a></div>'
-                        + '<div class="my-intro">' + obj.intro + '</div>'
-                        + '<div class="my-desc">'
-                        + '<footer>'
-                        + '<strong class="text"><span class="glyphicon">' + obj.author + '</span></strong>'
-                        + '<strong class="text" style="padding-left: 15px;"><span class="glyphicon glyphicon-time">' + obj.createAtStr + '</span></strong>'
-                        + '<strong class="text" style="padding-left: 15px;"><span class="glyphicon glyphicon-eye-open">' + obj.readCount + '</span></strong>'
-                        + '</footer>'
-                        + '</div>'
-                        + '</div>';
-                    if (obj.imgPath != null && obj.imgPath != '') {
-                        content += '<div class="my-desc-img">'
-                            + '<img class="img-right" src="/show-img/' + obj.imgPath +'" />'
-                            + '</div>';
-                    }
-                    content += '</div>';
-
-                }
-                $("#indexContent").append(content);
-                $('#hasMoreIndex').val(data.currentPage);
-                $('#hasMoreType').val(data.type);
-                jelly();
-            }
-
-        })
-    }
-
-    function mySearch() {
-        var hasMoreIndex = 0;
-        var hasMoreCategory = "";
-        var searchKey = $('#searchKeyValue').val();
-        $.ajax({
-            type: "get",
-            dataType: "json",
-            url: "/articles/has-more",
-            data: 'currentIndex=' + (parseInt(hasMoreIndex) + 1) + '&category=' + hasMoreCategory + '&searchKey=' + searchKey,
-            contentType: "application/json;charset=utf-8",
-            success: function (data) {
-                var content = '';
-                for (var i = 0; i < data.items.length; i++) {
-                    var obj = data.items[i];
-                    var title = obj.title.replaceAll(searchKey, "<span style='color: #ec7259;'>" + searchKey + "</span>");
-                    content += '<div data-wow-delay="0.1s" class="data-info-table box-shadow-div index-content-padding">';
-
-                    if (obj.imgPath != null && obj.imgPath != '') {
-                        content += '<div class="text-wrap-padding">';
-                    } else {
-                        content += '<div>';
-                    }
-                    content += '<div class="my-title"><a target="_blank" href="/articles/show/' + obj.id + '">' + title + '</a></div>'
-                        + '<div class="my-intro">' + obj.intro + '</div>'
-                        + '<div class="my-desc">'
-                        + '<footer>'
-                        + '<strong class="text"><span class="glyphicon">' + obj.author + '</span></strong>'
-                        + '<strong class="text" style="padding-left: 15px;"><span class="glyphicon glyphicon-time">' + obj.createAtStr + '</span></strong>'
-                        + '<strong class="text" style="padding-left: 15px;"><span class="glyphicon glyphicon-eye-open">' + obj.readCount + '</span></strong>'
-                        + '</footer>'
-                        + '</div>'
-                        + '</div>';
-                    if (obj.imgPath != null && obj.imgPath != '') {
-                        content += '<div class="my-desc-img">'
-                            + '<img class="img-right" src="/show-img/' + obj.imgPath +'" />'
-                            + '</div>';
-                    }
-                    content += '</div>';
-                }
-                $("#indexContent").html(content);
-                $('#hasMoreIndex').val(1);
-                $('#hasMoreCategory').val(data.category);
-                $('#searchKey').val(searchKey);
-                jelly();
-            }
-
-        })
-
-    }
-
-    function categoryList(category) {
-        var hasMoreIndex = 0;
-        $.ajax({
-            type: "get",
-            dataType: "json",
-            url: "/articles/has-more",
-            data: 'currentIndex=' + (parseInt(hasMoreIndex) + 1) + '&category=' + category + '&searchKey=',
-            contentType: "application/json;charset=utf-8",
-            success: function (data) {
-                var content = '';
-                for (var i = 0; i < data.items.length; i++) {
-                    var obj = data.items[i];
-                    content += '<div data-wow-delay="0.1s" class="data-info-table box-shadow-div index-content-padding">';
-
-                    if (obj.imgPath != null && obj.imgPath != '') {
-                        content += '<div class="text-wrap-padding">';
-                    } else {
-                        content += '<div>';
-                    }
-                    content += '<div class="my-title"><a target="_blank" href="/articles/show/' + obj.id + '">' + obj.title + '</a></div>'
-                        + '<div class="my-intro">' + obj.intro + '</div>'
-                        + '<div class="my-desc">'
-                        + '<footer>'
-                        + '<strong class="text"><span class="glyphicon">' + obj.author + '</span></strong>'
-                        + '<strong class="text" style="padding-left: 15px;"><span class="glyphicon glyphicon-time">' + obj.createAtStr + '</span></strong>'
-                        + '<strong class="text" style="padding-left: 15px;"><span class="glyphicon glyphicon-eye-open">' + obj.readCount + '</span></strong>'
-                        + '</footer>'
-                        + '</div>'
-                        + '</div>';
-                    if (obj.imgPath != null  && obj.imgPath != '') {
-                        content += '<div class="my-desc-img">'
-                            + '<img class="img-right" src="/show-img/' + obj.imgPath +'" />'
-                            + '</div>';
-                    }
-                    content += '</div>';
-                }
-                $("#indexContent").html(content);
-                $('#hasMoreIndex').val(1);
-                $('#hasMoreCategory').val(category);
-                $('#searchKey').val("");
-                jelly();
-            }
-        })
-
-    }
-</script>
-
-<script>
-    (function(){
-        // 百度收录
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https'){
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else{
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-<script>
-    (function(){
-        var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
-        document.write('<script src="' + src + '" id="sozz"><\/script>');
-    })();
-</script>
 </body>
+
 </html>

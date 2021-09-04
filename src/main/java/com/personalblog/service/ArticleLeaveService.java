@@ -16,4 +16,6 @@ public interface ArticleLeaveService {
     ArticleLeaveVO leaveArticle(ArticleLeaveDO articleLeave);
 
     Page<ArticleLeaveBO> getArticleLeaveHasMore(ArticleLeaveRequest request);
+
+    List<ArticleLeaveDO> getRecent(Integer size);
 }

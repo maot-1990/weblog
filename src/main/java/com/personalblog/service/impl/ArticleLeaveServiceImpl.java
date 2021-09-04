@@ -12,6 +12,7 @@ import com.personalblog.util.BeanUtils;
 import com.personalblog.util.UUId;
 import com.personalblog.vo.ArticleLeaveVO;
 import com.personalblog.vo.UserVO;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -83,4 +84,14 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
         return BeanUtils.copyProperties(articleLeave, ArticleLeaveVO.class);
     }
 
+    @Cacheable(cacheNames = {"blog"}, key = "'getRecentArtilceLeave' + #size", sync = true)
+    @Override
+    public List<ArticleLeaveDO> getRecent(Integer size) {
+        ArticleLeaveDOExample example = new ArticleLeaveDOExample();
+        example.createCriteria().andStatusEqualTo(1).andLevelEqualTo(1);
+        example.setOrderByClause(" created_at desc limit " + size);
+
+        return articleLeaveMapper.selectByExample(example);
+
+    }
 }

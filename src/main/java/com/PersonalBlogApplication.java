@@ -1,16 +1,11 @@
 package com;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.connector.Connector;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.tomcat.util.descriptor.web.SecurityCollection;
-import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -27,7 +22,7 @@ public class PersonalBlogApplication {
         SpringApplication.run(PersonalBlogApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public TomcatServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
@@ -42,9 +37,9 @@ public class PersonalBlogApplication {
         };
         tomcat.addAdditionalTomcatConnectors(httpConnector());
         return tomcat;
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public Connector httpConnector() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
@@ -54,7 +49,7 @@ public class PersonalBlogApplication {
         //监听到http的端口号后转向到的https的端口号
         connector.setRedirectPort(443);
         return connector;
-    }
+    }*/
 
     /**
      * 让spring管理RestTemplate,参数相关配置
