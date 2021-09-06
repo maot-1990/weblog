@@ -106,7 +106,7 @@
                             <h2 class="ellipsis"> <a th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a> </h2>
                         </header>
                         <p class="post-text" th:text="${item.intro}"></p>
-                        <footer> <span class="author"><i class="fa fa-user fa-fw"></i><span th:text="${item.author}"></span></span></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i><span th:text="${item.createAtStr}"></span></span></span> <span class="view"><i class="fa fa-eye fa-fw"></i><span th:text="${item.readCount}"></span></span></span> <span class="comment"><i class="fa fa-comment-o fa-fw"></i><span th:text="${item.leaveCount}"></span></span> </footer>
+                        <footer> <span class="author"><i class="fa fa-user fa-fw"></i>[[${item.author}]]</i></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i>[[${item.createAtStr}]]</span> <span class="view"><i class="fa fa-eye fa-fw"></i>[[${item.readCount}]]</span> <span class="comment"><i class="fa fa-comment-o fa-fw"></i><span th:text="${item.leaveCount}"></span></span> </footer>
                     </article>
                 </div>
                 <article class="post" style="padding: 6px; text-align: center;cursor: pointer;">
