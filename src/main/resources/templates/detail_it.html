@@ -146,7 +146,7 @@
                             <div class="tag_content"> <i class="fa fa-tags"></i> 标签：</div>
                             <span></span>
                         </div>
-                        <div class="contact_detail"><a href="/articles?type=1" target="_blank"><span th:text="${article.category}"></span></a> </div>
+                        <div class="contact_detail"><a th:href="@{'/articles?type=2&category=' + ${article.category}}"><span th:text="${article.category}"></span></a> </div>
                         <div class="clear"></div>
                     </div>
                     <footer class="entry-meta">
@@ -176,14 +176,13 @@
                         <div class="author_info"> <img alt="管理员" src="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/avatar.jpg" class="avatar avatar-40 photo" width="40" height="40">
                             <div class="author_detail">
                                 <div class="author-name"><span class="author_font">草根站长</span><span class="author_t">管理员</span></div>
-                                <p class="author_bref">专注网站优化+网络营销，只做有思想的高价值网站，只提供有担当的营销服务!</p>
+                                <p class="author_bref">个人博客，专注于IT类技术分享+网站优化，只做有思想的高价值网站！</p>
                             </div>
                         </div>
                         <ul class="spostinfo">
-                            <li class="author_experience">这里的内容以及上面的内容可以去内容模板里面修改，侧边的个人信息可以去公共模板变量里面修改！</li>
-                            <li><strong>版权声明：</strong>本站原创文章，于2019-11-19 17:52:25，由<a href="/">admin</a>发表。</li>
+                            <li class="author_experience"></li>
+                            <li th:if="${article.original == 1}"><strong>版权声明：</strong>本站原创文章，于<span th:text="${article.createdAt}"></span>，由《<a href="/"><span th:text="${article.author}"></span></a>》发表。</li>
                             <li><strong>转载请注明出处：</strong><a href="/">微客阁，如有疑问，请联系我们</a></li>
-                            <li><strong>本文地址：</strong><a href="/cyzx/2019-11-19/549.html">/cyzx/2019-11-19/549.html</a></li>
                         </ul>
                     </div>
                     <div class="post-navigation">
@@ -311,7 +310,7 @@
                                 <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=779396604@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给我写信"><i class="fa fa-envelope f-contact"></i></a>
                                 <a href="http://weibo.com/" target="_blank" class="social_a social_contact social_weibo" rel="nofollow" title="新浪微博"><i class="fa fa-weibo f-contact"></i></a>
                             </div>
-                            <p class="about_tag">专注网站优化+网络营销，只做有思想的高价值网站，只提供有担当的营销服务!</p>
+                            <p class="about_tag">个人博客，专注于IT类技术分享+网站优化，只做有思想的高价值网站！</p>
                         </div>
                     </div>
                 </dd>
