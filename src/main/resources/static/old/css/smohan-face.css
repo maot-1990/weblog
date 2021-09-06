@@ -41,6 +41,7 @@ textarea.smohan_text {
 	height: 20px;
 	background: url(../old/images/zoo/facebg_1.png) 0px -100px no-repeat;
 	float: left;
+	margin-top: 18px;
 }
 
 .face:hover, .face.in {

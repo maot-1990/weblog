@@ -28,7 +28,7 @@ import java.util.Date;
 @Slf4j
 public class BusinessInterceptor implements HandlerInterceptor {
 
-    private static String ARTICLE_DETAIL_URI = "/articles/show/*";
+    private static String ARTICLE_DETAIL_URI = "/article/show/*";
 
     private static String LIKE_URI = "/like-inc";
 

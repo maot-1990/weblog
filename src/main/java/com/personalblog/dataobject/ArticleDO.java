@@ -32,6 +32,8 @@ public class ArticleDO {
 
     private Integer likeCount;
 
+    private Integer leaveCount;
+
     private Integer sort;
 
     /**
@@ -138,6 +140,14 @@ public class ArticleDO {
 
     public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
+    }
+
+    public Integer getLeaveCount() {
+        return leaveCount;
+    }
+
+    public void setLeaveCount(Integer leaveCount) {
+        this.leaveCount = leaveCount;
     }
 
     public Integer getSort() {

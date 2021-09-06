@@ -51,8 +51,8 @@ public class CustomMvcConfigurer implements WebMvcConfigurer {
         register.setFilter(new ContextFilter());
         register.setName("contextFilter");
         register.setOrder(2);
-        register.setUrlPatterns(Lists.newArrayList("/", "/articles/show/*", "/admin/*",
-                "/like-inc", "/article-leave", "/login", "/register", "/todo/*"));
+        register.setUrlPatterns(Lists.newArrayList("/", "/article/show/*", "/admin/*",
+                "/like-inc", "/article-leave", "/login", "/register", "/todo/*", "/articles"));
         return register;
     }
 
@@ -69,7 +69,7 @@ public class CustomMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         BusinessInterceptor businessInterceptor = new BusinessInterceptor(businessService, clearCacheService, blogProperties);
-        registry.addInterceptor(businessInterceptor).addPathPatterns("/like-inc", "/articles/**");
+        registry.addInterceptor(businessInterceptor).addPathPatterns("/like-inc", "/article/show/*");
 
         LoginInterceptor loginInterceptor = new LoginInterceptor(articleService);
         registry.addInterceptor(loginInterceptor).addPathPatterns("/admin/**");

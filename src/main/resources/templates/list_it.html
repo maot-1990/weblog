@@ -1,0 +1,276 @@
+<!doctype html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <title>Weblog--IT技术</title>
+    <meta name="Keywords" content="街角下的蚂蚁,个人博客,个人网站,Java编程,技术分享,文章创作,微客阁,Weblog" />
+    <meta name="Description" content="在一个属于自己的地方,记录下自己感兴趣的事,一直坚持走下去" /><!-- 设置缓存2小时，max-age指最大缓存的秒数 -->
+    <!-- 设置缓存2小时，max-age指最大缓存的秒数 -->
+    <meta http-equiv="Cache-Control" content="max-age=14400" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <!--[if lt IE 9]><div><p class="ie9">您的IE浏览器版本过低</p></div><![endif]-->
+    <script src="/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="containe">
+            <div id="nav-box" class="nav-bar header-nav right" data-type="category" data-infoid="2">
+                <div class="container">
+                    <h1 class="logo"> <a href="/" title="微客阁"> <img src="/img/logo.png" alt="微客阁"> </a> </h1>
+                    <nav class="nav-bar">
+                        <ul class="nav">
+                            <li id="nvabar-item-index"><a href="/">首页</a></li>
+                            <li id="navbar-category-2"><a href="/articles?type=2">IT技术</a></li>
+                            <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
+                            <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                                </ul>
+                            </li>-->
+                            <li id="navbar-category-28"><a href="/contact-us">关于我们</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-28"><a href="/contact-us">联系我们</a></li>
+                                    <li id="navbar-category-28"><a href="/ad">广告合作</a></li>
+                                    <li id="navbar-category-28"><a href="/contribute">投稿须知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="mnav">
+                            <li id="nvabar-item-index"><a href="/">首页</a></li>
+                            <li id="navbar-category-2"><a href="/articles?type=2">IT技术</a></li>
+                            <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
+                            <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                                </ul>
+                            </li>-->
+                            <li id="navbar-category-28"><a href="/contact-us">关于我们</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-28"><a href="/contact-us">联系我们</a></li>
+                                    <li id="navbar-category-28"><a href="/ad">广告合作</a></li>
+                                    <li id="navbar-category-28"><a href="/contribute">投稿须知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div id="m-btn" class="m-btn"><i class="fa fa-bars"></i></div>
+                    <div class="pull-right">
+                        <form onsubmit="return search()" method="post" name="searchform" id="searchform" class="searchform">
+                            <input type="text" id="searchKey" name="keyboard" class="search-input" placeholder="搜索...">
+                            <button><i class="fa fa-search"></i></button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="breadcrumb"> <i class="fa fa-home"></i><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/cyzx/">IT技术</a> </div>
+    <main class="container" id="mainbox">
+        <div class="content-wrap">
+            <section class="article">
+                <div class="archive-head">
+                    <div class="headline"> <i class="fa fa-folder-open"></i><span>分类：</span>
+                        <p>IT技术</p>
+                    </div>
+                    <div class="archive-description">
+                        <p> IT技术分享！ </p>
+                    </div>
+                </div>
+                <div id="article_content">
+                    <article class="post" th:each="item,itemStart : ${page.items}">
+                        <div class="post-img" th:if="${not #strings.isEmpty(item.imgPath)}">
+                            <a class="pic float-left" th:href="@{'/article/show/' + ${item.id}}"><img th:src="@{'/show-img/' + ${item.imgPath}}"></a>
+                            <div class="mask-tags"> <a href="javascript:void(0)" th:onclick="@{'category(\'' + ${item.category}} +'\')'"><span th:text="${item.category}"></span></a> </div>
+                        </div>
+                        <header>
+                            <h2 class="ellipsis"> <a th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a> </h2>
+                        </header>
+                        <p class="post-text" th:text="${item.intro}"></p>
+                        <footer> <span class="author"><i class="fa fa-user fa-fw"></i><span th:text="${item.author}"></span></span></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i><span th:text="${item.createAtStr}"></span></span></span> <span class="view"><i class="fa fa-eye fa-fw"></i><span th:text="${item.readCount}"></span></span></span> <span class="comment"><i class="fa fa-comment-o fa-fw"></i><span th:text="${item.leaveCount}"></span></span> </footer>
+                    </article>
+                </div>
+
+                <article class="post" style="padding: 6px; text-align: center;cursor: pointer;">
+                    <header>
+                        <input id="hasMoreIndex" th:value="${page.currentPage}" type="hidden"/>
+                        <input id="hasMoreCategory" th:value="${page.category}" type="hidden"/>
+                        <input id="hasMoreType" value="2" type="hidden"/>
+
+                        <div class="hasMore" onclick="hasMore()" style="font-weight: 500;">更 多</div>
+                    </header>
+                    <p class="post-text"></p>
+                </article>
+
+            </section>
+        </div>
+        <aside class="sidebar" id="sidebar">
+            <dl class="function" id="about_intro">
+                <dt style="display:none;"></dt>
+                <dd class="function_c">
+                    <div>
+                        <div class="widget widget-tie social" id="a">
+                            <div class="about_img">
+                                <div class="about_bg"> <img src="/img/userbg.png"> </div>
+                                <div class="about_avatar"><img src="/img/avatar.jpeg"></div>
+                            </div>
+                            <div class="about_name"> 关于本站<span>草根站长</span> </div>
+                            <div class="ul ul_distance">
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" target="_blank" class="social_a social_contact social_qq" rel="nofollow" title="联系站长"><i class="fa fa-qq f-contact"></i></a>
+                                <a class="social_a social_contact social_weixin" href="#" title="加我微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="/img/wx.png" alt="扫描微信"></span></a>
+                                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=123456789@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给我写信"><i class="fa fa-envelope f-contact"></i></a>
+                                <a href="http://weibo.com/" target="_blank" class="social_a social_contact social_weibo" rel="nofollow" title="新浪微博"><i class="fa fa-weibo f-contact"></i></a>
+                            </div>
+                            <p class="about_tag">专注网站优化+网络营销，只做有思想的高价值网站，只提供有担当的营销服务!</p>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea1.js"></script>
+            </dl>
+            <dl class="function" id="divTags">
+                <dt class="function_t">标签列表</dt>
+                <dd class="function_c">
+                    <ul th:each="item,itemStart : ${category}">
+                        <li><a href="javascript:void(0)" th:onclick="@{'category(\'' + ${item.category}} +'\')'"><span th:text="${item.category}"></span><span class="tag-count" th:text="${'(' + item.count + ')'}"></span></a></li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea2.js"></script>
+            </dl>
+
+            <dl class="function" id="aside_new">
+                <dt class="function_t">热门文章</dt>
+                <dd class="function_c">
+                    <ul>
+                        <li th:each="item,itemStart : ${popular}">
+                            <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
+                                <a target="_blank" th:href="@{'/article/show/' + ${item.id}}">
+                                    <img src="img/2495e46bb60ab13f9e3fdc4accc59630.jpeg" class="" alt=""></a>
+                            </div>
+                            <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
+                                <h4 class="title"><a target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
+                                <span class="info"><i class="fa fa-calendar"></i> <span th:text="${item.createAtStr}"></span> </span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea3.js"></script>
+            </dl>
+        </aside>
+    </main>
+    <footer class="footer">
+        <div class="footer-ju">
+            <p> <a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a><br>
+            </p>
+            <p>
+                <span style="color:#939393;">© 2021 版权所有 ICP证：<a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2020026041号-1</a></span>
+                <a target="_blank" class="my-header-hidden-w"
+                   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51018002000062"
+                   style="text-decoration:none;height:15px;line-height:15px;margin-left: 15px;"><img
+                        src="/img/beian.png"/><span
+                        style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">川公网安备 51018002000062号</span></a>
+            </p>
+        </div>
+    </footer>
+    <div id="mask" style="display: none;"></div>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/function.js"></script>
+    <script src="/js/navigation.js"></script>
+    <div id="backtoTop" data-action="gototop">
+        <canvas id="backtoTopCanvas" width="45" height="45"></canvas>
+        <div class="per"> </div>
+    </div>
+    <!--[if lt IE 9]><script src="/skin/ecms218/js/html5shiv.min.js"></script><![endif]-->
+
+    <script>
+
+        function search() {
+            $('#hasMoreIndex').val("0");
+            $('#hasMoreCategory').val("");
+            hasMore(true);
+            return false;
+        }
+
+        function category(category) {
+            $('#hasMoreIndex').val("0");
+            $('#hasMoreCategory').val(category);
+            $('#searchKey').val("");
+            hasMore(true);
+        }
+
+
+        function hasMore(isReplace) {
+            if (isReplace == null) {
+                isReplace = false;
+            }
+            var hasMoreIndex = $('#hasMoreIndex').val();
+            var hasMoreCategory = $('#hasMoreCategory').val();
+            var searchKey = $('#searchKey').val();
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "/article/has-more",
+                data: 'currentIndex=' + (parseInt(hasMoreIndex) + 1) + '&type=2&category=' + hasMoreCategory + '&searchKey=' + searchKey,
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    var content = "";
+                    for (var i = 0; i < data.items.length; i++) {
+                        var obj = data.items[i];
+                        content += '<article class="post">';
+                        if (obj.imgPath != null && obj.imgPath != '') {
+                            content += '<div class="post-img">'
+                                +'<a class="pic float-left" href="/article/show/' + obj.id + '"><img src="/show-img/' + obj.imgPath +'"></a>'
+                                +'<div class="mask-tags"> <a href="javascript:void(0)" onclick="category(\'' + obj.category + '\')"><span>' + obj.category + '</span></a> </div>'
+                                +'</div>';
+                        }
+
+                        content +='<header>'
+                            +'<h2 class="ellipsis"> <a href="/article/show/' + obj.id + '">' + obj.title + '</a> </h2>'
+                            +'</header>'
+                            +'<p class="post-text">' + obj.intro + '</p>'
+                            +'<footer> <span class="author"><i class="fa fa-user fa-fw"></i><span>' + obj.author + '</span></span></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i><span>' + obj.createAtStr + '</span></span></span> <span class="view"><i class="fa fa-eye fa-fw"></i><span>' + obj.readCount + '</span></span></span> <span class="comment"><i class="fa fa-comment-o fa-fw"></i><span>4</span></span> </footer>'
+                            +'</article>';
+
+                    }
+
+                    if (isReplace == true) {
+                        $("#article_content").html(content);
+                    } else {
+                        $("#article_content").append(content);
+                    }
+                    $('#hasMoreIndex').val(data.currentPage);
+
+                }
+
+            })
+        }
+    </script>
+</body>
+
+</html>

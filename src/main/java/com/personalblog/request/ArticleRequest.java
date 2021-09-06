@@ -12,7 +12,15 @@ public class ArticleRequest {
 
     private Integer pageSize = 15;
 
+    /**
+     * 二级分类
+     */
     private String category = "";
+
+    /**
+     * 一级分类, IT技术 - 1 ，其他 - 2
+     */
+    private String type = "";
 
     private String searchKey = "";
 }

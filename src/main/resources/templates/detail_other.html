@@ -1,0 +1,451 @@
+<!doctype html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <title th:text="${article.title + '--Weblog'}"></title>
+    <meta name="Keywords" th:content="@{'微客阁,个人博客,个人网站,技术分享' + ${article.type} + ',' + ${article.category} + ',' + ${article.title}}"/>
+    <meta name="Description" th:content="${article.intro}"/>
+    <meta http-equiv="Cache-Control" content="max-age=14400"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/smohan-face.css">
+
+    <link rel="stylesheet" href="/editormd/css/editormd.css">
+    <link rel="stylesheet" href="/editormd/css/editormd.min.css">
+
+    <!--[if lt IE 9]><div><p class="ie9">您的IE浏览器版本过低</p></div><![endif]-->
+    <script src="/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+
+    <script src="/editormd/lib/marked.min.js"></script>
+    <script src="/editormd/lib/prettify.min.js"></script>
+    <script src="/editormd/editormd.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/smohan.face.js"></script>&nbsp;&nbsp;
+
+    <style type="text/css"></style>
+
+    <style>
+        #bdshare_weixin_qrcode_dialog_qr table {
+            width: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="containe">
+            <div id="nav-box" class="nav-bar header-nav right" data-type="category" data-infoid="1">
+                <div class="container">
+                    <h1 class="logo"> <a href="/" title="微客阁"> <img src="/img/logo.png" alt="微客阁"> </a> </h1>
+                    <nav class="nav-bar">
+                        <ul class="nav">
+                            <li id="nvabar-item-index"><a href="/">首页</a></li>
+                            <li id="navbar-category-2"><a href="/articles?type=2">IT技术</a></li>
+                            <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
+                            <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                                </ul>
+                            </li>-->
+                            <li id="navbar-category-28"><a href="/contact-us">关于我们</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-28"><a href="/contact-us">联系我们</a></li>
+                                    <li id="navbar-category-28"><a href="/ad">广告合作</a></li>
+                                    <li id="navbar-category-28"><a href="/contribute">投稿须知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="mnav">
+                            <li id="nvabar-item-index"><a href="/">首页</a></li>
+                            <li id="navbar-category-2"><a href="/articles?type=2">IT技术</a></li>
+                            <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
+                            <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                                </ul>
+                            </li>-->
+                            <li id="navbar-category-28"><a href="/contact-us">关于我们</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-28"><a href="/contact-us">联系我们</a></li>
+                                    <li id="navbar-category-28"><a href="/ad">广告合作</a></li>
+                                    <li id="navbar-category-28"><a href="/contribute">投稿须知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div id="m-btn" class="m-btn"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="breadcrumb"> <i class="fa fa-home"></i><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/cyzx/">好文章</a><i class="fa fa-angle-right"></i>文章正文 </div>
+    <main class="container">
+        <div class="content-wrap">
+            <div class="article" id="article">
+                <div class="article-container">
+                    <header class="article-header">
+                        <h1 class="article-title" th:text="${article.title}"></h1>
+                        <div class="article-meta"> <span><i class="fa fa-user fa-fw"></i><span th:text="${article.author}"></span></span><span><i class="fa fa-clock-o fa-fw"></i><span th:text="${article.createAtStr}"></span></span><span><i class="fa fa-eye fa-fw"></i>
+                            <span th:text="${article.readCount}"></span>浏览</span></div>
+                    </header>
+                    <div class="pcd_ad">
+                        <script src="/js/thea7.js"></script>
+                    </div>
+                    <div class="mbd_ad">
+                        <table width="100%" height="90" style="background-color:#ccc;">
+                            <tbody>
+                                <tr align="center">
+                                    <td style="text-align: center;color: #666;line-height: 90px;">内容头部广告位（手机）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <article class="article-content">
+                        <!--<p th:text="${article.content}"></p>-->
+                        <div id="question-view">
+                            <textarea style="display:none;" th:text="${article.content}"></textarea>
+                        </div>
+                    </article>
+                    <div class="pagination pagination-multi">
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="pcd_ad" style="margin-top:10px">
+                        <script src="/js/thea10.js"></script>
+                    </div>
+                    <div class="mbd_ad" style="margin-top:10px">
+                        <table width="100%" height="90" style="background-color:#ccc;">
+                            <tbody>
+                                <tr align="center">
+                                    <td style="text-align: center;color: #666;line-height: 90px;">内容底部广告位（手机）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="article_contact">
+                        <div class="tag_boxer">
+                            <div class="tag_content"> <i class="fa fa-tags"></i> 标签：</div>
+                            <span></span>
+                        </div>
+                        <div class="contact_detail"><a href="/e/tags/?tagname=%E6%B5%8B%E8%AF%95" target="_blank"><span th:text="${article.category}"></span></a> </div>
+                        <div class="clear"></div>
+                    </div>
+                    <footer class="entry-meta">
+                        <p id="tag-wrap" class="tag-wrap"></p>
+                        <div class="bdsharebuttonbox">
+                            <!--<a href="#" class="bds_more" data-cmd="more"></a>-->
+                            <a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信"></a> <a href="#" class="bds_sqq fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a> <a href="#" class="bds_tsina fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+                        </div>
+                        <script>
+                            window._bd_share_config = {
+                                "common": {
+                                    "bdSnsKey": {},
+                                    "bdText": "",
+                                    "bdMini": "2",
+                                    "bdMiniList": false,
+                                    "bdPic": "",
+                                    "bdStyle": "1",
+                                    "bdSize": "24"
+                                },
+                                "share": {}
+                            };
+                            (document.getElementsByTagName('head')[0] || document.body).appendChild(document.createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5);
+                        </script>
+                        <div class="clear"></div>
+                    </footer>
+                    <div class="authorbio">
+                        <div class="author_info"> <img alt="管理员" src="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/avatar.jpg" class="avatar avatar-40 photo" width="40" height="40">
+                            <div class="author_detail">
+                                <div class="author-name"><span class="author_font">草根站长</span><span class="author_t">管理员</span></div>
+                                <p class="author_bref">专注网站优化+网络营销，只做有思想的高价值网站，只提供有担当的营销服务!</p>
+                            </div>
+                        </div>
+                        <ul class="spostinfo">
+                            <li class="author_experience">这里的内容以及上面的内容可以去内容模板里面修改，侧边的个人信息可以去公共模板变量里面修改！</li>
+                            <li><strong>版权声明：</strong>本站原创文章，于2019-11-19 17:52:25，由<a href="/">admin</a>发表。</li>
+                            <li><strong>转载请注明出处：</strong><a href="/">微客阁，如有疑问，请联系我们</a></li>
+                            <li><strong>本文地址：</strong><a href="/cyzx/2019-11-19/549.html">/cyzx/2019-11-19/549.html</a></li>
+                        </ul>
+                    </div>
+                    <div class="post-navigation">
+                        <div class="post-previous"> <span>上一篇:</span><a th:href="@{'/article/show/' + ${preArticle != null ? preArticle.id : article.id}}"><span th:text="${preArticle != null ? preArticle.title : ''}"></span></a> </div>
+                        <div class="post-next"> <span>下一篇:</span><a th:href="@{'/article/show/' + ${afterArticle != null ? afterArticle.id : article.id}}"><span th:text="${afterArticle != null ? afterArticle.title : ''}"></span></a> </div>
+                    </div>
+                    <div class="relates">
+                        <div class="title">
+                            <h3>相关推荐</h3>
+                        </div>
+                        <div id="related-img">
+                            <div class="r4" th:each="item,itemStart : ${related}">
+                                <div class="related-site">
+                                    <figure class="related-site-img"> <a th:href="@{'/article/show/' + ${item.id}}"> <img src="/img/278d462e5f473b21361eb865b6383412.jpeg" alt=""> </a> </figure>
+                                    <div class="related-title"> <a th:href="@{'/article/show/' + ${item.id}}" title=""><span th:text="${item.title}"></span></a> </div>
+                                </div>
+                            </div>
+
+                            <div class="clear"> </div>
+                        </div>
+                    </div>
+                    <div id="comment" class="post-comment">
+                        <p id="comments-title" class="c-title"><span>发表评论</span> <span class="comment-num"> </span></p>
+                        <link href="/css/pl.css" rel="stylesheet">
+                        <div class="showpage" id="plpost">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="line-height: 25px; padding: 5px 3px 1px 8px; font-size: 18px;">
+                                <tbody>
+                                <tr>
+                                    <td><strong>
+                                        <font color="#333333">留言与评论（共有 <span id="infocommentnumarea" th:text="${articleLeavePage.totalNum}"></span> 条评论）</font>
+                                    </strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <script type="text/javascript">
+                                function CheckPl(obj) {
+                                    if (obj.saytext.value == "") {
+                                        alert("您没什么话要说吗？");
+                                        obj.saytext.focus();
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                            </script>
+                            <form method="post" name="saypl" id="saypl" onsubmit="return false">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="10" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+
+                                                        <textarea name="saytext" class="submit_content" rows="6" id="saytext" placeholder="请遵守互联网相关规定，不要发布广告和违法内容!"></textarea>
+                                                        <div class="face_box Smohan_FaceBox face-box" style="line-height: 0;">
+                                                            <a onclick="showOrHide(this)" class="face" title="表情"></a>
+                                                        </div>
+
+                                                        <table width="100%" align="left" cellpadding="3" cellspacing="1" bgcolor="#FFF">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td width="80%" height="40" bgcolor="#FFFFFF">
+
+                                                                </td>
+                                                                <td width="20%" height="40" bgcolor="#FFFFFF">
+                                                                    <input name="sumbit" type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\');'}" value="提交评论" tabindex="6" style="border-radius: 5px;font-size: 16px;background: #e94c3d none repeat scroll 0% 0%;border: 0px none;margin: 0px 16px;padding: 1px 16px;height: 33px;line-height: 30px;color: rgb(255, 255, 255);opacity: 0.95;">
+                                                                    <input name="id" type="hidden" id="id" value="549">
+                                                                    <input name="classid" type="hidden" id="classid" value="1">
+                                                                    <input name="enews" type="hidden" id="enews" value="AddPl">
+                                                                    <input name="repid" type="hidden" id="repid" value="0">
+                                                                    <input type="hidden" name="ecmsfrom" value="/cyzx/2019-11-19/549.html">
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                                <tbody>
+                                <tr th:each="item,itemStart : ${articleLeavePage.items}">
+
+                                    <td width="20%">
+                                        <img alt="image description"
+                                             th:src="${item.parent.headImg}==null ? '/img/img57.jpg' : @{'/show-img/' + ${item.parent.headImg}}"
+                                             class="avatar avatar-48 photo avatar-default leave-head-img">
+                                        <strong class="name"><p th:text="${item.parent.nickName}"></p></strong>
+                                    </td>
+                                    <td width="80%">
+                                        <div class="articleLeaveMsg" th:text="${item.parent.msg}"
+                                             style="margin-top: -16px;"></div>
+                                        <div style="margin-top: 0;" th:text="${item.parent.createAtStr}"></div>
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aside class="sidebar" id="sidebar">
+            <dl class="function" id="about_intro">
+                <dt style="display:none;"></dt>
+                <dd class="function_c">
+                    <div>
+                        <div class="widget widget-tie social" id="a">
+                            <div class="about_img">
+                                <div class="about_bg"> <img src="/img/userbg.png"> </div>
+                                <div class="about_avatar"><img src="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/avatar.jpg"></div>
+                            </div>
+                            <div class="about_name"> 关于本站<span>草根站长</span> </div>
+                            <div class="ul ul_distance">
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=779396604&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" target="_blank" class="social_a social_contact social_qq" rel="nofollow" title="联系站长"><i class="fa fa-qq f-contact"></i></a>
+                                <a class="social_a social_contact social_weixin" href="#" title="加我微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="/img/wx.png" alt="扫描微信"></span></a>
+                                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=779396604@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给我写信"><i class="fa fa-envelope f-contact"></i></a>
+                                <a href="http://weibo.com/" target="_blank" class="social_a social_contact social_weibo" rel="nofollow" title="新浪微博"><i class="fa fa-weibo f-contact"></i></a>
+                            </div>
+                            <p class="about_tag">专注网站优化+网络营销，只做有思想的高价值网站，只提供有担当的营销服务!</p>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea1.js"></script>
+            </dl>
+            <dl class="function" id="aside_new">
+                <dt class="function_t">热门文章</dt>
+                <dd class="function_c">
+                    <ul>
+                        <li th:each="item,itemStart : ${popular}">
+                            <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
+                                <a target="_blank" th:href="@{'/article/show/' + ${item.id}}">
+                                    <img src="/img/2495e46bb60ab13f9e3fdc4accc59630.jpeg" class="" alt=""></a>
+                            </div>
+                            <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
+                                <h4 class="title"><a target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
+                                <span class="info"><i class="fa fa-calendar"></i> <span th:text="${item.createAtStr}"></span> </span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea2.js"></script>
+            </dl>
+            <dl class="function" id="divTags">
+                <dt class="function_t">标签列表</dt>
+                <dd class="function_c">
+                    <ul th:each="item,itemStart : ${category}">
+                        <li><a  th:href="@{'/articles?type=1&category=' + ${item.category}}"><span th:text="${item.category}"></span><span class="tag-count" th:text="${'(' + item.count + ')'}"></span></a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="function" id="aside_ad">
+                <script src="/js/thea3.js"></script>
+            </dl>
+        </aside>
+    </main>
+    <footer class="footer">
+        <div class="footer-ju">
+            <p> <a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a><br>
+            </p>
+            <p>
+                <span style="color:#939393;">© 2021 版权所有 ICP证：<a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2020026041号-1</a></span>
+                <a target="_blank" class="my-header-hidden-w"
+                   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51018002000062"
+                   style="text-decoration:none;height:15px;line-height:15px;margin-left: 15px;"><img
+                        src="/img/beian.png"/><span
+                        style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">川公网安备 51018002000062号</span></a>
+            </p>
+        </div>
+    </footer>
+    <div id="mask" style="display: none;"></div>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/function.js"></script>
+    <script src="/js/navigation.js"></script>
+    <div id="backtoTop" data-action="gototop">
+        <canvas id="backtoTopCanvas" width="45" height="45"></canvas>
+        <div class="per"> </div>
+    </div>
+    <!--[if lt IE 9]><script src="/skin/ecms218/js/html5shiv.min.js"></script><![endif]-->
+
+    <script>
+        $(function () {
+
+            $(".articleLeaveMsg").each(function () {
+                $(this).replaceface($(this).html());
+            });
+
+            /* 表情包 */
+            $("a.face").smohanfacebox();
+
+            var mkEditor = editormd.markdownToHTML("question-view", {
+                //htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                htmlDecode: true,
+                emoji: true,
+                taskList: true,
+                theme: "dark",
+                previewTheme: "dark",
+                editorTheme: "pastel-on-dark",
+                codeFold: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+                lineNumbers: true,
+                mode: "markdown",
+                gotoLine: true
+            });
+        });
+
+        function leave(obj, articleId, replyId) {
+            var content = $("#saytext").val();
+            if (content == '') {
+                alert("请输入内容");
+                return;
+            }
+            var contentFace = replacefaceContent(content);
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "/article-leave",
+                data: "msg=" + content + "&articleId=" + articleId + "&replyId=" + replyId,
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    alert("評論成功！")
+
+                }
+            })
+        }
+    </script>
+
+    <script src="/js/dashang.js"></script>
+    <script>
+        new tctip({
+            top: '20%',
+            button: {
+                id: 9,
+                type: 'dashang',
+            },
+            list: [
+                {
+                    type: 'alipay',
+                    qrImg: '/img/zfb_pay.jpg'
+                }, {
+                    type: 'wechat',
+                    qrImg: '/img/wx_pay.jpg'
+                }, {
+                    type: 'bitcoin',
+                    qrImg: '/img/bitcoin.jpg'
+                }
+            ]
+        }).init()
+    </script>
+</body>
+</html>

@@ -50,6 +50,9 @@ public class ArticleServiceImpl implements ArticleService {
         if (StringUtils.isNotBlank(request.getCategory())) {
             criteria.andCategoryEqualTo(request.getCategory());
         }
+        if (StringUtils.isNotBlank(request.getType())) {
+            criteria.andTypeEqualTo(request.getType());
+        }
         if (StringUtils.isNotBlank(request.getSearchKey())) {
             criteria.andTitleLike("%" + request.getSearchKey() + "%");
         }
@@ -77,10 +80,10 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.selectOneByExample(example);
     }
 
-    @Cacheable(cacheNames = {"blog"}, key = "'getCategoryByGroup'", sync = true)
+    @Cacheable(cacheNames = {"blog"}, key = "'getCategoryByGroup' + #type", sync = true)
     @Override
-    public List<CategoryGroupBO> getCategoryByGroup() {
-        return articleManualMapper.getCategoryByGroup();
+    public List<CategoryGroupBO> getCategoryByGroup(String type) {
+        return articleManualMapper.getCategoryByGroup(type);
     }
 
     @Cacheable(cacheNames = {"blog"}, key = "'getByIntroType' + #type", sync = true)
@@ -99,11 +102,14 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Cacheable(cacheNames = {"blog"}, key = "'getByCategory' + #category", sync = true)
     @Override
-    public List<ArticleDO> getByCategory(String category) {
+    public List<ArticleDO> getByCategory(String category, Integer articleId) {
         ArticleDOExample example = new ArticleDOExample();
         ArticleDOExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(StatusEnum.ONE.getStatus()).andCategoryEqualTo(category);
-        example.setOrderByClause(" created_at desc limit 5");
+        if (articleId != null) {
+            criteria.andIdNotEqualTo(articleId);
+        }
+        example.setOrderByClause(" created_at desc limit 4");
         return articleMapper.selectByExample(example);
     }
 

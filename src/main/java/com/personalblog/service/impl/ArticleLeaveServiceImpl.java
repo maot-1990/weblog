@@ -3,6 +3,8 @@ package com.personalblog.service.impl;
 import com.personalblog.bo.ArticleLeaveBO;
 import com.personalblog.context.BlogContext;
 import com.personalblog.dao.ArticleLeaveMapper;
+import com.personalblog.dao.ArticleMapper;
+import com.personalblog.dao.manual.ArticleManualMapper;
 import com.personalblog.dataobject.ArticleLeaveDO;
 import com.personalblog.dataobject.ArticleLeaveDOExample;
 import com.personalblog.pagehelper.Page;
@@ -29,6 +31,9 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
     @Resource
     private ArticleLeaveMapper articleLeaveMapper;
 
+    @Resource
+    private ArticleManualMapper articleManualMapper;
+
     @Override
     public Page<ArticleLeaveBO> getArticleLeaveHasMore(ArticleLeaveRequest request) {
 
@@ -36,6 +41,7 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
         List<ArticleLeaveBO> leaves = new ArrayList<>();
         ArticleLeaveDOExample example = new ArticleLeaveDOExample();
         example.createCriteria().andArticleIdEqualTo(request.getArticleId()).andStatusEqualTo(1).andLevelEqualTo(1);
+        Long count = articleLeaveMapper.countByExample(example);
         example.setOrderByClause(" created_at desc limit " + start + "," + request.getPageSize());
         List<ArticleLeaveDO> level1 = articleLeaveMapper.selectByExample(example);
 
@@ -58,6 +64,7 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
         page.setPageSize(request.getPageSize());
         page.setCurrentPage(request.getCurrentIndex());
         page.setItems(leaves);
+        page.setTotalNum(count.intValue());
         return page;
     }
 
@@ -81,6 +88,7 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
             articleLeave.setHeadImg(user.getHeadImg());
         }
         articleLeaveMapper.insertSelective(articleLeave);
+        articleManualMapper.updateLeaveCountInc(articleLeave.getArticleId());
         return BeanUtils.copyProperties(articleLeave, ArticleLeaveVO.class);
     }
 

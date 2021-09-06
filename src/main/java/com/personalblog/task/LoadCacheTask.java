@@ -1,6 +1,7 @@
 package com.personalblog.task;
 
 import com.personalblog.enums.IntroTypeEnum;
+import com.personalblog.enums.TypeEnum;
 import com.personalblog.request.ArticleRequest;
 import com.personalblog.service.ArticleService;
 import com.personalblog.service.CommonService;
@@ -27,9 +28,9 @@ public class LoadCacheTask {
     @Scheduled(cron = "0 0/1 * * * ?")
     public void execute() {
         articleService.getArticleMore(new ArticleRequest());
-        articleService.getCategoryByGroup();
-        // articleService.getByIntroType(IntroTypeEnum.RECENT.toString());
-        // articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+        articleService.getCategoryByGroup(TypeEnum.IT.name());
+        articleService.getByIntroType(IntroTypeEnum.RECENT.toString());
+        articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
         commonService.getQuickLinks();
         userService.getAuthors(5);
     }

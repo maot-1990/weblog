@@ -19,11 +19,11 @@ public interface ArticleService {
 
     ArticleDO getByIdWithOutStatus(Integer id);
 
-    List<CategoryGroupBO> getCategoryByGroup();
+    List<CategoryGroupBO> getCategoryByGroup(String type);
 
     List<ArticleDO> getByIntroType(String type);
 
-    List<ArticleDO> getByCategory(String category);
+    List<ArticleDO> getByCategory(String category, Integer articleId);
 
     int saveOrUpdateArticle(ArticleDO article, UserVO user);
 

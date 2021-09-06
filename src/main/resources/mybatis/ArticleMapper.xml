@@ -13,6 +13,7 @@
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="read_count" jdbcType="INTEGER" property="readCount" />
     <result column="like_count" jdbcType="INTEGER" property="likeCount" />
+    <result column="leave_count" jdbcType="INTEGER" property="leaveCount" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="original" jdbcType="TINYINT" property="original" />
     <result column="status" jdbcType="TINYINT" property="status" />
@@ -82,7 +83,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, title, type, intro, img_path, img_type, category, user_id, author, read_count, 
-    like_count, sort, original, status, created_at, updated_at
+    like_count, leave_count, sort, original, status, created_at, updated_at
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -122,6 +123,9 @@
       </if>
       <if test="likeCount != null">
         like_count,
+      </if>
+      <if test="leaveCount != null">
+        leave_count,
       </if>
       <if test="sort != null">
         sort,
@@ -169,6 +173,9 @@
       </if>
       <if test="likeCount != null">
         #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="leaveCount != null">
+        #{leaveCount,jdbcType=INTEGER},
       </if>
       <if test="sort != null">
         #{sort,jdbcType=INTEGER},

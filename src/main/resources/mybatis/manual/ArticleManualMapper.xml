@@ -22,7 +22,7 @@
   </resultMap>
 
   <select id="getCategoryByGroup" resultType="com.personalblog.bo.CategoryGroupBO">
-    select category, count(1) "count" from article where status=1 group by category;
+    select category, count(1) "count" from article where status=1 and `type`=#{type} group by category;
   </select>
 
   <update id="updateLikeCountInc">
@@ -31,6 +31,10 @@
 
   <update id="updateReadCountInc">
     update article set read_count=read_count+1 where id=#{articleId}
+  </update>
+
+  <update id="updateLeaveCountInc">
+    update article set leave_count=leave_count+1 where id=#{articleId}
   </update>
 
 </mapper>

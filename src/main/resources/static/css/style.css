@@ -4825,3 +4825,7 @@ ol.comment-list li .respond {
 .short-btn:hover {
     background-color: #3169b0
 }
+
+.margin_left_0 {
+    margin-left: 0 !important;
+}

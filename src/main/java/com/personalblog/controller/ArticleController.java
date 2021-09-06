@@ -6,6 +6,7 @@ import com.personalblog.dataobject.ArticleDO;
 import com.personalblog.dataobject.ArticleLeaveDO;
 import com.personalblog.dataobject.QuickLinkDO;
 import com.personalblog.enums.IntroTypeEnum;
+import com.personalblog.enums.TypeEnum;
 import com.personalblog.exception.BaseException;
 import com.personalblog.pagehelper.Page;
 import com.personalblog.request.ArticleLeaveRequest;
@@ -51,7 +52,6 @@ public class ArticleController {
         Page<ArticleDO> page = articleService.getArticleMore(request);
         page.setCategory(request.getCategory());
         page.setSearchKey(request.getSearchKey());
-        List<CategoryGroupBO> category = articleService.getCategoryByGroup();
 
         List<ArticleDO> recent = articleService.getByIntroType(IntroTypeEnum.RECENT.toString());
         List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
@@ -68,8 +68,6 @@ public class ArticleController {
 
         mode.addAttribute("page", page);
 
-        mode.addAttribute("category", category);
-
         mode.addAttribute("links", links);
 
         mode.addAttribute("authors", authors);
@@ -77,7 +75,7 @@ public class ArticleController {
         return "index";
     }
 
-    @GetMapping("/articles/has-more")
+    @GetMapping("/article/has-more")
     @ResponseBody
     public Page<ArticleDO> getArticleHasMore(ArticleRequest request) {
         Page<ArticleDO> page = articleService.getArticleMore(request);
@@ -86,28 +84,89 @@ public class ArticleController {
         return page;
     }
 
-    @GetMapping("/articles/show/{id}")
+    @GetMapping("/articles")
+    public String getArticleList(ModelMap mode, ArticleRequest request) {
+        Page<ArticleDO> page = articleService.getArticleMore(request);
+        page.setCategory(request.getCategory());
+        page.setSearchKey(request.getSearchKey());
+        page.setType(request.getType());
+
+        List<CategoryGroupBO> category = articleService.getCategoryByGroup(request.getType());
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+
+        mode.addAttribute("page", page);
+        mode.addAttribute("category", category);
+        mode.addAttribute("popular", popular);
+
+        if (request.getType().equals(TypeEnum.IT.getType())) {
+            return "list_it";
+        } else if (request.getType().equals(TypeEnum.OTHER.getType())) {
+            return "list_other";
+        } else {
+            return "error";
+        }
+    }
+
+    @GetMapping("/article/show/{id}")
     public String getArticleDetail(ModelMap mode, @PathVariable("id") Integer id) {
         ArticleDO article = articleService.getById(id);
+
         if (article == null) {
             throw new BaseException("not found", ResponseCode.NOT_FOUND);
         }
+        ArticleDO preArticle = articleService.getById(id - 1);
+        ArticleDO afterArticle = articleService.getById(id + 1);
+
         UserVO user = userService.getUserById(article.getUserId());
         ArticleVO articleVO = BeanUtils.copyProperties(article, ArticleVO.class);
         articleVO.setAuthor(user.getNickName());
         articleVO.setArticleTotal(user.getArticleTotal());
         articleVO.setHeadImg(user.getHeadImg());
         articleVO.setCreateAtStr(article.getCreateAtStr());
-        List<ArticleDO> related = articleService.getByCategory(article.getCategory());
+        List<ArticleDO> related = articleService.getByCategory(article.getCategory(), article.getId());
         ArticleLeaveRequest request = new ArticleLeaveRequest();
         request.setArticleId(id);
         Page<ArticleLeaveBO> articleLeavePage = articleLeaveService.getArticleLeaveHasMore(request);
+        List<CategoryGroupBO> category = articleService.getCategoryByGroup(article.getType());
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
 
+        mode.addAttribute("category", category);
+        mode.addAttribute("popular", popular);
         mode.addAttribute("related", related);
         mode.addAttribute("article", articleVO);
+        mode.addAttribute("preArticle", preArticle);
+        mode.addAttribute("afterArticle", afterArticle);
         mode.addAttribute("articleLeavePage", articleLeavePage);
         mode.addAttribute("user", user);
-        return "detail";
+
+        if (article.getType().equals(TypeEnum.IT.getType())) {
+            return "detail_it";
+        } else if (article.getType().equals(TypeEnum.OTHER.getType())) {
+            return "detail_other";
+        } else {
+            return "error";
+        }
+    }
+
+    @GetMapping("/ad")
+    public String ad(ModelMap mode) {
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+        mode.addAttribute("popular", popular);
+        return "ad";
+    }
+
+    @GetMapping("/contact-us")
+    public String aboutUs(ModelMap mode) {
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+        mode.addAttribute("popular", popular);
+        return "contact_us";
+    }
+
+    @GetMapping("/contribute")
+    public String contribute(ModelMap mode) {
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+        mode.addAttribute("popular", popular);
+        return "contribution";
     }
 
 

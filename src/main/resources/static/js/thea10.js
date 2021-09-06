@@ -1,1 +1,1 @@
-document.write("<table width=\"748\" height=\"90\" style=\"background-color:#ccc;\">    <tr align=\"center\">      <td style=\"text-align: center;color: #666;line-height: 90px;\">内容底部广告位（电脑）</td>    </tr>  </table>")
+document.write("<table width=\"748\" height=\"90\" style=\"background-color:#ccc;\">    <tr align=\"center\">      <td style=\"text-align: center;color: #666;line-height: 90px;\">内容底部广告位</td>    </tr>  </table>")

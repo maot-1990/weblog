@@ -23,6 +23,8 @@ public class Page<T> {
 
     private String category;
 
+    private String type;
+
     private String searchKey;
 
     private List<T> items = new ArrayList<>();
