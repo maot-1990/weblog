@@ -15,7 +15,6 @@
     <meta name="Description" content="在一个属于自己的地方,记录下自己感兴趣的事,一直坚持走下去" /><!-- 设置缓存2小时，max-age指最大缓存的秒数 -->
     <meta http-equiv="Cache-Control" content="max-age=14400" />
     <title>关于我们--Weblog</title>
-    <link rel="shortcut icon" href="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/favicon.ico">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!--[if lt IE 9]><div><p class="ie9">您的IE浏览器版本过低</p></div><![endif]-->
@@ -134,7 +133,7 @@
                         <li th:each="item,itemStart : ${popular}">
                             <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
                                 <a target="_blank" th:href="@{'/article/show/' + ${item.id}}">
-                                    <img src="img/2495e46bb60ab13f9e3fdc4accc59630.jpeg" class="" alt=""></a>
+                                    <img th:src="@{'/show-img/' + ${item.imgPath}}" class="" alt=""></a>
                             </div>
                             <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
                                 <h4 class="title"><a target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a></h4>

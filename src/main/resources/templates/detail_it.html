@@ -301,7 +301,7 @@
                         <li th:each="item,itemStart : ${popular}">
                             <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
                                 <a target="_blank" th:href="@{'/article/show/' + ${item.id}}">
-                                    <img src="/img/2495e46bb60ab13f9e3fdc4accc59630.jpeg" class="" alt=""></a>
+                                    <img th:src="@{'/show-img/' + ${item.imgPath}}" class="" alt=""></a>
                             </div>
                             <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
                                 <h4 class="title"><a target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
