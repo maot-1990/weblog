@@ -250,13 +250,13 @@
                                 <tbody>
                                 <tr th:each="item,itemStart : ${articleLeavePage.items}">
 
-                                    <td width="12%">
+                                    <td width="12%" style="text-align: left;vertical-align: bottom;">
                                         <img alt="image description"
                                              th:src="${item.parent.headImg}==null ? '/img/img57.jpg' : @{'/show-img/' + ${item.parent.headImg}}"
                                              class="avatar avatar-48 photo avatar-default leave-head-img">
-                                        <strong class="name"><p th:text="${item.parent.nickName}"></p></strong>
+                                        <!--<strong class="name"><p th:text="${item.parent.nickName}"></p></strong>-->
                                     </td>
-                                    <td width="88%">
+                                    <td width="88%" style="vertical-align: bottom;">
                                         <div class="articleLeaveMsg" th:text="${item.parent.msg}"
                                              style="margin-top: -16px;"></div>
                                         <div style="margin-top: 0;" th:text="${item.parent.createAtStr}"></div>
