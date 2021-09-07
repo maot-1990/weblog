@@ -11,6 +11,8 @@
     <meta name="force-rendering" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
     <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <title th:text="${article.title + '--Weblog'}"></title>
     <meta name="Keywords" th:content="@{'微客阁,个人博客,个人网站,技术分享' + ${article.type} + ',' + ${article.category} + ',' + ${article.title}}"/>
     <meta name="Description" th:content="${article.intro}"/>
@@ -157,10 +159,11 @@
                         <div class="clear"></div>
                     </footer>
                     <div class="authorbio">
-                        <div class="author_info"> <img alt="管理员" src="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/avatar.jpg" class="avatar avatar-40 photo" width="40" height="40">
+                        <div class="author_info"> <img alt="管理员" src="/img/avatar.jpeg" class="avatar avatar-40 photo" width="40" height="40">
                             <div class="author_detail">
-                                <div class="author-name"><span class="author_font">草根站长</span><span class="author_t">管理员</span></div>
-                                <p class="author_bref">个人博客，专注于IT类技术分享+网站优化，只做有思想的高价值网站！</p>
+                                <div class="author-name"><span class="author_font">街角下的蚂蚁</span><span class="author_t">管理员</span></div>
+                                <p class="author_bref">个人博客，专注于IT类技术分享+实用小工具分享+网站优化，
+只做有思想的高价值网站！</p>
                             </div>
                         </div>
                         <ul class="spostinfo">
@@ -189,18 +192,9 @@
                         </div>
                     </div>
                     <div id="comment" class="post-comment">
-                        <p id="comments-title" class="c-title"><span>发表评论</span> <span class="comment-num"> </span></p>
+                        <p id="comments-title" class="c-title"><span>发表评论（共有 <span style="color: #f90;" id="infocommentnumarea" th:text="${articleLeavePage.totalNum}"></span> 条评论）</span> <span class="comment-num"> </span></p>
                         <link href="/css/pl.css" rel="stylesheet">
                         <div class="showpage" id="plpost">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="line-height: 25px; padding: 5px 3px 1px 8px; font-size: 18px;">
-                                <tbody>
-                                <tr>
-                                    <td><strong>
-                                        <font color="#333333">留言与评论（共有 <span id="infocommentnumarea" th:text="${articleLeavePage.totalNum}"></span> 条评论）</font>
-                                    </strong></td>
-                                </tr>
-                                </tbody>
-                            </table>
                             <script type="text/javascript">
                                 function CheckPl(obj) {
                                     if (obj.saytext.value == "") {
@@ -233,7 +227,7 @@
 
                                                                 </td>
                                                                 <td width="20%" height="40" bgcolor="#FFFFFF">
-                                                                    <input name="sumbit" type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\');'}" value="提交评论" tabindex="6" style="border-radius: 5px;font-size: 16px;background: #e94c3d none repeat scroll 0% 0%;border: 0px none;margin: 0px 16px;padding: 1px 16px;height: 33px;line-height: 30px;color: rgb(255, 255, 255);opacity: 0.95;">
+                                                                    <input name="sumbit" type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\');'}" value="提交评论" tabindex="6" style="cursor:pointer;border-radius: 5px;font-size: 16px;background: #e94c3d none repeat scroll 0% 0%;border: 0px none;margin: 0px 16px;padding: 1px 16px;height: 33px;line-height: 30px;color: rgb(255, 255, 255);opacity: 0.95;">
                                                                     <input name="id" type="hidden" id="id" value="549">
                                                                     <input name="classid" type="hidden" id="classid" value="1">
                                                                     <input name="enews" type="hidden" id="enews" value="AddPl">
@@ -256,13 +250,13 @@
                                 <tbody>
                                 <tr th:each="item,itemStart : ${articleLeavePage.items}">
 
-                                    <td width="20%">
+                                    <td width="12%">
                                         <img alt="image description"
                                              th:src="${item.parent.headImg}==null ? '/img/img57.jpg' : @{'/show-img/' + ${item.parent.headImg}}"
                                              class="avatar avatar-48 photo avatar-default leave-head-img">
                                         <strong class="name"><p th:text="${item.parent.nickName}"></p></strong>
                                     </td>
-                                    <td width="80%">
+                                    <td width="88%">
                                         <div class="articleLeaveMsg" th:text="${item.parent.msg}"
                                              style="margin-top: -16px;"></div>
                                         <div style="margin-top: 0;" th:text="${item.parent.createAtStr}"></div>
@@ -285,16 +279,14 @@
                         <div class="widget widget-tie social" id="a">
                             <div class="about_img">
                                 <div class="about_bg"> <img src="/img/userbg.png"> </div>
-                                <div class="about_avatar"><img src="http://zly2021010118_31.demo.mxyhn.xyz:8020/skin/ecms218/images/avatar.jpg"></div>
+                                <div class="about_avatar"><img th:src="@{'/show-img/' + ${user.headImg}}"></div>
                             </div>
-                            <div class="about_name"> 关于本站<span>草根站长</span> </div>
+                            <div class="about_name"> [[${user.nickName}]] </div>
                             <div class="ul ul_distance">
-                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=779396604&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" target="_blank" class="social_a social_contact social_qq" rel="nofollow" title="联系站长"><i class="fa fa-qq f-contact"></i></a>
-                                <a class="social_a social_contact social_weixin" href="#" title="加我微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="/img/wx.png" alt="扫描微信"></span></a>
-                                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=779396604@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给我写信"><i class="fa fa-envelope f-contact"></i></a>
-                                <a href="http://weibo.com/" target="_blank" class="social_a social_contact social_weibo" rel="nofollow" title="新浪微博"><i class="fa fa-weibo f-contact"></i></a>
+                                <p>发布文章：<span style="color: #f90;">[[${user.articleTotal}]]</span>篇</p>
+
                             </div>
-                            <p class="about_tag">个人博客，专注于IT类技术分享+网站优化，只做有思想的高价值网站！</p>
+                            <p class="about_tag">[[${user.intro}]]</p>
                         </div>
                     </div>
                 </dd>
@@ -348,6 +340,22 @@
                         src="/img/beian.png"/><span
                         style="height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">川公网安备 51018002000062号</span></a>
             </p>
+            <div>
+                <table style="margin: auto;" width="20%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <p><img width="85px" height="85px" src="/img/qrcode_gzh.jpg" /></p>
+                            <p>微信公众号</p>
+                        </td>
+                        <td>
+                            <p><img width="85px" height="85px" src="/img/qrcode_xcx.jpg" /></p>
+                            <p>微信小程序</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </footer>
     <div id="mask" style="display: none;"></div>
