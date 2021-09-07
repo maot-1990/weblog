@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/smohan-face.css">
+    <link rel="stylesheet" href="/css/share.min.css">
 
     <link rel="stylesheet" href="/editormd/css/editormd.css">
     <link rel="stylesheet" href="/editormd/css/editormd.min.css">
@@ -32,6 +33,7 @@
     <script src="/editormd/editormd.min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/smohan.face.js"></script>&nbsp;&nbsp;
+    <script src="/js/jquery.share.min.js"></script>
 
     <style type="text/css"></style>
 
@@ -147,17 +149,19 @@
                             <div class="tag_content"> <i class="fa fa-tags"></i> 标签：</div>
                             <span></span>
                         </div>
-                        <div class="contact_detail"><a th:href="@{'/articles?type=1&category=' + ${article.category}}"><span th:text="${article.category}"></span></a> </div>
+                        <div class="contact_detail">
+                            <a th:href="@{'/articles?type=1&category=' + ${article.category}}">
+                                <span th:text="${article.category}"></span>
+                            </a>
+
+                            <div class="bdsharebuttonbox">
+                                <div class="social-share" data-sites="wechat,qq,weibo,qzone"></div>
+                            </div>
+                        </div>
+
                         <div class="clear"></div>
                     </div>
-                    <footer class="entry-meta">
-                        <p id="tag-wrap" class="tag-wrap"></p>
-                        <div class="bdsharebuttonbox">
-                            <!--<a href="#" class="bds_more" data-cmd="more"></a>-->
-                            <a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信"></a> <a href="#" class="bds_sqq fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a> <a href="#" class="bds_tsina fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-                        </div>
-                        <div class="clear"></div>
-                    </footer>
+
                     <div class="authorbio">
                         <div class="author_info"> <img alt="管理员" src="/img/avatar.jpeg" class="avatar avatar-40 photo" width="40" height="40">
                             <div class="author_detail">
@@ -370,21 +374,7 @@
 
     <script>
         $(function () {
-
-            window._bd_share_config = {
-                "common": {
-                    "bdSnsKey": {},
-                    "bdText": "",
-                    "bdMini": "2",
-                    "bdMiniList": false,
-                    "bdPic": "",
-                    "bdStyle": "1",
-                    "bdSize": "24"
-                },
-                "share": {}
-            };
-            (document.getElementsByTagName('head')[0] || document.body).appendChild(document.createElement('script')).src = '/static/api/js/share.js?v=89860593.js';
-
+            
             $(".articleLeaveMsg").each(function () {
                 $(this).replaceface($(this).html());
             });

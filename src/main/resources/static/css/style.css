@@ -2325,8 +2325,8 @@ i.fa-rss {
     margin-left: 10px;
     padding-top: 4px;
     letter-spacing: 1.05px;
-    width: 78%;
-    overflow: hidden;
+    width: 88%;
+    overflow: inherit;
     white-space: nowrap;
 }
 
@@ -4177,7 +4177,6 @@ ol.comment-list li .respond {
 
 .bdsharebuttonbox {
     float: right;
-    padding-top: 5px;
 }
 
 .bdshare-button-style1-24 a,
