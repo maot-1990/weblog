@@ -27,7 +27,7 @@ public class PersonalBlogApplication {
         SpringApplication.run(PersonalBlogApplication.class, args);
     }
 
-    /*@Bean
+    @Bean
     public TomcatServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
@@ -55,7 +55,6 @@ public class PersonalBlogApplication {
         connector.setRedirectPort(443);
         return connector;
     }
-*/
     /**
      * 让spring管理RestTemplate,参数相关配置
      *
