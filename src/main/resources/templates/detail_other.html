@@ -95,7 +95,7 @@
             </div>
         </div>
     </header>
-    <div class="breadcrumb"> <i class="fa fa-home"></i><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/cyzx/">好文章</a><i class="fa fa-angle-right"></i>文章正文 </div>
+    <div class="breadcrumb"> <i class="fa fa-home"></i><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/articles?type=1">好文章</a><i class="fa fa-angle-right"></i>文章正文 </div>
     <main class="container">
         <div class="content-wrap">
             <div class="article" id="article">
@@ -383,7 +383,7 @@
                 },
                 "share": {}
             };
-            (document.getElementsByTagName('head')[0] || document.body).appendChild(document.createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5);
+            (document.getElementsByTagName('head')[0] || document.body).appendChild(document.createElement('script')).src = '/static/api/js/share.js?v=89860593.js';
 
             $(".articleLeaveMsg").each(function () {
                 $(this).replaceface($(this).html());
