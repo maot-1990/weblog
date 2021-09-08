@@ -27,13 +27,13 @@ public class LoginController {
     @Resource
     private ImgService imgService;
 
-    @GetMapping("/login-page")
+    @GetMapping("/login")
     public String loginPage(String uri, ModelMap mode) {
         mode.addAttribute("uri", uri);
         if (BlogContext.getCurrentUser() != null) {
             return "redirect:/";
         }
-        return "login-index";
+        return "login";
     }
 
     @PostMapping("/login")

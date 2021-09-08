@@ -14,9 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -41,7 +38,7 @@ public class PublishController {
     public String edit(@PathVariable("articleId") Integer articleId, ModelMap map) throws Exception {
         ArticleDO article = articleService.getByIdWithOutStatus(articleId);
         map.addAttribute("article", article);
-        return "markdown/edit";
+        return "article/edit";
     }
 
     @PostMapping("/admin/publish")
@@ -69,7 +66,7 @@ public class PublishController {
             articleService.saveOrUpdateArticle(article, user);
         }
         if (isEdit) {
-            return "redirect:/articles/show/" + article.getId();
+            return "redirect:/article/show/" + article.getId();
         }
         return "redirect:/";
     }

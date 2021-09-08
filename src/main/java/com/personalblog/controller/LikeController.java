@@ -19,7 +19,7 @@ public class LikeController {
     @Resource
     private BusinessService businessService;
 
-    @RequestMapping(value = "/like-inc", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/like", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public BaseResult likeCountInc(@RequestParam("articleId") String articleId) {
         return BaseResult.success();

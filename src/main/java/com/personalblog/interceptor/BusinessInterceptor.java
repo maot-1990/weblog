@@ -30,7 +30,7 @@ public class BusinessInterceptor implements HandlerInterceptor {
 
     private static String ARTICLE_DETAIL_URI = "/article/show/*";
 
-    private static String LIKE_URI = "/like-inc";
+    private static String LIKE_URI = "/like";
 
     private BusinessService businessService;
 

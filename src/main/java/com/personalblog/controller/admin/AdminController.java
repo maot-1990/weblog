@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Created by tao.mao on 2020/8/18.
  */
 @Controller
-public class MarkdownController {
+public class AdminController {
 
     @GetMapping("/admin/add")
     public String markdownEdit() {
-        return "markdown/mk";
+        return "article/add";
     }
 }

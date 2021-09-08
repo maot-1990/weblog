@@ -53,7 +53,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         HttpSession session = BlogContext.session.get(sessionId);
         if (session == null) {
             // throw new BaseException("请登陆", ResponseCode.BIZ_ERROR);
-            response.sendRedirect("/login-page" + buffer.toString());
+            response.sendRedirect("/login" + buffer.toString());
             return true;
         }
         UserVO user = (UserVO) session.getAttribute(USER);
