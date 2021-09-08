@@ -212,7 +212,7 @@
                 <dd class="function_c">
                     <ul>
                         <li th:each="item,itemStart : ${articleLeaveRecent}">
-                            <a class="leave_msg" target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.msg}"></a>
+                            <a class="leave_msg" target="_blank" th:href="@{'/article/show/' + ${item.articleId}}" th:text="${item.msg}"></a>
                         </li>
                     </ul>
                 </dd>
