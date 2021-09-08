@@ -1,1 +1,1 @@
-document.write("<table width=\"100%\" height=\"250\"  style=\"background-color:#ccc;\">    <tr align=\"center\">      <td style=\"text-align: center;color: #666;\"><img width='100%' height='100%' src='/img/thea1.jpg'></td>    </tr>  </table>")
+document.write("<table width=\"100%\" height=\"100%\"  style=\"background-color:#ccc;\">    <tr align=\"center\">      <td style=\"text-align: center;color: #666;\"><img width='100%' height='100%' src='/img/thea1.jpg'></td>    </tr>  </table>")

@@ -112,16 +112,15 @@
                         <a class="prev" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a><a class="next" href="javascript:void(0)"><i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
-                <!-- 广告位AD1  -->
+
                 <!-- 首页推荐  -->
                 <div class="recommend">
-                    <div class="first_pro fl" th:each="item,itemStart : ${popular}" th:if="${itemStart.index < 2}">
-                        <div class="first_pic"> <a th:href="@{'/article/show/' + ${item.id}}"><img class="img-cover br" src="img/278d462e5f473b21361eb865b6383412.jpeg" alt="" title=""></a>
-                            <div class="first_article">
-                                <h2 class="ellipsis"><a th:href="@{'/article/show/' + ${item.id}}"><span th:text="${item.title}"></span></a></h2>
-                                <p th:text="${item.intro}"></p>
-                                <div class="article_bottom"> <span><i class="fa fa-user fa-fw"></i><span th:text="${item.author}"></span></span> <span class="time"><i class="fa fa-clock-o fa-fw"></i><span th:text="${item.createAtStr}"></span></span> </div>
-                            </div>
+                    <div class="first_pro fl">
+                        <div class="pcd_ad" style="height: 100%;">
+                            <script src="/js/thea10.js"></script>
+                        </div>
+                        <div class="mbd_ad" style="height: 100%;">
+                            <script src="/js/thea10.js"></script>
                         </div>
                     </div>
                     <div class="clear"></div>

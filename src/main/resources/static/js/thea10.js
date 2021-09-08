@@ -1,1 +1,1 @@
-document.write("<table width=\"100%\" height=\"90\" style=\"background-color:#ccc;\">    <tr align=\"center\">      <td style=\"text-align: center;color: #666;\"><p style='font-size: 54px;'>稀缺广告位</p></td>    </tr>  </table>")
+document.write("<table width=\"100%\" height=\"100%\" style=\"background-color:#ccc;\">    <tr align=\"center\">      <td style=\"text-align: center;color: #666;vertical-align: middle;\"><p style='font-size: 54px;'>稀缺广告位</p></td>    </tr>  </table>")
