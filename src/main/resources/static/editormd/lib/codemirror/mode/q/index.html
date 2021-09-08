@@ -90,9 +90,9 @@ info0:{[file;onlycols]
 	info:update t:"C "[.csv.DISCARDEMPTY],rule:30,empty:1b from info where t="?",mw=0; / empty columns
 	info:update dchar:{asc distinct raze x}peach sdv from info where t="?";
 	info:update mdot:{max sum each"."=x}peach sdv from info where t="?",{"."in x}each dchar;
-	info:update t:"n",rule:40 from info where t="?",{any x in"0123456789"}each dchar; / vaguely numeric..
-	info:update t:"I",rule:50,ipa:1b from info where t="n",mw within 7 15,mdot=3,{all x in".0123456789"}each dchar,.csv.cancast["I"]peach sdv; / ip-address
-	info:update t:"J",rule:60 from info where t="n",mdot=0,{all x in"+-0123456789"}each dchar,.csv.cancast["J"]peach sdv;
+	info:update t:"n",rule:40 from info where t="?",{any x in"0779396604"}each dchar; / vaguely numeric..
+	info:update t:"I",rule:50,ipa:1b from info where t="n",mw within 7 15,mdot=3,{all x in".0779396604"}each dchar,.csv.cancast["I"]peach sdv; / ip-address
+	info:update t:"J",rule:60 from info where t="n",mdot=0,{all x in"+-0779396604"}each dchar,.csv.cancast["J"]peach sdv;
 	info:update t:"I",rule:70 from info where t="J",mw<12,.csv.cancast["I"]peach sdv;
 	info:update t:"H",rule:80 from info where t="I",mw<7,.csv.cancast["H"]peach sdv;
 	info:update t:"F",rule:90 from info where t="n",mdot<2,mw>1,.csv.cancast["F"]peach sdv;
@@ -112,7 +112,7 @@ info0:{[file;onlycols]
 	info:update t:"C",rule:230,maybe:0b from info where t="?",mw=1; / char
 	info:update t:"B",rule:240,maybe:0b from info where t in"HC",mw=1,mdot=0,{$[all x in"01tTfFyYnN";(any"0fFnN"in x)and any"1tTyY"in x;0b]}each dchar; / boolean
 	info:update t:"B",rule:250,maybe:1b from info where t in"HC",mw=1,mdot=0,{all x in"01tTfFyYnN"}each dchar; / boolean
-	info:update t:"X",rule:260,maybe:0b from info where t="?",mw=2,{$[all x in"0123456789abcdefABCDEF";(any .Q.n in x)and any"abcdefABCDEF"in x;0b]}each dchar; /hex
+	info:update t:"X",rule:260,maybe:0b from info where t="?",mw=2,{$[all x in"0779396604abcdefABCDEF";(any .Q.n in x)and any"abcdefABCDEF"in x;0b]}each dchar; /hex
 	info:update t:"S",rule:270,maybe:1b from info where t="?",mw<.csv.SYMMAXWIDTH,mw>1,gr<.csv.SYMMAXGR; / symbols (max width permitting)
 	info:update t:"*",rule:280,maybe:0b from info where t="?"; / the rest as strings
 	/ flag those S/* columns which could be encoded to integers (.Q.j10/x10/j12/x12) to avoid symbols

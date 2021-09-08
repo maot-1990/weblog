@@ -19,6 +19,7 @@ public class BlogSessionListener implements HttpSessionListener {
 
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
+        BlogContext.session.put(httpSessionEvent.getSession().getId(), httpSessionEvent.getSession());
     }
 
     @Override

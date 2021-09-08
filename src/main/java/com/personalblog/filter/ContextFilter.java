@@ -37,6 +37,10 @@ public class ContextFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
+        // 记录在线用户数
+        ((HttpServletRequest) servletRequest).getSession().setAttribute("online", BlogContext.session.size());
+
         String ip = IPUtils.getOuterIP((HttpServletRequest) servletRequest);
         String uri = ((HttpServletRequest) servletRequest).getRequestURI();
 

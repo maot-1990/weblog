@@ -226,7 +226,7 @@
             }
             elseif ($this->randomNameType == 2)    // 生成随机字符文件名
             {
-                $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
+                $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0779396604abcdefghijklmnopqrstuvwxyz';
                 $max   = strlen($chars) - 1;
                 mt_srand((double)microtime() * 1000000);
                 

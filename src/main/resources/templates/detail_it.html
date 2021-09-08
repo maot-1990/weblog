@@ -106,18 +106,9 @@
                         <div class="article-meta"> <span><i class="fa fa-user fa-fw"></i><span th:text="${article.author}"></span></span><span><i class="fa fa-clock-o fa-fw"></i><span th:text="${article.createAtStr}"></span></span><span><i class="fa fa-eye fa-fw"></i>
                             <span th:text="${article.readCount}"></span>浏览</span></div>
                     </header>
-                    <div class="pcd_ad">
-                        <script src="/js/thea7.js"></script>
-                    </div>
-                    <div class="mbd_ad">
-                        <table width="100%" height="90" style="background-color:#ccc;">
-                            <tbody>
-                                <tr align="center">
-                                    <td style="text-align: center;color: #666;line-height: 90px;">内容头部广告位（手机）</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <!--<div class="pcd_ad">
+                        <script src="/js/thea10.js"></script>
+                    </div>-->
 
                     <article class="article-content">
                         <!--<p th:text="${article.content}"></p>-->
@@ -234,7 +225,6 @@
                                                                                 <input name="classid" type="hidden" id="classid" value="1">
                                                                                 <input name="enews" type="hidden" id="enews" value="AddPl">
                                                                                 <input name="repid" type="hidden" id="repid" value="0">
-                                                                                <input type="hidden" name="ecmsfrom" value="/cyzx/2019-11-19/549.html">
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -294,9 +284,9 @@
                 </dd>
             </dl>
 
-            <dl class="function" id="aside_ad">
+            <!--<dl class="function" id="aside_ad">
                 <script src="/js/thea1.js"></script>
-            </dl>
+            </dl>-->
             <dl class="function" id="aside_new">
                 <dt class="function_t">热门文章</dt>
                 <dd class="function_c">
@@ -315,7 +305,7 @@
                 </dd>
             </dl>
             <dl class="function" id="aside_ad">
-                <script src="/js/thea2.js"></script>
+                <script src="/js/thea1.js"></script>
             </dl>
             <dl class="function" id="divTags">
                 <dt class="function_t">标签列表</dt>
@@ -326,13 +316,18 @@
                 </dd>
             </dl>
             <dl class="function" id="aside_ad">
-                <script src="/js/thea3.js"></script>
+                <script src="/js/thea1.js"></script>
             </dl>
         </aside>
     </main>
     <footer class="footer">
         <div class="footer-ju">
-            <p> <a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a>|<a href="#">自定义栏目</a><br>
+            <p> <a href="https://www.weblog.icu/contact-us" target="_blank">关于</a>|
+                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=779396604@qq.com" target="_blank">写信给我</a>|
+                <a href="#" target="_blank">友链申请</a>|
+                <a href="https://tool.chinaz.com/" target="_blank">站长之家</a>|
+                <a href="https://ziyuan.baidu.com/property/index?site=https://www.weblog.icu/" target="_blank">百度统计</a>|
+                <a href="#" target="_blank">在线人数：[[${session.online}]]</a><br>
             </p>
             <p>
                 <span style="color:#939393;">© 2021 版权所有 ICP证：<a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2021022347号-1</a></span>

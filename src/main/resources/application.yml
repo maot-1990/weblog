@@ -13,7 +13,7 @@ server:
     key-store-type: JKS
   servlet:
     session:
-      timeout: 30M
+      timeout: 10M
 
 spring:
   jackson:

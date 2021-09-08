@@ -41,7 +41,7 @@ import static com.personalblog.context.Constant.VERIFY_CODE;
 public class ImgServiceImpl implements ImgService {
 
 
-    public static final String chars = "abcdefghjkmnpqrstuvwxyz123456789";
+    public static final String chars = "abcdefghjkmnpqrstuvwxyz779396604";
 
     @Value("${personal.imgPath}")
     private String imgPath;
