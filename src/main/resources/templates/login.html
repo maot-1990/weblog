@@ -38,25 +38,21 @@
 			</a> <a href="#" class="social">
 				<ion-icon name="logo-linkedin"></ion-icon>
 			</a> </div>
-			<span>或使用您的电子邮箱注册</span>
+			<span>或自主注册</span>
 
-			<div class="wrap form-group" style="overflow: scroll;">
-				<input type="text" id="register_nickName" name="nickName" placeholder="昵称" size="30">
-				<input type="text" id="register_userName" name="userName" size="30" aria-required="true" placeholder="用户名">
-				<input type="password" id="register_passWord" name="passWord" size="30" aria-required="true" placeholder="密码">
-				<input type="text" id="register_email" name="email" placeholder="邮箱" size="30">
+			<div class="wrap form-group" style="overflow-y: scroll;height: 285px;">
+				<input type="text" value="" id="register_nickName" name="nickName" placeholder="昵称" size="30">
+				<input type="text" value="" id="register_userName" name="userName" size="30" aria-required="true" placeholder="用户名">
+				<input type="password" value="" id="register_passWord" name="passWord" size="30" aria-required="true" placeholder="密码">
+				<input type="text" value="" id="register_email" name="email" placeholder="邮箱" size="30">
 
+				<input style="width: 50%;text-align: left;display: inline;" type="text" id="register_code" name="code" aria-required="true"  placeholder="验证码">
+				<img src="/get-verify-code" class="verify-code-img" name="verifyCode" aria-required="true" onclick="this.src=this.src+'?'" />
 
-				<input type="hidden" name="type" checked="checked" value="user" size="30">
-
-				<label for="file">头像 <span class="required">*</span></label>
-				<input type="file" id="file" name="file" size="30">
+				<input type="file" id="file" name="file" size="30" placeholder="头像" style="width: 240px;"><br />
 				<span style="font-size: 10px;color: orangered;">*建议头像尺寸宽高：100px * 100px</span>
 
-
-				<label for="code">验证码 <span class="required">*</span></label>
-				<input type="text" class="register-code-input" id="code" name="code" size="30" aria-required="true" placeholder="enter your code">
-				<img src="/get-verify-code" class="register-code" name="verifyCode" onclick="this.src=this.src+'?'" />
+				<input type="hidden" name="type" checked="checked" value="user" size="30">
 
 			</div>
 
