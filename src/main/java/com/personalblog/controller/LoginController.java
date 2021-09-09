@@ -58,15 +58,6 @@ public class LoginController {
     }
 
     /**
-     * 注册
-     * @return
-     */
-    @GetMapping("/register-page")
-    public String registerPage() {
-        return "register-index";
-    }
-
-    /**
      * 发起注册
      * @return
      */
@@ -77,6 +68,6 @@ public class LoginController {
                            HttpServletRequest request) {
         imgService.verifyCode(request, code);
         loginService.register(user, file);
-        return "redirect:/login-page";
+        return "login";
     }
 }

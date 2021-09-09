@@ -3,6 +3,7 @@ package com.personalblog.controller.admin;
 import com.personalblog.context.BlogContext;
 import com.personalblog.dataobject.ArticleDO;
 import com.personalblog.dataobject.ImgStoreDO;
+import com.personalblog.enums.UserTypeEnum;
 import com.personalblog.exception.BaseException;
 import com.personalblog.response.ResponseCode;
 import com.personalblog.service.ArticleService;
@@ -54,6 +55,12 @@ public class PublishController {
         if (user == null) {
             throw new BaseException("请先登陆", ResponseCode.NOT_FOUND);
         }
+
+        // 验证用户有没有文章发布权限
+        if (!UserTypeEnum.getAuthorUsers().contains(user.getType())) {
+            throw new BaseException("暂无发布权限，请联系管理员", ResponseCode.PARAM_ERROR);
+        }
+
         if (file != null && file.getBytes().length > 0) {
             ImgStoreDO imgStore = imgService.upload(file, user);
             article.setImgPath(imgStore.getId());

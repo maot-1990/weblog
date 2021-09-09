@@ -11,5 +11,5 @@ spring:
       minimumIdle: 5
 
 personal:
-  imgPath: /Users/ezreal/maot/
+  imgPath: E:\work\weblog\
   showImgUrl: https://localhost/show-img/%s

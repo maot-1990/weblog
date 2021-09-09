@@ -13,6 +13,7 @@ import com.personalblog.response.ResponseCode;
 import com.personalblog.service.ImgService;
 import com.personalblog.service.LoginService;
 import com.personalblog.util.BeanUtils;
+import com.personalblog.util.UUId;
 import com.personalblog.vo.UserVO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,7 @@ public class LoginServiceImpl implements LoginService {
 
         preRegisterCheck(user, file);
         ImgStoreDO imgStore = imgService.upload(file, null);
+        user.setId(UUId.getUUId());
         user.setHeadImg(imgStore.getId());
         user.setLevel(1);
         if (UserTypeEnum.author.name().equals(user.getType())) {
@@ -90,7 +92,7 @@ public class LoginServiceImpl implements LoginService {
         if (StringUtils.isEmpty(user.getNickName())) {
             throw new BaseException("昵称不能为空", ResponseCode.PARAM_ERROR);
         }
-        if (!UserTypeEnum.getAuthorUsers().contains(user.getType())) {
+        if (!UserTypeEnum.getUsers().contains(user.getType())) {
             throw new BaseException("用户类型不正确", ResponseCode.PARAM_ERROR);
         }
     }

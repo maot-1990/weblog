@@ -29,7 +29,7 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form action="/register" method="post" enctype="multipart/form-data" onsubmit="return checkRegisterParam()">
 			<h1>第三方按钮注册</h1>
 			<div class="social-container"> <a href="#" class="social">
 				<ion-icon name="logo-facebook"></ion-icon>
@@ -44,7 +44,7 @@
 				<input type="text" value="" id="register_nickName" name="nickName" placeholder="昵称" size="30">
 				<input type="text" value="" id="register_userName" name="userName" size="30" aria-required="true" placeholder="用户名">
 				<input type="password" value="" id="register_passWord" name="passWord" size="30" aria-required="true" placeholder="密码">
-				<input type="text" value="" id="register_email" name="email" placeholder="邮箱" size="30">
+				<!--<input type="text" value="" id="register_email" name="email" placeholder="邮箱" size="30">-->
 
 				<input style="width: 50%;text-align: left;display: inline;" type="text" id="register_code" name="code" aria-required="true"  placeholder="验证码">
 				<img src="/get-verify-code" class="verify-code-img" name="verifyCode" aria-required="true" onclick="this.src=this.src+'?'" />
@@ -60,7 +60,7 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="/login" method="post" onsubmit="return checkParam();">
+		<form action="/login" method="post" onsubmit="return checkLoginParam();">
 			<h1>第三方登录</h1>
 			<div class="social-container"> <a href="#" class="social">
 				<ion-icon name="logo-facebook"></ion-icon>
@@ -97,7 +97,7 @@
 <script src="/js/script.js"></script>
 
 <script>
-	function checkParam() {
+	function checkLoginParam() {
 		let author = $("#author").val();
 		let password = $("#password").val();
 		let code = $("#code").val();
@@ -112,6 +112,35 @@
 		}
 		if (code == "") {
 			alert("验证码不能为空");
+			return false;
+		}
+		return true;
+	}
+
+	function checkRegisterParam() {
+		let userName = $("#register_userName").val();
+		if (userName == '') {
+			alert("用户名不能为空")
+			return false;
+		}
+		let passWord = $("#register_passWord").val();
+		if (passWord == '') {
+			alert("密码不能为空")
+			return false;
+		}
+		let nickName = $("#register_nickName").val();
+		if (nickName == '') {
+			alert("昵称不能为空")
+			return false;
+		}
+		let file = $("#file").val();
+		if (file == '') {
+			alert("头像不能为空")
+			return false;
+		}
+		let code = $("#register_code").val();
+		if (code == '') {
+			alert("验证码不能为空")
 			return false;
 		}
 		return true;

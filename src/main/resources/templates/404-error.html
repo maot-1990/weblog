@@ -1,5 +1,6 @@
 <!doctype html>
 <!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <html lang="zh-CN">
 
 <head>
@@ -80,7 +81,7 @@
             <div class="article" id="article">
                 <div class="article-container">
                     <header class="article-header">
-                        <h1 class="article-title">你好像迷路了！</h1>
+                        <h1 class="article-title">[[${session.msgError}]]</h1>
                     </header>
 
                     <p>

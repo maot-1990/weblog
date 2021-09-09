@@ -13,6 +13,10 @@ public enum UserTypeEnum {
     author,
     user;
 
+    public static List<String> getUsers() {
+        return Lists.newArrayList(author.name(), admin.name(), user.name());
+    }
+
     public static List<String> getAuthorUsers() {
         return Lists.newArrayList(author.name(), admin.name());
     }
