@@ -105,7 +105,7 @@ public class ImgServiceImpl implements ImgService {
     @Override
     public void getVerifyCode(HttpServletRequest request, HttpServletResponse response) throws Exception {
         int width = 120;
-        int height = 30;
+        int height = 42;
 
         // 步骤一 绘制一张内存中图片
         BufferedImage bufferedImage = new BufferedImage(width, height,
@@ -124,7 +124,7 @@ public class ImgServiceImpl implements ImgService {
         // 步骤四 四个随机数字
         Graphics2D graphics2d = (Graphics2D) graphics;
         // 设置输出字体
-        graphics2d.setFont(new Font("宋体", Font.BOLD, 18));
+        graphics2d.setFont(new Font("宋体", Font.BOLD, 24));
 
         Random random = new Random();
         String word = getRandomCode();
@@ -144,9 +144,9 @@ public class ImgServiceImpl implements ImgService {
             char c = word.charAt(i);
 
             // 将c 输出到图片
-            graphics2d.rotate(theta, x, 20);
-            graphics2d.drawString(String.valueOf(c), x, 20);
-            graphics2d.rotate(-theta, x, 20);
+            graphics2d.rotate(theta, x, 30);
+            graphics2d.drawString(String.valueOf(c), x, 30);
+            graphics2d.rotate(-theta, x, 30);
             x += 30;
         }
 
