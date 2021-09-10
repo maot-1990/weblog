@@ -26,6 +26,8 @@ public class ArticleLeaveVO {
 
     private Integer replyId;
 
+    private String msg;
+
     private Date createdAt;
 
     private Date updatedAt;

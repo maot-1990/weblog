@@ -41,7 +41,7 @@ public class ArticleLeaveDO {
     private Date updatedAt;
 
     public String getCreateAtStr() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return format.format(getCreatedAt());
     }
 
