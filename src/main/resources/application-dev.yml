@@ -4,7 +4,7 @@ spring:
     host: 47.108.148.188:3306
     username: maot
     password: maot123
-    url: jdbc:mysql://${spring.datasource.host}/personalblog?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://${spring.datasource.host}/personalblog_local?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
     hikari:
       connection-timeout: 10000
       maximumPoolSize: 10

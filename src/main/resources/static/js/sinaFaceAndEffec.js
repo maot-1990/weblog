@@ -101,10 +101,12 @@ function analyticEmotion(s) {
     $.fn.sinaEmotion = function(target) {
         var cat_current;
         var cat_page;
+        let faceButtonObj;
         $(this).click(function(event) {
+            faceButtonObj = $(this);
             event.stopPropagation();
-            var eTop = target.offset().top + target.height() + 15;
-            var eLeft = target.offset().left - 1;
+            var eTop = $(this).offset().top;
+            var eLeft = $(this).offset().left;
 
             if ($('#emotions .categorys')[0]) {
                 $('#emotions').css({
@@ -190,7 +192,8 @@ function analyticEmotion(s) {
                 $('#emotions .container').append($('<a href="javascript:void(0);" title="' + emotions[category][i].name + '"><img src="' + emotions[category][i].icon + '" alt="' + emotions[category][i].name + '" width="22" height="22" /></a>'));
             }
             $('#emotions .container a').click(function() {
-                target.insertText($(this).attr('title'));
+                let cacheObj = faceButtonObj.parent().parent().prev().children("textarea");
+                cacheObj.val(cacheObj.val() + ($(this).attr('title')));
                 $('#emotions').remove();
             });
 

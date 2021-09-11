@@ -13,6 +13,7 @@
     <result column="head_img" jdbcType="VARCHAR" property="headImg" />
     <result column="level" jdbcType="INTEGER" property="level" />
     <result column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <result column="replay_nick_name" jdbcType="VARCHAR" property="replayNickName" />
     <result column="msg" jdbcType="VARCHAR" property="msg" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
@@ -77,10 +78,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, article_id, user_id, nick_name, phone, mail, weixin, qq, head_img, level, reply_id, 
+    id, article_id, user_id, nick_name, phone, mail, weixin, qq, head_img, level, reply_id, replay_nick_name,
     msg, status, created_at, updated_at
   </sql>
-  <insert id="insertSelective" parameterType="com.personalblog.dataobject.ArticleLeaveDO">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.personalblog.dataobject.ArticleLeaveDO">
     insert into article_leave
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -115,6 +116,9 @@
       </if>
       <if test="replyId != null">
         reply_id,
+      </if>
+      <if test="replayNickName != null">
+        replay_nick_name,
       </if>
       <if test="msg != null">
         msg,
@@ -156,6 +160,9 @@
       </if>
       <if test="replyId != null">
         #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replayNickName != null">
+        #{replayNickName,jdbcType=VARCHAR},
       </if>
       <if test="msg != null">
         #{msg,jdbcType=VARCHAR},

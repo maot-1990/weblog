@@ -202,12 +202,12 @@
                                                                             </div>
                                                                             <div class="tools-box">
                                                                                 <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
-                                                                                <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\');'}" value="提交评论"></div>
+                                                                                <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\',\'\');'}" value="提交评论"></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div id="info-show">
-                                                                        <ul>
+                                                                        <ul class="first_show">
                                                                             <li th:each="item,itemStart : ${articleLeavePage.items}">
                                                                                 <div class="head-face">
                                                                                     <img th:src="${item.parent.headImg}==null ? '/img/img57.jpg' : @{'/show-img/' + ${item.parent.headImg}}" />
@@ -215,7 +215,36 @@
                                                                                 <div class="reply-cont">
                                                                                     <p class="username">[[${item.parent.nickName}]]</p>
                                                                                     <p class="comment-body comment-face">[[${item.parent.msg}]]</p>
-                                                                                    <p class="comment-footer"><span>[[${item.parent.createAtStr}]]</span>　<a>回复</a></p>
+                                                                                    <p class="comment-footer"><span>[[${item.parent.createAtStr}]]</span>　<a onclick="showReply(this)">回复</a></p>
+
+                                                                                    <div class="content replay-window">
+                                                                                        <div class="cont-box">
+                                                                                            <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
+                                                                                        </div>
+                                                                                        <div class="tools-box">
+                                                                                            <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
+                                                                                            <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item.parent.nickName} + '\', \'first\');'}" value="回复"></div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="reply-second">
+                                                                                        <ul class="second_show">
+                                                                                            <li th:each="item2,itemStart2 : ${item.children}">
+                                                                                                <span class="username" style="display: inline;">[[${item2.nickName}]]：@[[${item2.replayNickName}]]</span>
+                                                                                                <span class="comment-body comment-face">[[${item2.msg}]]</span>
+                                                                                                <p class="comment-footer"><span>[[${item2.createAtStr}]]</span>　<a onclick="showReply(this)">回复</a></p>
+                                                                                                <div class="content replay-window">
+                                                                                                    <div class="cont-box">
+                                                                                                        <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
+                                                                                                    </div>
+                                                                                                    <div class="tools-box">
+                                                                                                        <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
+                                                                                                        <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item2.nickName} + '\', \'second\');'}" value="回复"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
                                                                                 </div>
                                                                             </li>
                                                                         </ul>

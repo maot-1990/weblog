@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by tao.mao on 2020/8/17.
@@ -46,8 +47,10 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
         List<ArticleLeaveDO> level1 = articleLeaveMapper.selectByExample(example);
 
         example.clear();
-        example.createCriteria().andArticleIdEqualTo(request.getArticleId()).andStatusEqualTo(1).andLevelEqualTo(2);
-        example.setOrderByClause(" created_at desc");
+        example.createCriteria().andArticleIdEqualTo(request.getArticleId())
+                .andStatusEqualTo(1).andLevelEqualTo(2)
+                .andReplyIdIn(level1.stream().map(leave -> leave.getId()).collect(Collectors.toList()));
+        example.setOrderByClause(" created_at");
         List<ArticleLeaveDO> level2 = articleLeaveMapper.selectByExample(example);
 
         for (ArticleLeaveDO articleLeave1 : level1) {
@@ -87,7 +90,7 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
             articleLeave.setUserId(user.getId());
             articleLeave.setHeadImg(user.getHeadImg());
         }
-        articleLeaveMapper.insertSelective(articleLeave);
+        Integer id = articleLeaveMapper.insertSelective(articleLeave);
         articleManualMapper.updateLeaveCountInc(articleLeave.getArticleId());
         return BeanUtils.copyProperties(articleLeave, ArticleLeaveVO.class);
     }

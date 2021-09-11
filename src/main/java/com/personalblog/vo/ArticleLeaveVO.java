@@ -26,6 +26,8 @@ public class ArticleLeaveVO {
 
     private Integer replyId;
 
+    private String replayNickName;
+
     private String msg;
 
     private Date createdAt;

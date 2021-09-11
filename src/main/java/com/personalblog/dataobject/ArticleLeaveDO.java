@@ -32,6 +32,8 @@ public class ArticleLeaveDO {
 
     private Integer replyId;
 
+    private String replayNickName;
+
     private String msg;
 
     private Integer status;
@@ -163,6 +165,14 @@ public class ArticleLeaveDO {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getReplayNickName() {
+        return replayNickName;
+    }
+
+    public void setReplayNickName(String replayNickName) {
+        this.replayNickName = replayNickName;
     }
 
     @Override
