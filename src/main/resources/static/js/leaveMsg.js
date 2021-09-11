@@ -43,7 +43,7 @@ function commentInsert(data) {
     let html = '<li>';
     html += '<div class="head-face">';
     if (data.headImg == '' || data.headImg == null) {
-        html += '<img src="/img/img57.jpg" />';
+        html += '<img src="/img/1.jpeg" />';
     } else {
         html += '<img src="/show-img/' + data.headImg + '" />';
     }
@@ -80,7 +80,7 @@ function commentHasMoreInsert(data) {
     let html = '<li>';
     html += '<div class="head-face">';
     if (data.parent.headImg == '' || data.parent.headImg == null) {
-        html += '<img src="/img/img57.jpg" />';
+        html += '<img src="/img/1.jpeg" />';
     } else {
         html += '<img src="/show-img/' + data.parent.headImg + '" />';
     }
