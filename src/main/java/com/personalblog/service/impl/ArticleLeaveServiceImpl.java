@@ -14,6 +14,7 @@ import com.personalblog.util.BeanUtils;
 import com.personalblog.util.UUId;
 import com.personalblog.vo.ArticleLeaveVO;
 import com.personalblog.vo.UserVO;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -94,8 +95,11 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
             articleLeave.setUserId(user.getId());
             articleLeave.setHeadImg(user.getHeadImg());
         }
-        Integer id = articleLeaveMapper.insertSelective(articleLeave);
-        articleManualMapper.updateLeaveCountInc(articleLeave.getArticleId());
+        articleLeaveMapper.insertSelective(articleLeave);
+        if (articleLeave.getReplyId() == null) {
+            articleManualMapper.updateLeaveCountInc(articleLeave.getArticleId());
+        }
+
         return BeanUtils.copyProperties(articleLeave, ArticleLeaveVO.class);
     }
 
