@@ -16,6 +16,7 @@ import com.personalblog.vo.ArticleLeaveVO;
 import com.personalblog.vo.UserVO;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -46,23 +47,26 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
         example.setOrderByClause(" created_at desc limit " + start + "," + request.getPageSize());
         List<ArticleLeaveDO> level1 = articleLeaveMapper.selectByExample(example);
 
-        example.clear();
-        example.createCriteria().andArticleIdEqualTo(request.getArticleId())
-                .andStatusEqualTo(1).andLevelEqualTo(2)
-                .andReplyIdIn(level1.stream().map(leave -> leave.getId()).collect(Collectors.toList()));
-        example.setOrderByClause(" created_at");
-        List<ArticleLeaveDO> level2 = articleLeaveMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(level1)) {
+            example.clear();
+            example.createCriteria().andArticleIdEqualTo(request.getArticleId())
+                    .andStatusEqualTo(1).andLevelEqualTo(2)
+                    .andReplyIdIn(level1.stream().map(leave -> leave.getId()).collect(Collectors.toList()));
+            example.setOrderByClause(" created_at");
+            List<ArticleLeaveDO> level2 = articleLeaveMapper.selectByExample(example);
 
-        for (ArticleLeaveDO articleLeave1 : level1) {
-            ArticleLeaveBO leaveBO = new ArticleLeaveBO();
-            leaveBO.setParent(articleLeave1);
-            for (ArticleLeaveDO articleLeave2 : level2) {
-                if (articleLeave1.getId().equals(articleLeave2.getReplyId())) {
-                    leaveBO.getChildren().add(articleLeave2);
+            for (ArticleLeaveDO articleLeave1 : level1) {
+                ArticleLeaveBO leaveBO = new ArticleLeaveBO();
+                leaveBO.setParent(articleLeave1);
+                for (ArticleLeaveDO articleLeave2 : level2) {
+                    if (articleLeave1.getId().equals(articleLeave2.getReplyId())) {
+                        leaveBO.getChildren().add(articleLeave2);
+                    }
                 }
+                leaves.add(leaveBO);
             }
-            leaves.add(leaveBO);
         }
+
         Page<ArticleLeaveBO> page = new Page<>();
         page.setPageSize(request.getPageSize());
         page.setCurrentPage(request.getCurrentIndex());

@@ -19,6 +19,8 @@ function leave(obj, articleId, replyId, replyName, replyType) {
         success: function (data) {
             if (replyId == "") {
                 $('#info-show .first_show').prepend(commentInsert(data.data));
+                // 更新评论总数
+                $("#infocommentnumarea").html(parseInt($("#infocommentnumarea").html()) + 1)
             } else {
                 if (replyType == 'first') {
                     $(obj).parent().parent().parent().next().find(".second_show").append(commentReplyInsert(data.data));
@@ -30,8 +32,6 @@ function leave(obj, articleId, replyId, replyName, replyType) {
 
             $('.comment_area').val("");
             $('.replay-window').hide(360);
-            // 更新评论总数
-            $("#infocommentnumarea").html(parseInt($("#infocommentnumarea").html()) + 1)
 
             $('.face-icon').unbind("click");
             $('.face-icon').sinaEmotion($('.comment_area'));
