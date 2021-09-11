@@ -169,5 +169,12 @@ public class ArticleController {
         return "contribution";
     }
 
+    @GetMapping("/board")
+    public String board(ModelMap mode) {
+        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
+        mode.addAttribute("popular", popular);
+        return "board";
+    }
+
 
 }

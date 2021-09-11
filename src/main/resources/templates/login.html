@@ -30,17 +30,8 @@
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="/register" method="post" enctype="multipart/form-data" onsubmit="return checkRegisterParam()">
-			<h1>第三方按钮注册</h1>
-			<div class="social-container"> <a href="#" class="social">
-				<ion-icon name="logo-facebook"></ion-icon>
-			</a> <a href="#" class="social">
-				<ion-icon name="logo-googleplus"></ion-icon>
-			</a> <a href="#" class="social">
-				<ion-icon name="logo-linkedin"></ion-icon>
-			</a> </div>
-			<span>或自主注册</span>
-
-			<div class="wrap form-group" style="overflow-y: scroll;height: 285px;">
+			<h1>注册</h1>
+			<div class="wrap form-group" style="height: 340px;">
 				<input type="text" value="" id="register_nickName" name="nickName" placeholder="昵称" size="30">
 				<input type="text" value="" id="register_userName" name="userName" size="30" aria-required="true" placeholder="用户名">
 				<input type="password" value="" id="register_passWord" name="passWord" size="30" aria-required="true" placeholder="密码">
@@ -62,13 +53,17 @@
 	<div class="form-container sign-in-container">
 		<form action="/login" method="post" onsubmit="return checkLoginParam();">
 			<h1>第三方登录</h1>
-			<div class="social-container"> <a href="#" class="social">
-				<ion-icon name="logo-facebook"></ion-icon>
-			</a> <a href="#" class="social">
-				<ion-icon name="logo-googleplus"></ion-icon>
-			</a> <a href="#" class="social">
-				<ion-icon name="logo-linkedin"></ion-icon>
-			</a> </div>
+			<div class="social-container">
+				<a href="#" class="social">
+					<ion-icon name="logo-qq"></ion-icon>
+				</a>
+				<a href="#" class="social">
+					<ion-icon name="logo-wechat"></ion-icon>
+				</a>
+				<a href="#" class="social">
+					<ion-icon name="logo-linkedin"></ion-icon>
+				</a>
+			</div>
 			<span>或用户名登录</span>
 			<input type="text" id="author" name="userName" aria-required="true" placeholder="用户名">
 			<input type="password" id="password" name="passWord" aria-required="true" placeholder="密码">
@@ -81,11 +76,13 @@
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
+				<a href="/">返回首页</a>
 				<h1>欢迎回来</h1>
 				<p>与我们保持联系请登录您的个人信息</p>
 				<button style="cursor: pointer;" class="ghost" id="signIn">登录</button>
 			</div>
 			<div class="overlay-panel overlay-right">
+				<a href="/">返回首页</a>
 				<h1>欢迎光临</h1>
 				<p>输入您的个人资料，并与我们一起开始旅程</p>
 				<button style="cursor: pointer;" class="ghost" id="signUp">注册</button>
