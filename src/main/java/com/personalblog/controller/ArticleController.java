@@ -112,7 +112,7 @@ public class ArticleController {
         ArticleDO article = articleService.getById(id);
 
         if (article == null) {
-            throw new BaseException("not found", ResponseCode.NOT_FOUND);
+            throw new BaseException("你访问的文章不存在", ResponseCode.NOT_FOUND);
         }
         ArticleDO preArticle = articleService.getById(id - 1);
         ArticleDO afterArticle = articleService.getById(id + 1);
