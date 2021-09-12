@@ -8,6 +8,9 @@
     <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
     <result column="intro" jdbcType="VARCHAR" property="intro" />
     <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birth" jdbcType="VARCHAR" property="birth" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="weixin" jdbcType="VARCHAR" property="weixin" />
     <result column="head_img" jdbcType="VARCHAR" property="headImg" />
@@ -78,8 +81,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, nick_name, user_name, pass_word, intro, email, phone, weixin, head_img, status, 
-    type, level, article_total, last_login_at, created_at, updated_at
+    id, nick_name, user_name, pass_word, intro, email, sex, birth, city, phone, weixin, 
+    head_img, status, type, level, article_total, last_login_at, created_at, updated_at
   </sql>
   <insert id="insertSelective" parameterType="com.personalblog.dataobject.UserDO">
     insert into user
@@ -101,6 +104,15 @@
       </if>
       <if test="email != null">
         email,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="city != null">
+        city,
       </if>
       <if test="phone != null">
         phone,
@@ -146,6 +158,15 @@
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
@@ -175,12 +196,14 @@
   <insert id="batchInsert" parameterType="com.personalblog.dataobject.UserDO">
     insert into user (id, nick_name, user_name, 
       pass_word, intro, email, 
+      sex, birth, city, 
       phone, weixin, head_img, 
       status, type, level, 
       article_total, last_login_at) values 
     <foreach collection="items" item="item" separator=",">
       (#{item.id,jdbcType=CHAR},#{item.nickName,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR},
         #{item.passWord,jdbcType=VARCHAR},#{item.intro,jdbcType=VARCHAR},#{item.email,jdbcType=VARCHAR},
+        #{item.sex,jdbcType=VARCHAR},#{item.birth,jdbcType=VARCHAR},#{item.city,jdbcType=VARCHAR},
         #{item.phone,jdbcType=VARCHAR},#{item.weixin,jdbcType=VARCHAR},#{item.headImg,jdbcType=VARCHAR},
         #{item.status,jdbcType=TINYINT},#{item.type,jdbcType=VARCHAR},#{item.level,jdbcType=INTEGER},
         #{item.articleTotal,jdbcType=INTEGER},#{item.lastLoginAt,jdbcType=TIMESTAMP})
@@ -203,6 +226,15 @@
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
@@ -251,6 +283,15 @@
       </if>
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birth != null">
+        birth = #{record.birth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},

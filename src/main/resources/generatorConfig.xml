@@ -40,7 +40,7 @@
             targetPackage="com.personalblog.dao"
             targetProject="src/main/java" type="XMLMAPPER" />
 
-        <table tableName="article" enableCountByExample="true"
+        <table tableName="user" enableCountByExample="true"
             enableUpdateByExample="true" enableDeleteByExample="true"
             enableSelectByExample="true" selectByExampleQueryId="true">
             <columnOverride column="created_at"

@@ -6,7 +6,7 @@ import java.util.Date;
  * Generate by kucoin generator 
  * 
  * @author kucoin-mybatis-generator
- * @since 2020-12-16
+ * @since 2021-09-12
  */
 public class UserDO {
     /**
@@ -32,6 +32,12 @@ public class UserDO {
      * 邮箱地址
      */
     private String email;
+
+    private String sex;
+
+    private String birth;
+
+    private String city;
 
     /**
      * 手机号
@@ -135,6 +141,30 @@ public class UserDO {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     /**
@@ -253,6 +283,9 @@ public class UserDO {
         sb.append(", passWord=").append(passWord);
         sb.append(", intro=").append(intro);
         sb.append(", email=").append(email);
+        sb.append(", sex=").append(sex);
+        sb.append(", birth=").append(birth);
+        sb.append(", city=").append(city);
         sb.append(", phone=").append(phone);
         sb.append(", weixin=").append(weixin);
         sb.append(", headImg=").append(headImg);
