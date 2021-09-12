@@ -107,55 +107,58 @@
 <script src="/js/script.js"></script>
 <script>
 	function QClogin() {
-		QC.Login.showPopup({
+		let windowObj = QC.Login.showPopup({
 			appId:"101970455",
 			redirectURI:"https://www.weblog.icu/qback"
 		});
 
-	}
+		setInterval(function () {
+			if(windowObj.closed) {
+				if(QC.Login.check()) {
+					let qcOpenId;
+					let qcAccessToken;
+					QC.Login.getMe(function(openId, accessToken){
+						console.log("opendId = " + openId + ", accessToken = " + accessToken);
+						qcOpenId = openId;
+						qcAccessToken = accessToken;
 
-	if(QC.Login.check()) {
-		let qcOpenId;
-		let qcAccessToken;
-		QC.Login.getMe(function(openId, accessToken){
-			console.log("opendId = " + openId + ", accessToken = " + accessToken);
-			qcOpenId = openId;
-			qcAccessToken = accessToken;
+						QC.api("get_user_info", {
+							"access_token": qcAccessToken,
+							"oauth_consumer_key" : "101970455",
+							"openid" : qcOpenId}, "json", "GET")
+								.success(function (data){
+									let paramData = {
+										"id": qcOpenId,
+										"nickName": data.data.nickname,
+										"userName": data.data.nickname,
+										"sex": data.data.gender,
+										"birth": data.data.year,
+										"city": data.data.city,
+										"headImg": data.data.figureurl_2
+									}
+									$.ajax({
+										type: "POST",
+										dataType: "json",
+										url: "/qback-login",
+										data: JSON.stringify(paramData),
+										contentType: "application/json;charset=utf-8",
+										success: function (data) {
+											if (data.success) {
 
-			QC.api("get_user_info", {
-				"access_token": qcAccessToken,
-				"oauth_consumer_key" : "101970455",
-				"openid" : qcOpenId}, "json", "GET")
-					.success(function (data){
-						let paramData = {
-							"id": qcOpenId,
-							"nickName": data.data.nickname,
-							"userName": data.data.nickname,
-							"sex": data.data.gender,
-							"birth": data.data.year,
-							"city": data.data.city,
-							"headImg": data.data.figureurl_2
-						}
-						$.ajax({
-							type: "POST",
-							dataType: "json",
-							url: "/qback-login",
-							data: JSON.stringify(paramData),
-							contentType: "application/json;charset=utf-8",
-							success: function (data) {
-								if (data.success) {
-
-									window.location.reload();
+												window.location.reload();
+											}
+										}
+									})
+								}).error(function (data) {
+									console.log("错误信息：" + data.data.nickName)
 								}
-							}
-						})
-					}).error(function (data) {
-						console.log("错误信息：" + data.data.nickName)
-					}
-			);
-		});
-	}
+						);
+					});
+				}
+			}
+		}, 5000)
 
+	}
 
 </script>
 
