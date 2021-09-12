@@ -31,6 +31,9 @@ public class LoginController {
     public String loginPage(String uri, ModelMap mode) {
         mode.addAttribute("uri", uri);
         if (BlogContext.getCurrentUser() != null) {
+            if (StringUtils.isNotEmpty(uri)) {
+                return "redirect:" + uri.replaceAll("_", "?");
+            }
             return "redirect:/";
         }
         return "login";

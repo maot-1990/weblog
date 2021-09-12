@@ -61,7 +61,7 @@
 		<form action="/login" method="post" onsubmit="return checkLoginParam();">
 			<h1>第三方登录</h1>
 			<div class="social-container">
-				<a class="social" onclick="QClogin()">
+				<a style="cursor: pointer;" class="social" onclick="QClogin()">
 					<!--<span id="qqLoginBtn"></span>
 					<script type="text/javascript">
 						QC.Login({
@@ -112,29 +112,50 @@
 			redirectURI:"https://www.weblog.icu/qback"
 		});
 
+	}
+
+	if(QC.Login.check()) {
 		let qcOpenId;
 		let qcAccessToken;
 		QC.Login.getMe(function(openId, accessToken){
 			console.log("opendId = " + openId + ", accessToken = " + accessToken);
 			qcOpenId = openId;
 			qcAccessToken = accessToken;
+
+			QC.api("get_user_info", {
+				"access_token": qcAccessToken,
+				"oauth_consumer_key" : "101970455",
+				"openid" : qcOpenId}, "json", "GET")
+					.success(function (data){
+						let paramData = {
+							"id": qcOpenId,
+							"nickName": data.data.nickname,
+							"userName": data.data.nickname,
+							"sex": data.data.gender,
+							"birth": data.data.year,
+							"city": data.data.city,
+							"headImg": data.data.figureurl_2
+						}
+						$.ajax({
+							type: "POST",
+							dataType: "json",
+							url: "/qback-login",
+							data: JSON.stringify(paramData),
+							contentType: "application/json;charset=utf-8",
+							success: function (data) {
+								if (data.success) {
+
+									window.location.reload();
+								}
+							}
+						})
+					}).error(function (data) {
+						console.log("错误信息：" + data.data.nickName)
+					}
+			);
 		});
-
-
-		QC.api("get_user_info", {
-					"access_token": qcAccessToken,
-					"oauth_consumer_key" : "101970455",
-					"openid" : qcOpenId}, "json", "GET")
-				.success(function (data){
-					console.log("昵称" + data.data.nickname)
-				}).error(function (data) {
-					console.log("错误信息：" + data.data.nickName)
-				}
-		);
-
-
-
 	}
+
 
 </script>
 

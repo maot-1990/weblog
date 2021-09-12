@@ -69,19 +69,31 @@ public class ImgServiceImpl implements ImgService {
 
         ImgStoreDO imgStore;
         try {
-            String id = UUId.getUUId();
+
             String imgType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-            File imgFile = new File(imgPath + id + "." + imgType);
+            imgStore = uploadByte(file.getBytes(), imgType, user);
+        } catch (IOException e) {
+            throw new BaseException("上传文件异常", ResponseCode.BIZ_ERROR);
+        }
+        return imgStore;
+    }
+
+    @Override
+    public ImgStoreDO uploadByte(byte[] bytes, String type, UserVO user) {
+        ImgStoreDO imgStore;
+        try {
+            String id = UUId.getUUId();
+            File imgFile = new File(imgPath + id + "." + type);
             if (!imgFile.exists()) {
                 imgFile.createNewFile();
             }
             FileOutputStream fos = new FileOutputStream(imgFile);
-            fos.write(file.getBytes());
+            fos.write(bytes);
             fos.close();
             imgStore = new ImgStoreDO();
             imgStore.setId(id);
-            imgStore.setType(imgType);
-            imgStore.setSize((long) (file.getBytes().length / 1024));
+            imgStore.setType(type);
+            imgStore.setSize((long) (bytes.length / 1024));
             if (user != null) {
                 imgStore.setUploadUserId(user.getId());
                 imgStore.setNickName(user.getNickName());

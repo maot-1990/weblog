@@ -58,7 +58,8 @@ public class UserServiceImpl implements UserService {
     public UserVO getUserById(String userId) {
         UserDOExample example = new UserDOExample();
         example.createCriteria().andIdEqualTo(userId);
-        return BeanUtils.copyProperties(userMapper.selectOneByExample(example), UserVO.class);
+        UserDO user = userMapper.selectOneByExample(example);
+        return user == null ? null : BeanUtils.copyProperties(user, UserVO.class);
     }
 
 }

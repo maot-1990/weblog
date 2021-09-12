@@ -16,6 +16,8 @@ public interface ImgService {
 
     ImgStoreDO upload(MultipartFile file, UserVO user);
 
+    ImgStoreDO uploadByte(byte[] bytes, String type, UserVO user);
+
     void getVerifyCode(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
     void verifyCode(HttpServletRequest request, String code);
