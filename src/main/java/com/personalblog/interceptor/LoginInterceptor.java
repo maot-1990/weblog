@@ -58,7 +58,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         UserVO user = (UserVO) session.getAttribute(USER);
         // 验证用户类型
-        if (!UserTypeEnum.getUsers().contains(user.getType())) {
+        if (!UserTypeEnum.getAuthorUsers().contains(user.getType())) {
             throw new BaseException("没有权限，请联系管理员", ResponseCode.NO_AUTH);
         }
         if (user.getStatus() == 0) {
