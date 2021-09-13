@@ -52,8 +52,8 @@ public class QBackServiceImpl implements QBackService {
 
         log.info("收到QQ快速注册用户信息：" + user.toString());
         // 先判定用户存不存在
-        UserVO userOld = userService.getUserById(user.getId());
-        if (userOld == null) {
+        UserVO userVO = userService.getUserById(user.getId());
+        if (userVO == null) {
             try {
                 ImgStoreDO imgStore = new ImgStoreDO();
                 if (StringUtils.isNotBlank(user.getHeadImg())) {
@@ -81,7 +81,7 @@ public class QBackServiceImpl implements QBackService {
                 user.setStatus(1);
                 user.setHeadImg(imgStore.getId());
                 userMapper.insertSelective(user);
-
+                userVO = BeanUtils.copyProperties(user, UserVO.class);
             } catch (Exception e) {
                 log.error("上传文件异常：" + e.getMessage());
                 throw new BaseException(e.getMessage(), ResponseCode.BIZ_ERROR);
@@ -91,7 +91,7 @@ public class QBackServiceImpl implements QBackService {
         // 设置用户登录状态
         ServletRequestAttributes servletRequest = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpSession session = servletRequest.getRequest().getSession();
-        session.setAttribute(USER, BeanUtils.copyProperties(user, UserVO.class));
+        session.setAttribute(USER, userVO);
         BlogContext.session.put(session.getId(), session);
     }
 }
