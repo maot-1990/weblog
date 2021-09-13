@@ -129,7 +129,7 @@
 										"sex": data.data.gender,
 										"birth": data.data.year,
 										"city": data.data.city,
-										"headImg": data.data.figureurl_2
+										"headImg": data.data.figureurl_qq_2
 									}
 									$.ajax({
 										type: "POST",
@@ -145,7 +145,7 @@
 										}
 									})
 								}).error(function (data) {
-									console.log("错误信息：" + data.data.nickName)
+									console.log("错误信息：" + JSON.stringify(data))
 								}
 						);
 					});
