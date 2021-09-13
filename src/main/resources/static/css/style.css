@@ -701,6 +701,14 @@ select {
     text-align: right;
 }
 
+.nav #navbar-category-29 {
+    height: 69px !important;
+}
+
+.sub-nav #navbar-category-29 {
+    height: 40px !important;
+}
+
 .pull-right form input {
     padding: 5px 35px 5px 25px;
     width: 130px;

@@ -172,13 +172,17 @@
                         <div class="widget widget-tie social" id="a">
                             <div class="about_img">
                                 <div class="about_bg"> <img src="/img/userbg.png"> </div>
-                                <div class="about_avatar"><img src="/img/avatar.jpeg"></div>
+                                <div class="about_avatar">
+                                    <img th:if="${session.user==null}" src="/img/avatar.jpeg">
+                                    <img th:if="${session.user!=null}" th:src="@{'/show-img/' + ${session.user.headImg}}">
+                                </div>
                             </div>
-                            <div class="about_name"> 街角下的蚂蚁<span>新任站长</span> </div>
+                            <div class="about_name" th:if="${session.user==null}"> 街角下的蚂蚁<span>新任站长</span> </div>
+                            <div class="about_name" th:if="${session.user!=null}"> [[${session.user.nickName}]] </div>
                             <div class="ul ul_distance">
                                 <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=779396604&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" target="_blank" class="social_a social_contact social_qq" rel="nofollow" title="联系站长"><i class="fa fa-qq f-contact"></i></a>
-                                <a class="social_a social_contact social_weixin" href="#" title="加我微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="img/wx.png" alt="扫描微信"></span></a>
-                                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=779396604@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给我写信"><i class="fa fa-envelope f-contact"></i></a>
+                                <a class="social_a social_contact social_weixin" href="#" title="加站长微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="img/wx.png" alt="加站长微信"></span></a>
+                                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=779396604@qq.com" target="_blank" class="social_a social_email social_contact" rel="nofollow" title="给站长写信"><i class="fa fa-envelope f-contact"></i></a>
                                 <a href="http://weibo.com/" target="_blank" class="social_a social_contact social_weibo" rel="nofollow" title="新浪微博"><i class="fa fa-weibo f-contact"></i></a>
                             </div>
                             <p class="about_tag">个人博客，专注于IT类技术分享+实用小工具分享+网站优化，
