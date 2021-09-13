@@ -1,6 +1,6 @@
 
 server:
-  port: 8082
+  port: 8083
   tomcat:
     max-connections: 1000
     max-threads: 300

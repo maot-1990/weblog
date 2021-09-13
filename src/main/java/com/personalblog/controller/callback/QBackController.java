@@ -23,7 +23,8 @@ public class QBackController {
 
     @GetMapping("/qback")
     public String qback(HttpServletRequest request) {
-        return "redirect:/";
+        /*return "redirect:/";*/
+        return "qback";
     }
 
     @PostMapping("/qback-login")

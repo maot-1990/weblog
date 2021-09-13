@@ -111,9 +111,10 @@
 			appId:"101970455",
 			redirectURI:"https://www.weblog.icu/qback"
 		});
-
+		let flag = true;
 		setInterval(function () {
-			if(windowObj.closed) {
+			if(windowObj.closed && flag) {
+				flag = false;
 				if(QC.Login.check()) {
 					let qcOpenId;
 					let qcAccessToken;
@@ -156,7 +157,7 @@
 					});
 				}
 			}
-		}, 500)
+		}, 200)
 
 	}
 

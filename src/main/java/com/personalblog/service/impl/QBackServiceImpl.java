@@ -5,6 +5,8 @@ import com.personalblog.dao.UserMapper;
 import com.personalblog.dataobject.ImgStoreDO;
 import com.personalblog.dataobject.UserDO;
 import com.personalblog.enums.UserTypeEnum;
+import com.personalblog.exception.BaseException;
+import com.personalblog.response.ResponseCode;
 import com.personalblog.service.ImgService;
 import com.personalblog.service.QBackService;
 import com.personalblog.service.UserService;
@@ -49,49 +51,47 @@ public class QBackServiceImpl implements QBackService {
     public void qbackLogin(UserDO user) {
 
         log.info("收到QQ快速注册用户信息：" + user.toString());
-        try {
-            ImgStoreDO imgStore = new ImgStoreDO();
-            if (StringUtils.isNotBlank(user.getHeadImg())) {
-                URL url = new URL(user.getHeadImg());
-                URLConnection con = url.openConnection();
-                con.setConnectTimeout(5000);
-                InputStream is = con.getInputStream();
+        // 先判定用户存不存在
+        UserVO userOld = userService.getUserById(user.getId());
+        if (userOld == null) {
+            try {
+                ImgStoreDO imgStore = new ImgStoreDO();
+                if (StringUtils.isNotBlank(user.getHeadImg())) {
+                    URL url = new URL(user.getHeadImg());
+                    URLConnection con = url.openConnection();
+                    con.setConnectTimeout(5000);
+                    InputStream is = con.getInputStream();
 
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                byte[] buffer = new byte[is.available()];
-                int index = 0;
-                while ((index = is.read(buffer)) != -1) {
-                    bos.write(buffer, 0, index);
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[is.available()];
+                    int index = 0;
+                    while ((index = is.read(buffer)) != -1) {
+                        bos.write(buffer, 0, index);
+                    }
+                    is.close();
+                    bos.flush();
+
+                    log.info("byte 大小：" + bos.toByteArray().length);
+                    imgStore = imgService.uploadByte(bos.toByteArray(), "jpeg", BeanUtils.copyProperties(user, UserVO.class));
                 }
-                is.close();
-                bos.flush();
 
-                log.info("byte 大小：" + bos.toByteArray().length);
-                imgStore = imgService.uploadByte(bos.toByteArray(), "jpeg", BeanUtils.copyProperties(user, UserVO.class));
-            }
-
-            // 注册用户
-            UserVO userOld = userService.getUserById(user.getId());
-            if (userOld == null) {
                 user.setArticleTotal(0);
                 user.setType(UserTypeEnum.user.name());
                 user.setLevel(1);
                 user.setStatus(1);
                 user.setHeadImg(imgStore.getId());
                 userMapper.insertSelective(user);
-            } else {
-                user.setHeadImg(imgStore.getId());
-                userService.updateUser(user);
-            }
 
-            // 设置用户登录状态
-            ServletRequestAttributes servletRequest = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-            HttpSession session = servletRequest.getRequest().getSession();
-            session.setAttribute(USER, BeanUtils.copyProperties(user, UserVO.class));
-            BlogContext.session.put(session.getId(), session);
-        } catch (Exception e) {
-            log.error("上传文件异常：" + e.getMessage());
+            } catch (Exception e) {
+                log.error("上传文件异常：" + e.getMessage());
+                throw new BaseException(e.getMessage(), ResponseCode.BIZ_ERROR);
+            }
         }
 
+        // 设置用户登录状态
+        ServletRequestAttributes servletRequest = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpSession session = servletRequest.getRequest().getSession();
+        session.setAttribute(USER, BeanUtils.copyProperties(user, UserVO.class));
+        BlogContext.session.put(session.getId(), session);
     }
 }

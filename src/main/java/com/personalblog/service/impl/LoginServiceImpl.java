@@ -16,6 +16,7 @@ import com.personalblog.util.BeanUtils;
 import com.personalblog.util.UUId;
 import com.personalblog.vo.UserVO;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -76,7 +77,11 @@ public class LoginServiceImpl implements LoginService {
         } else {
             user.setStatus(StatusEnum.ONE.getStatus());
         }
-        userMapper.insertSelective(user);
+        try {
+            userMapper.insertSelective(user);
+        } catch (DuplicateKeyException e) {
+            throw new BaseException("用户名重复", ResponseCode.PARAM_ERROR);
+        }
     }
 
     private void preRegisterCheck(UserDO user, MultipartFile file) {
