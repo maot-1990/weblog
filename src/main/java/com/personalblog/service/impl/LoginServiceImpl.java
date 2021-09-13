@@ -44,10 +44,10 @@ public class LoginServiceImpl implements LoginService {
         UserDOExample example = new UserDOExample();
         example.createCriteria().andUserNameEqualTo(userName).andPassWordEqualTo(passWord);
         UserDO user = userMapper.selectOneByExample(example);
-        UserVO userVO = BeanUtils.copyProperties(user, UserVO.class);
-        if (userVO == null) {
-            throw new BaseException("验证失败", ResponseCode.NOT_FOUND);
+        if (user == null) {
+            throw new BaseException("用户名或密码不对", ResponseCode.NOT_FOUND);
         }
+        UserVO userVO = BeanUtils.copyProperties(user, UserVO.class);
         ServletRequestAttributes servletRequest = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpSession session = servletRequest.getRequest().getSession();
         session.setAttribute(USER, userVO);
