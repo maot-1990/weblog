@@ -449,62 +449,52 @@ public class MessageLeaveDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdEqualTo(String value) {
+        public Criteria andReplyIdEqualTo(Integer value) {
             addCriterion("reply_id =", value, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdNotEqualTo(String value) {
+        public Criteria andReplyIdNotEqualTo(Integer value) {
             addCriterion("reply_id <>", value, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdGreaterThan(String value) {
+        public Criteria andReplyIdGreaterThan(Integer value) {
             addCriterion("reply_id >", value, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdGreaterThanOrEqualTo(String value) {
+        public Criteria andReplyIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("reply_id >=", value, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdLessThan(String value) {
+        public Criteria andReplyIdLessThan(Integer value) {
             addCriterion("reply_id <", value, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdLessThanOrEqualTo(String value) {
+        public Criteria andReplyIdLessThanOrEqualTo(Integer value) {
             addCriterion("reply_id <=", value, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdLike(String value) {
-            addCriterion("reply_id like", value, "replyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andReplyIdNotLike(String value) {
-            addCriterion("reply_id not like", value, "replyId");
-            return (Criteria) this;
-        }
-
-        public Criteria andReplyIdIn(List<String> values) {
+        public Criteria andReplyIdIn(List<Integer> values) {
             addCriterion("reply_id in", values, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdNotIn(List<String> values) {
+        public Criteria andReplyIdNotIn(List<Integer> values) {
             addCriterion("reply_id not in", values, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdBetween(String value1, String value2) {
+        public Criteria andReplyIdBetween(Integer value1, Integer value2) {
             addCriterion("reply_id between", value1, value2, "replyId");
             return (Criteria) this;
         }
 
-        public Criteria andReplyIdNotBetween(String value1, String value2) {
+        public Criteria andReplyIdNotBetween(Integer value1, Integer value2) {
             addCriterion("reply_id not between", value1, value2, "replyId");
             return (Criteria) this;
         }

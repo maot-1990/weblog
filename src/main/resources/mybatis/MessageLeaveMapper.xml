@@ -7,7 +7,7 @@
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="head_img" jdbcType="VARCHAR" property="headImg" />
     <result column="level" jdbcType="INTEGER" property="level" />
-    <result column="reply_id" jdbcType="VARCHAR" property="replyId" />
+    <result column="reply_id" jdbcType="INTEGER" property="replyId" />
     <result column="reply_nick_name" jdbcType="VARCHAR" property="replyNickName" />
     <result column="msg" jdbcType="VARCHAR" property="msg" />
     <result column="status" jdbcType="TINYINT" property="status" />
@@ -124,7 +124,7 @@
         #{level,jdbcType=INTEGER},
       </if>
       <if test="replyId != null">
-        #{replyId,jdbcType=VARCHAR},
+        #{replyId,jdbcType=INTEGER},
       </if>
       <if test="replyNickName != null">
         #{replyNickName,jdbcType=VARCHAR},
@@ -144,7 +144,7 @@
       ) values 
     <foreach collection="items" item="item" separator=",">
       (#{item.id,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR},
-        #{item.headImg,jdbcType=VARCHAR},#{item.level,jdbcType=INTEGER},#{item.replyId,jdbcType=VARCHAR},
+        #{item.headImg,jdbcType=VARCHAR},#{item.level,jdbcType=INTEGER},#{item.replyId,jdbcType=INTEGER},
         #{item.replyNickName,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT}
         )
     </foreach>
@@ -165,7 +165,7 @@
         level = #{level,jdbcType=INTEGER},
       </if>
       <if test="replyId != null">
-        reply_id = #{replyId,jdbcType=VARCHAR},
+        reply_id = #{replyId,jdbcType=INTEGER},
       </if>
       <if test="replyNickName != null">
         reply_nick_name = #{replyNickName,jdbcType=VARCHAR},
@@ -198,7 +198,7 @@
         level = #{record.level,jdbcType=INTEGER},
       </if>
       <if test="record.replyId != null">
-        reply_id = #{record.replyId,jdbcType=VARCHAR},
+        reply_id = #{record.replyId,jdbcType=INTEGER},
       </if>
       <if test="record.replyNickName != null">
         reply_nick_name = #{record.replyNickName,jdbcType=VARCHAR},

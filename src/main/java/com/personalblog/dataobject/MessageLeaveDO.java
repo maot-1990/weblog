@@ -19,7 +19,7 @@ public class MessageLeaveDO {
 
     private Integer level;
 
-    private String replyId;
+    private Integer replyId;
 
     private String replyNickName;
 
@@ -71,11 +71,11 @@ public class MessageLeaveDO {
         this.level = level;
     }
 
-    public String getReplyId() {
+    public Integer getReplyId() {
         return replyId;
     }
 
-    public void setReplyId(String replyId) {
+    public void setReplyId(Integer replyId) {
         this.replyId = replyId;
     }
 
