@@ -17,6 +17,8 @@ public class MessageLeaveDO {
 
     private String headImg;
 
+    private Integer level;
+
     private String replyId;
 
     private String replyNickName;
@@ -28,8 +30,6 @@ public class MessageLeaveDO {
     private Date createdAt;
 
     private Date updatedAt;
-
-    private String level;
 
     public Integer getId() {
         return id;
@@ -61,6 +61,14 @@ public class MessageLeaveDO {
 
     public void setHeadImg(String headImg) {
         this.headImg = headImg;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public String getReplyId() {
@@ -111,14 +119,6 @@ public class MessageLeaveDO {
         this.updatedAt = updatedAt;
     }
 
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -129,13 +129,13 @@ public class MessageLeaveDO {
         sb.append(", userId=").append(userId);
         sb.append(", userName=").append(userName);
         sb.append(", headImg=").append(headImg);
+        sb.append(", level=").append(level);
         sb.append(", replyId=").append(replyId);
         sb.append(", replyNickName=").append(replyNickName);
         sb.append(", msg=").append(msg);
         sb.append(", status=").append(status);
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);
-        sb.append(", level=").append(level);
         sb.append("]");
         return sb.toString();
     }

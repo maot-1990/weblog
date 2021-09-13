@@ -42,11 +42,6 @@ public interface MessageLeaveMapper {
     MessageLeaveDO selectByPrimaryKey(Integer id);
 
     /**
-     * get record by example with blob column
-     */
-    List<MessageLeaveDO> selectByExampleWithBLOBs(MessageLeaveDOExample example);
-
-    /**
      * get record by example
      */
     List<MessageLeaveDO> selectByExample(MessageLeaveDOExample example);

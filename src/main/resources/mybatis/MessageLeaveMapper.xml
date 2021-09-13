@@ -6,15 +6,13 @@
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="level" jdbcType="INTEGER" property="level" />
     <result column="reply_id" jdbcType="VARCHAR" property="replyId" />
     <result column="reply_nick_name" jdbcType="VARCHAR" property="replyNickName" />
     <result column="msg" jdbcType="VARCHAR" property="msg" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.personalblog.dataobject.MessageLeaveDO">
-    <result column="level" jdbcType="LONGVARCHAR" property="level" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,11 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, user_name, head_img, reply_id, reply_nick_name, msg, status, created_at, 
-    updated_at
-  </sql>
-  <sql id="Blob_Column_List">
-    level
+    id, user_id, user_name, head_img, level, reply_id, reply_nick_name, msg, status, 
+    created_at, updated_at
   </sql>
   <insert id="insertSelective" parameterType="com.personalblog.dataobject.MessageLeaveDO">
     insert into message_leave
@@ -96,6 +91,9 @@
       <if test="headImg != null">
         head_img,
       </if>
+      <if test="level != null">
+        level,
+      </if>
       <if test="replyId != null">
         reply_id,
       </if>
@@ -107,9 +105,6 @@
       </if>
       <if test="status != null">
         status,
-      </if>
-      <if test="level != null">
-        level,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -125,6 +120,9 @@
       <if test="headImg != null">
         #{headImg,jdbcType=VARCHAR},
       </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
       <if test="replyId != null">
         #{replyId,jdbcType=VARCHAR},
       </if>
@@ -137,20 +135,17 @@
       <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="level != null">
-        #{level,jdbcType=LONGVARCHAR},
-      </if>
     </trim>
   </insert>
   <insert id="batchInsert" parameterType="com.personalblog.dataobject.MessageLeaveDO">
     insert into message_leave (id, user_id, user_name, 
-      head_img, reply_id, reply_nick_name, 
-      msg, status, level
+      head_img, level, reply_id, 
+      reply_nick_name, msg, status
       ) values 
     <foreach collection="items" item="item" separator=",">
       (#{item.id,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR},
-        #{item.headImg,jdbcType=VARCHAR},#{item.replyId,jdbcType=VARCHAR},#{item.replyNickName,jdbcType=VARCHAR},
-        #{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT},#{item.level,jdbcType=LONGVARCHAR}
+        #{item.headImg,jdbcType=VARCHAR},#{item.level,jdbcType=INTEGER},#{item.replyId,jdbcType=VARCHAR},
+        #{item.replyNickName,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT}
         )
     </foreach>
   </insert>
@@ -166,6 +161,9 @@
       <if test="headImg != null">
         head_img = #{headImg,jdbcType=VARCHAR},
       </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
       <if test="replyId != null">
         reply_id = #{replyId,jdbcType=VARCHAR},
       </if>
@@ -177,9 +175,6 @@
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="level != null">
-        level = #{level,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -199,6 +194,9 @@
       <if test="record.headImg != null">
         head_img = #{record.headImg,jdbcType=VARCHAR},
       </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
       <if test="record.replyId != null">
         reply_id = #{record.replyId,jdbcType=VARCHAR},
       </if>
@@ -210,9 +208,6 @@
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=TINYINT},
-      </if>
-      <if test="record.level != null">
-        level = #{record.level,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -229,30 +224,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from message_leave
     where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectByExampleWithBLOBs" parameterType="com.personalblog.dataobject.MessageLeaveDOExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from message_leave
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
   </select>
   <select id="selectByExample" parameterType="com.personalblog.dataobject.MessageLeaveDOExample" resultMap="BaseResultMap">
     select
@@ -269,15 +245,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectOneByExample" parameterType="com.personalblog.dataobject.MessageLeaveDOExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectOneByExample" parameterType="com.personalblog.dataobject.MessageLeaveDOExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from message_leave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
