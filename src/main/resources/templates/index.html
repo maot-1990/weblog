@@ -178,7 +178,7 @@
                                 </div>
                             </div>
                             <div class="about_name" th:if="${session.user==null}"> 街角下的蚂蚁<span>新任站长</span> </div>
-                            <div class="about_name" th:if="${session.user!=null}"> [[${session.user.nickName}]] </div>
+                            <div class="about_name" th:if="${session.user!=null}"> [[${session.user.nickName}]] <span>当前登录用户</span> </div>
                             <div class="ul ul_distance">
                                 <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=779396604&amp;site=qq&amp;menu=yes&amp;from=message&amp;isappinstalled=0" target="_blank" class="social_a social_contact social_qq" rel="nofollow" title="联系站长"><i class="fa fa-qq f-contact"></i></a>
                                 <a class="social_a social_contact social_weixin" href="#" title="加站长微信"><i class="fa fa-wechat f-contact"></i><span class="weixin wechat"><img src="img/wx.png" alt="加站长微信"></span></a>
