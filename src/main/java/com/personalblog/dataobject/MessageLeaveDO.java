@@ -6,7 +6,7 @@ import java.util.Date;
  * Generate by kucoin generator 
  * 
  * @author kucoin-mybatis-generator
- * @since 2020-08-27
+ * @since 2021-09-13
  */
 public class MessageLeaveDO {
     private Integer id;
@@ -15,7 +15,11 @@ public class MessageLeaveDO {
 
     private String userName;
 
+    private String headImg;
+
     private String replyId;
+
+    private String replyNickName;
 
     private String msg;
 
@@ -51,12 +55,28 @@ public class MessageLeaveDO {
         this.userName = userName;
     }
 
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
+    }
+
     public String getReplyId() {
         return replyId;
     }
 
     public void setReplyId(String replyId) {
         this.replyId = replyId;
+    }
+
+    public String getReplyNickName() {
+        return replyNickName;
+    }
+
+    public void setReplyNickName(String replyNickName) {
+        this.replyNickName = replyNickName;
     }
 
     public String getMsg() {
@@ -108,7 +128,9 @@ public class MessageLeaveDO {
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
         sb.append(", userName=").append(userName);
+        sb.append(", headImg=").append(headImg);
         sb.append(", replyId=").append(replyId);
+        sb.append(", replyNickName=").append(replyNickName);
         sb.append(", msg=").append(msg);
         sb.append(", status=").append(status);
         sb.append(", createdAt=").append(createdAt);

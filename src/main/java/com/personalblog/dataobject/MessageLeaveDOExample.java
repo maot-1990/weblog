@@ -309,6 +309,76 @@ public class MessageLeaveDOExample {
             return (Criteria) this;
         }
 
+        public Criteria andHeadImgIsNull() {
+            addCriterion("head_img is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgIsNotNull() {
+            addCriterion("head_img is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgEqualTo(String value) {
+            addCriterion("head_img =", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgNotEqualTo(String value) {
+            addCriterion("head_img <>", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgGreaterThan(String value) {
+            addCriterion("head_img >", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgGreaterThanOrEqualTo(String value) {
+            addCriterion("head_img >=", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgLessThan(String value) {
+            addCriterion("head_img <", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgLessThanOrEqualTo(String value) {
+            addCriterion("head_img <=", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgLike(String value) {
+            addCriterion("head_img like", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgNotLike(String value) {
+            addCriterion("head_img not like", value, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgIn(List<String> values) {
+            addCriterion("head_img in", values, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgNotIn(List<String> values) {
+            addCriterion("head_img not in", values, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgBetween(String value1, String value2) {
+            addCriterion("head_img between", value1, value2, "headImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadImgNotBetween(String value1, String value2) {
+            addCriterion("head_img not between", value1, value2, "headImg");
+            return (Criteria) this;
+        }
+
         public Criteria andReplyIdIsNull() {
             addCriterion("reply_id is null");
             return (Criteria) this;
@@ -376,6 +446,76 @@ public class MessageLeaveDOExample {
 
         public Criteria andReplyIdNotBetween(String value1, String value2) {
             addCriterion("reply_id not between", value1, value2, "replyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameIsNull() {
+            addCriterion("reply_nick_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameIsNotNull() {
+            addCriterion("reply_nick_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameEqualTo(String value) {
+            addCriterion("reply_nick_name =", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameNotEqualTo(String value) {
+            addCriterion("reply_nick_name <>", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameGreaterThan(String value) {
+            addCriterion("reply_nick_name >", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameGreaterThanOrEqualTo(String value) {
+            addCriterion("reply_nick_name >=", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameLessThan(String value) {
+            addCriterion("reply_nick_name <", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameLessThanOrEqualTo(String value) {
+            addCriterion("reply_nick_name <=", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameLike(String value) {
+            addCriterion("reply_nick_name like", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameNotLike(String value) {
+            addCriterion("reply_nick_name not like", value, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameIn(List<String> values) {
+            addCriterion("reply_nick_name in", values, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameNotIn(List<String> values) {
+            addCriterion("reply_nick_name not in", values, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameBetween(String value1, String value2) {
+            addCriterion("reply_nick_name between", value1, value2, "replyNickName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNickNameNotBetween(String value1, String value2) {
+            addCriterion("reply_nick_name not between", value1, value2, "replyNickName");
             return (Criteria) this;
         }
 

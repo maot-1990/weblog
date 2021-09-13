@@ -5,7 +5,9 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
     <result column="reply_id" jdbcType="VARCHAR" property="replyId" />
+    <result column="reply_nick_name" jdbcType="VARCHAR" property="replyNickName" />
     <result column="msg" jdbcType="VARCHAR" property="msg" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
@@ -73,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, user_name, reply_id, msg, status, created_at, updated_at
+    id, user_id, user_name, head_img, reply_id, reply_nick_name, msg, status, created_at, 
+    updated_at
   </sql>
   <sql id="Blob_Column_List">
     level
@@ -90,8 +93,14 @@
       <if test="userName != null">
         user_name,
       </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
       <if test="replyId != null">
         reply_id,
+      </if>
+      <if test="replyNickName != null">
+        reply_nick_name,
       </if>
       <if test="msg != null">
         msg,
@@ -113,8 +122,14 @@
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
       </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
       <if test="replyId != null">
         #{replyId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyNickName != null">
+        #{replyNickName,jdbcType=VARCHAR},
       </if>
       <if test="msg != null">
         #{msg,jdbcType=VARCHAR},
@@ -129,12 +144,14 @@
   </insert>
   <insert id="batchInsert" parameterType="com.personalblog.dataobject.MessageLeaveDO">
     insert into message_leave (id, user_id, user_name, 
-      reply_id, msg, status, 
-      level) values 
+      head_img, reply_id, reply_nick_name, 
+      msg, status, level
+      ) values 
     <foreach collection="items" item="item" separator=",">
       (#{item.id,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR},
-        #{item.replyId,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT},
-        #{item.level,jdbcType=LONGVARCHAR})
+        #{item.headImg,jdbcType=VARCHAR},#{item.replyId,jdbcType=VARCHAR},#{item.replyNickName,jdbcType=VARCHAR},
+        #{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT},#{item.level,jdbcType=LONGVARCHAR}
+        )
     </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.personalblog.dataobject.MessageLeaveDO">
@@ -146,8 +163,14 @@
       <if test="userName != null">
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
       <if test="replyId != null">
         reply_id = #{replyId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyNickName != null">
+        reply_nick_name = #{replyNickName,jdbcType=VARCHAR},
       </if>
       <if test="msg != null">
         msg = #{msg,jdbcType=VARCHAR},
@@ -173,8 +196,14 @@
       <if test="record.userName != null">
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
+      <if test="record.headImg != null">
+        head_img = #{record.headImg,jdbcType=VARCHAR},
+      </if>
       <if test="record.replyId != null">
         reply_id = #{record.replyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyNickName != null">
+        reply_nick_name = #{record.replyNickName,jdbcType=VARCHAR},
       </if>
       <if test="record.msg != null">
         msg = #{record.msg,jdbcType=VARCHAR},
