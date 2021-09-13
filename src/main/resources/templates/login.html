@@ -101,6 +101,7 @@
 <script src="/js/script.js"></script>
 <script>
 	function QClogin() {
+		QC.Login.signOut();
 		let windowObj = QC.Login.showPopup({
 			appId:"101970455",
 			redirectURI:"https://www.weblog.icu/qback"
