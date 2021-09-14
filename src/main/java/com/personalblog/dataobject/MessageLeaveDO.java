@@ -7,7 +7,7 @@ import java.util.Date;
  * Generate by kucoin generator 
  * 
  * @author kucoin-mybatis-generator
- * @since 2021-09-13
+ * @since 2021-09-14
  */
 public class MessageLeaveDO {
     private Integer id;
@@ -31,6 +31,8 @@ public class MessageLeaveDO {
     private Date createdAt;
 
     private Date updatedAt;
+
+    private Integer topicId;
 
     public String getCreateAtStr() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
