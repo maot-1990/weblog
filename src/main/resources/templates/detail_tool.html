@@ -11,20 +11,19 @@
     <meta name="force-rendering" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
     <meta name="applicable-device" content="pc,mobile">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
     <title th:text="${article.title + '--微客阁'}"></title>
     <meta name="Keywords" th:content="@{'微客阁,个人博客,个人网站,技术分享' + ${article.type} + ',' + ${article.category} + ',' + ${article.title}}"/>
     <meta name="Description" th:content="${article.intro}"/>
     <meta http-equiv="Cache-Control" content="max-age=14400"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="stylesheet" href="/css/share.min.css">
-    <link rel="stylesheet" href="/css/comment.css">
-    <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css">
 
     <link rel="stylesheet" href="/editormd/css/editormd.css">
     <link rel="stylesheet" href="/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="/css/share.min.css">
+    <link rel="stylesheet" href="/css/comment.css">
+    <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css">
 
     <!--[if lt IE 9]><div><p class="ie9">您的IE浏览器版本过低</p></div><![endif]-->
     <script src="/js/jquery-2.2.4.min.js" type="text/javascript"></script>
@@ -34,6 +33,7 @@
     <script src="/editormd/editormd.min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/jquery.share.min.js"></script>
+    <script src="/js/comment.js"></script>
     <script src="/js/sinaFaceAndEffec.js"></script>
 
     <style type="text/css"></style>
@@ -48,7 +48,7 @@
 <body>
     <header class="header">
         <div class="containe">
-            <div id="nav-box" class="nav-bar header-nav right" data-type="category" data-infoid="1">
+            <div id="nav-box" class="nav-bar header-nav right" data-type="category" data-infoid="3">
                 <div class="container">
                     <h1 class="logo"> <a href="/" title="微客阁"> <img src="/img/logo_5.png" alt="微客阁"> </a> </h1>
                     <nav class="nav-bar">
@@ -122,7 +122,7 @@
             </div>
         </div>
     </header>
-    <div class="breadcrumb"> <i class="fa fa-home"></i><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/articles?type=1">好文章</a><i class="fa fa-angle-right"></i>文章正文 </div>
+    <div class="breadcrumb"> <i class="fa fa-home"></i><a href="/">首页</a>&nbsp;&gt;&nbsp;<a href="/articles?type=3">小工具</a><i class="fa fa-angle-right"></i>文章正文 </div>
     <main class="container">
         <div class="content-wrap">
             <div class="article" id="article">
@@ -156,7 +156,7 @@
                             <span></span>
                         </div>
                         <div class="contact_detail">
-                            <a th:href="@{'/articles?type=1&category=' + ${article.category}}">
+                            <a th:href="@{'/articles?type=3&category=' + ${article.category}}">
                                 <span th:text="${article.category}"></span>
                             </a>
 
@@ -172,8 +172,7 @@
                         <div class="author_info"> <img alt="管理员" src="/img/avatar.jpeg" class="avatar avatar-40 photo" width="40" height="40">
                             <div class="author_detail">
                                 <div class="author-name"><span class="author_font">街角下的蚂蚁</span><span class="author_t">管理员</span></div>
-                                <p class="author_bref">个人博客，专注于IT类技术分享+实用小工具分享+网站优化，
-只做有思想的高价值网站！</p>
+                                <p class="author_bref">个人博客，专注于IT类技术分享+实用小工具分享+网站优化，只做有思想的高价值网站！</p>
                             </div>
                         </div>
                         <ul class="spostinfo">
@@ -208,92 +207,92 @@
                         <div class="showpage" id="plpost">
                             <table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <table width="100%" border="0" cellspacing="10" cellpadding="0">
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div id="content">
-                                                        <div class="wrap">
-                                                            <div class="comment">
-                                                                <div class="head-face">
-                                                                    <img src="/img/1.jpeg">
-                                                                    <p>匿名</p>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <div class="cont-box">
-                                                                        <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
-                                                                    </div>
-                                                                    <div class="tools-box">
-                                                                        <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
-                                                                        <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\',\'\');'}" value="提交评论"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="info-show">
-                                                                <ul class="first_show">
-                                                                    <li th:each="item,itemStart : ${articleLeavePage.items}">
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="10" cellpadding="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div id="content">
+                                                                <div class="wrap">
+                                                                    <div class="comment">
                                                                         <div class="head-face">
-                                                                            <img th:src="${item.parent.headImg}==null ? '/img/1.jpeg' : @{'/show-img/' + ${item.parent.headImg}}" />
+                                                                            <img src="/img/1.jpeg">
+                                                                            <p>匿名</p>
                                                                         </div>
-                                                                        <div class="reply-cont">
-                                                                            <p class="username">[[${item.parent.nickName}]]</p>
-                                                                            <p class="comment-body comment-face">[[${item.parent.msg}]]</p>
-                                                                            <p class="comment-footer"><span>[[${item.parent.createAtStr}]]</span>　<a onclick="showReply(this)">回复</a></p>
-
-                                                                            <div class="content replay-window">
-                                                                                <div class="cont-box">
-                                                                                    <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
-                                                                                </div>
-                                                                                <div class="tools-box">
-                                                                                    <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
-                                                                                    <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item.parent.nickName} + '\', \'first\');'}" value="回复"></div>
-                                                                                </div>
+                                                                        <div class="content">
+                                                                            <div class="cont-box">
+                                                                                <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
                                                                             </div>
+                                                                            <div class="tools-box">
+                                                                                <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
+                                                                                <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'\',\'\');'}" value="提交评论"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="info-show">
+                                                                        <ul class="first_show">
+                                                                            <li th:each="item,itemStart : ${articleLeavePage.items}">
+                                                                                <div class="head-face">
+                                                                                    <img th:src="${item.parent.headImg}==null ? '/img/1.jpeg' : @{'/show-img/' + ${item.parent.headImg}}" />
+                                                                                </div>
+                                                                                <div class="reply-cont">
+                                                                                    <p class="username">[[${item.parent.nickName}]]</p>
+                                                                                    <p class="comment-body comment-face">[[${item.parent.msg}]]</p>
+                                                                                    <p class="comment-footer"><span>[[${item.parent.createAtStr}]]</span>　<a onclick="showReply(this)">回复</a></p>
 
-                                                                            <div class="reply-second">
-                                                                                <ul class="second_show">
-                                                                                    <li th:each="item2,itemStart2 : ${item.children}">
-                                                                                        <span class="username" style="display: inline;">[[${item2.nickName}]]：@[[${item2.replayNickName}]]</span>
-                                                                                        <span class="comment-body comment-face">[[${item2.msg}]]</span>
-                                                                                        <p class="comment-footer"><span>[[${item2.createAtStr}]]</span>　<a onclick="showReply(this)">回复</a></p>
-                                                                                        <div class="content replay-window">
-                                                                                            <div class="cont-box">
-                                                                                                <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
-                                                                                            </div>
-                                                                                            <div class="tools-box">
-                                                                                                <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
-                                                                                                <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item2.nickName} + '\', \'second\');'}" value="回复"></div>
-                                                                                            </div>
+                                                                                    <div class="content replay-window">
+                                                                                        <div class="cont-box">
+                                                                                            <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
                                                                                         </div>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
+                                                                                        <div class="tools-box">
+                                                                                            <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
+                                                                                            <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item.parent.nickName} + '\', \'first\');'}" value="回复"></div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="reply-second">
+                                                                                        <ul class="second_show">
+                                                                                            <li th:each="item2,itemStart2 : ${item.children}">
+                                                                                                <span class="username" style="display: inline;">[[${item2.nickName}]]：@[[${item2.replayNickName}]]</span>
+                                                                                                <span class="comment-body comment-face">[[${item2.msg}]]</span>
+                                                                                                <p class="comment-footer"><span>[[${item2.createAtStr}]]</span>　<a onclick="showReply(this)">回复</a></p>
+                                                                                                <div class="content replay-window">
+                                                                                                    <div class="cont-box">
+                                                                                                        <textarea class="comment_area" placeholder="请遵守互联网相关规定，不要发布广告和违法内容…"></textarea>
+                                                                                                    </div>
+                                                                                                    <div class="tools-box">
+                                                                                                        <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
+                                                                                                        <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${article.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item2.nickName} + '\', \'second\');'}" value="回复"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </div>
                                                             </div>
 
-                                                        </div>
-                                                    </div>
+                                                            <article class="post" style="padding: 6px; text-align: center;cursor: pointer;">
+                                                                <header>
+                                                                    <input id="hasMoreIndex" th:value="${articleLeavePage.currentPage}" type="hidden"/>
+                                                                    <input id="articleId" th:value="${article.id}" type="hidden"/>
 
-                                                    <article class="post" style="padding: 6px; text-align: center;cursor: pointer;">
-                                                        <header>
-                                                            <input id="hasMoreIndex" th:value="${articleLeavePage.currentPage}" type="hidden"/>
-                                                            <input id="articleId" th:value="${article.id}" type="hidden"/>
+                                                                    <div class="hasMore" onclick="hasLeaveMsgMore()" style="font-weight: 500;">更 多</div>
+                                                                </header>
+                                                                <p class="post-text"></p>
+                                                            </article>
 
-                                                            <div class="hasMore" onclick="hasLeaveMsgMore()" style="font-weight: 500;">更 多</div>
-                                                        </header>
-                                                        <p class="post-text"></p>
-                                                    </article>
-
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -350,7 +349,7 @@
                 <dt class="function_t">标签列表</dt>
                 <dd class="function_c">
                     <ul th:each="item,itemStart : ${category}">
-                        <li><a th:href="@{'/articles?type=1&category=' + ${item.category}}"><span th:text="${item.category}"></span><span class="tag-count" th:text="${'(' + item.count + ')'}"></span></a></li>
+                        <li><a th:href="@{'/articles?type=3&category=' + ${item.category}}"><span th:text="${item.category}"></span><span class="tag-count" th:text="${'(' + item.count + ')'}"></span></a></li>
                     </ul>
                 </dd>
             </dl>
@@ -402,12 +401,14 @@
         <canvas id="backtoTopCanvas" width="45" height="45"></canvas>
         <div class="per"> </div>
     </div>
+
     <!--[if lt IE 9]><script src="/skin/ecms218/js/html5shiv.min.js"></script><![endif]-->
 
     <script>
+
         $(function () {
 
-            var mkEditor = editormd.markdownToHTML("question-view", {
+            let mkEditor = editormd.markdownToHTML("question-view", {
                 //htmlDecode      : "style,script,iframe",  // you can filter tags decode
                 htmlDecode: true,
                 emoji: true,
@@ -424,6 +425,7 @@
                 gotoLine: true
             });
         });
+
 
     </script>
 

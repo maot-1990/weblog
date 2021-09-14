@@ -145,7 +145,9 @@ public class ArticleController {
             return "detail_it";
         } else if (article.getType().equals(TypeEnum.OTHER.getType())) {
             return "detail_other";
-        } else {
+        } else if (article.getType().equals(TypeEnum.TOOLS.getType())) {
+            return "detail_tool";
+        }else {
             return "error";
         }
     }
