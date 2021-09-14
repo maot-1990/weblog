@@ -10,5 +10,7 @@ public class CategoryGroupBO {
 
     private String category;
 
+    private String type;
+
     private Integer count;
 }
