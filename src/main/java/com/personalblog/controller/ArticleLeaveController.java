@@ -3,6 +3,7 @@ package com.personalblog.controller;
 import com.personalblog.bo.ArticleLeaveBO;
 import com.personalblog.dataobject.ArticleDO;
 import com.personalblog.dataobject.ArticleLeaveDO;
+import com.personalblog.exception.BaseException;
 import com.personalblog.pagehelper.Page;
 import com.personalblog.request.ArticleLeaveRequest;
 import com.personalblog.request.ArticleRequest;
@@ -29,7 +30,15 @@ public class ArticleLeaveController {
     @ResponseBody
     public BaseResult<ArticleLeaveVO> leaveArticle(ArticleLeaveDO articleLeave) throws Exception {
         articleLeave.setMsg(URLDecoder.decode(articleLeave.getMsg(), "UTF-8"));
-        return BaseResult.success(articleLeaveService.leaveArticle(articleLeave));
+
+        ArticleLeaveVO result;
+        try {
+            result = articleLeaveService.leaveArticle(articleLeave);
+        } catch (BaseException e) {
+            return BaseResult.fail(e.getErrorCode(), e.getMessage());
+        }
+        return BaseResult.success(result);
+
     }
 
     @GetMapping("/article-leave/has-more")

@@ -17,6 +17,10 @@ function leave(obj, articleId, replyId, replyName, replyType) {
         data: "msg=" + commentSay + "&articleId=" + articleId + "&replyId=" + replyId + "&replayNickName=" + replyName,
         contentType: "application/json;charset=utf-8",
         success: function (data) {
+            if (data.success == false) {
+                alert(data.msg);
+                return;
+            }
             if (replyId == "") {
                 $('#info-show .first_show').prepend(commentInsert(data.data));
                 // 更新评论总数

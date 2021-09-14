@@ -7,8 +7,11 @@ import com.personalblog.dao.ArticleMapper;
 import com.personalblog.dao.manual.ArticleManualMapper;
 import com.personalblog.dataobject.ArticleLeaveDO;
 import com.personalblog.dataobject.ArticleLeaveDOExample;
+import com.personalblog.dataobject.MessageLeaveDO;
+import com.personalblog.exception.BaseException;
 import com.personalblog.pagehelper.Page;
 import com.personalblog.request.ArticleLeaveRequest;
+import com.personalblog.response.ResponseCode;
 import com.personalblog.service.ArticleLeaveService;
 import com.personalblog.util.BeanUtils;
 import com.personalblog.util.UUId;
@@ -78,23 +81,31 @@ public class ArticleLeaveServiceImpl implements ArticleLeaveService {
 
     @Override
     public ArticleLeaveVO leaveArticle(ArticleLeaveDO articleLeave) {
+
+        // 校验用户是否登录
+        UserVO user = BlogContext.getCurrentUser();
+        if (user == null) {
+            throw new BaseException("请登录后再留言", ResponseCode.NO_AUTH);
+        }
+
         articleLeave.setStatus(1);
         articleLeave.setCreatedAt(new Date());
         if (articleLeave.getReplyId() == null) {
             articleLeave.setLevel(1);
         } else {
             articleLeave.setLevel(2);
+
+            // 如果为回复，则不能回复自己
+            ArticleLeaveDO replyMsg = articleLeaveMapper.selectByPrimaryKey(articleLeave.getReplyId());
+            if (replyMsg.getUserId().equals(user.getId())) {
+                throw new BaseException("不能回复自己的评论", ResponseCode.BIZ_ERROR);
+            }
         }
 
-        UserVO user = BlogContext.getCurrentUser();
-        if (user == null) {
-            articleLeave.setNickName("匿名");
-            articleLeave.setUserId(UUId.getUUId());
-        } else {
-            articleLeave.setNickName(user.getNickName());
-            articleLeave.setUserId(user.getId());
-            articleLeave.setHeadImg(user.getHeadImg());
-        }
+        articleLeave.setNickName(user.getNickName());
+        articleLeave.setUserId(user.getId());
+        articleLeave.setHeadImg(user.getHeadImg());
+
         articleLeaveMapper.insertSelective(articleLeave);
         if (articleLeave.getReplyId() == null) {
             articleManualMapper.updateLeaveCountInc(articleLeave.getArticleId());
