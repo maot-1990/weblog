@@ -102,8 +102,10 @@ public class ArticleController {
             return "list_it";
         } else if (request.getType().equals(TypeEnum.OTHER.getType())) {
             return "list_other";
+        } else if (request.getType().equals(TypeEnum.TOOLS.getType())) {
+            return "list_tools";
         } else {
-            return "error";
+            return "404-error";
         }
     }
 
@@ -168,13 +170,5 @@ public class ArticleController {
         mode.addAttribute("popular", popular);
         return "contribution";
     }
-
-    @GetMapping("/board")
-    public String board(ModelMap mode) {
-        List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
-        mode.addAttribute("popular", popular);
-        return "board";
-    }
-
 
 }

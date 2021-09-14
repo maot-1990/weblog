@@ -76,7 +76,7 @@
     id, user_id, nick_name, head_img, level, reply_id, reply_nick_name, msg, status, 
     created_at, updated_at
   </sql>
-  <insert id="insertSelective" parameterType="com.personalblog.dataobject.MessageLeaveDO">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.personalblog.dataobject.MessageLeaveDO">
     insert into message_leave
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

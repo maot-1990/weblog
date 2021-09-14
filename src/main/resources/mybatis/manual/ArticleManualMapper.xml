@@ -22,7 +22,11 @@
   </resultMap>
 
   <select id="getCategoryByGroup" resultType="com.personalblog.bo.CategoryGroupBO">
-    select category, count(1) "count" from article where status=1 and `type`=#{type} group by category;
+    select category, count(1) "count" from article where status=1
+    <if test="type != null">
+     and `type`=#{type}
+    </if>
+    group by category;
   </select>
 
   <update id="updateLikeCountInc">

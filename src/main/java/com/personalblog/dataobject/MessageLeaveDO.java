@@ -1,5 +1,6 @@
 package com.personalblog.dataobject;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -30,6 +31,11 @@ public class MessageLeaveDO {
     private Date createdAt;
 
     private Date updatedAt;
+
+    public String getCreateAtStr() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(getCreatedAt());
+    }
 
     public Integer getId() {
         return id;

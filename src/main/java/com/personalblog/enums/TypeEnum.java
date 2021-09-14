@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum TypeEnum {
 
     OTHER("1"),
-    IT("2");
+    IT("2"),
+    TOOLS("3");
 
 
     private String type;
