@@ -234,7 +234,7 @@
             <dt class="function_t">标签列表</dt>
             <dd class="function_c">
                 <ul th:each="item,itemStart : ${category}">
-                    <li><a th:href="@{'/articles?type=' + ${item.type} + '&category=' + ${item.category}"><span th:text="${item.category}"></span><span class="tag-count" th:text="${'(' + item.count + ')'}"></span></a></li>
+                    <li><a th:href="@{'/articles?type=' + ${item.type} + '&category=' + ${item.category}}"><span th:text="${item.category}"></span><span class="tag-count" th:text="${'(' + item.count + ')'}"></span></a></li>
                 </ul>
             </dd>
         </dl>
