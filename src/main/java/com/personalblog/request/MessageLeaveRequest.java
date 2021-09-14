@@ -10,6 +10,6 @@ public class MessageLeaveRequest {
 
     private Integer currentIndex = 1;
 
-    private Integer pageSize = 4;
+    private Integer pageSize = 8;
 
 }

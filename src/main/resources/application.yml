@@ -7,7 +7,7 @@ server:
     min-spare-threads: 20
     uri-encoding: UTF-8
   ssl:
-    enabled: false
+    enabled: true
     key-store: classpath:cert/6209428_www.weblog.icu.jks
     key-password: iuU1UmNp
     key-store-type: JKS

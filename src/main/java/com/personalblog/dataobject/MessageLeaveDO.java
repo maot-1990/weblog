@@ -147,4 +147,12 @@ public class MessageLeaveDO {
         sb.append("]");
         return sb.toString();
     }
+
+    public Integer getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(Integer topicId) {
+        this.topicId = topicId;
+    }
 }

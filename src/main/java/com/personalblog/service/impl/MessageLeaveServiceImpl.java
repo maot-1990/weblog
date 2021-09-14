@@ -49,7 +49,7 @@ public class MessageLeaveServiceImpl implements MessageLeaveService {
         if (!CollectionUtils.isEmpty(leaves)) {
             exampleLeave.clear();
             exampleLeave.createCriteria().andStatusEqualTo(StatusEnum.ONE.getStatus()).andLevelEqualTo(2)
-                    .andReplyIdIn(leaves.stream().map(leave -> leave.getId()).collect(Collectors.toList()));
+                    .andTopicIdIn(leaves.stream().map(leave -> leave.getId()).collect(Collectors.toList()));
 
             exampleLeave.setOrderByClause(" created_at");
             List<MessageLeaveDO> level2 = messageLeaveMapper.selectByExample(exampleLeave);
@@ -58,7 +58,7 @@ public class MessageLeaveServiceImpl implements MessageLeaveService {
                 MessageLeaveBO leaveBO = new MessageLeaveBO();
                 leaveBO.setParent(messageLeave);
                 for (MessageLeaveDO messageLeave2 : level2) {
-                    if (messageLeave.getId().equals(messageLeave2.getReplyId())) {
+                    if (messageLeave.getId().equals(messageLeave2.getTopicId())) {
                         leaveBO.getChildren().add(messageLeave2);
                     }
                 }

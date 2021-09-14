@@ -1,7 +1,7 @@
 // 绑定表情
 $('.face-icon').sinaEmotion($('.comment_area'));
 
-function leave(obj, replyId, replyName, replyType) {
+function leave(obj, topicId, replyId, replyName, replyType) {
     let commentSay = $(obj).parent().parent().prev().children("textarea").val();
 
     if (commentSay == '') {
@@ -14,7 +14,7 @@ function leave(obj, replyId, replyName, replyType) {
         type: "get",
         dataType: "json",
         url: "/board-leave",
-        data: "msg=" + commentSay + "&replyId=" + replyId + "&replyNickName=" + replyName,
+        data: "topicId=" + topicId + "&msg=" + commentSay + "&replyId=" + replyId + "&replyNickName=" + replyName,
         contentType: "application/json;charset=utf-8",
         success: function (data) {
             if (data.success == false) {
@@ -64,7 +64,7 @@ function commentInsert(data) {
     html += '<div class="tools-box">';
     html += '<div class="operator-box-btn"><span class="face-icon">☺</span>';
     html += '</div>';
-    html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.id + '\',\'' + data.nickName + '\', \'first\');" value="回复"></div>';
+    html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.id + '\',\'' + data.id + '\',\'' + data.nickName + '\', \'first\');" value="回复"></div>';
 
     html += '</div>';
     html += '</div>';
@@ -101,7 +101,7 @@ function commentHasMoreInsert(data) {
     html += '<div class="tools-box">';
     html += '<div class="operator-box-btn"><span class="face-icon">☺</span>';
     html += '</div>';
-    html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.parent.id + '\',\'' + data.parent.nickName + '\', \'first\');" value="回复"></div>';
+    html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.parent.id + '\',\'' + data.parent.id + '\',\'' + data.parent.nickName + '\', \'first\');" value="回复"></div>';
 
     html += '</div>';
     html += '</div>';
@@ -123,7 +123,7 @@ function commentHasMoreInsert(data) {
             html += '<div class="tools-box">';
             html += '<div class="operator-box-btn"><span class="face-icon">☺</span>';
             html += '</div>';
-            html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + childObj.replyId + '\',\'' + childObj.replyNickName + '\', \'second\');" value="回复"></div>';
+            html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.parent.id + '\',\'' + childObj.id + '\',\'' + childObj.nickName + '\', \'second\');" value="回复"></div>';
             html += '</div>';
             html += '</div>';
             html += '</li>';
@@ -152,7 +152,7 @@ function commentReplyInsert(data) {
     html += '<div class="tools-box">';
     html += '<div class="operator-box-btn"><span class="face-icon">☺</span>';
     html += '</div>';
-    html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.replyId + '\',\'' + data.replyNickName + '\', \'second\');" value="回复"></div>';
+    html += '<div class="submit-btn"><input type="button" onclick="leave(this,\'' + data.topicId + '\',\'' + data.id + '\',\'' + data.nickName + '\', \'second\');" value="回复"></div>';
     html += '</div>';
     html += '</div>';
 

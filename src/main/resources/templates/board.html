@@ -126,7 +126,7 @@
                                                             </div>
                                                             <div class="tools-box">
                                                                 <div class="operator-box-btn"><span class="face-icon">☺</span></div>
-                                                                <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'\',\'\',\'\');'}" value="提交留言"></div>
+                                                                <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'\',\'\',\'\',\'\');'}" value="提交留言"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -147,7 +147,7 @@
                                                                         </div>
                                                                         <div class="tools-box">
                                                                             <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
-                                                                            <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${item.parent.id} + '\',\'' + ${item.parent.nickName} + '\', \'first\');'}" value="回复"></div>
+                                                                            <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${item.parent.id} + '\',\'' + ${item.parent.id} + '\',\'' + ${item.parent.nickName} + '\', \'first\');'}" value="回复"></div>
                                                                         </div>
                                                                     </div>
 
@@ -163,7 +163,7 @@
                                                                                     </div>
                                                                                     <div class="tools-box">
                                                                                         <div class="operator-box-btn"><span class="face-icon">☺</span><!--<span class="img-icon">▧</span>--></div>
-                                                                                        <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${item.parent.id} + '\',\'' + ${item.parent.nickName} + '\', \'second\');'}" value="回复"></div>
+                                                                                        <div class="submit-btn"><input type="button" th:onclick="@{'leave(this,\'' + ${item.parent.id} + '\',\'' + ${item2.id} + '\',\'' + ${item2.nickName} + '\', \'second\');'}" value="回复"></div>
                                                                                     </div>
                                                                                 </div>
                                                                             </li>
