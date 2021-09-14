@@ -6,7 +6,7 @@ import java.util.Date;
  * Generate by kucoin generator 
  * 
  * @author kucoin-mybatis-generator
- * @since 2021-09-13
+ * @since 2021-09-14
  */
 public class MessageLeaveDO {
     private Integer id;
@@ -30,6 +30,8 @@ public class MessageLeaveDO {
     private Date createdAt;
 
     private Date updatedAt;
+
+    private Integer topicId;
 
     public Integer getId() {
         return id;
@@ -119,6 +121,14 @@ public class MessageLeaveDO {
         this.updatedAt = updatedAt;
     }
 
+    public Integer getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(Integer topicId) {
+        this.topicId = topicId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -136,6 +146,7 @@ public class MessageLeaveDO {
         sb.append(", status=").append(status);
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);
+        sb.append(", topicId=").append(topicId);
         sb.append("]");
         return sb.toString();
     }

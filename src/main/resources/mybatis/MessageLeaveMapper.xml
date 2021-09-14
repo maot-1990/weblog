@@ -13,6 +13,7 @@
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="topic_id" jdbcType="INTEGER" property="topicId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, user_id, nick_name, head_img, level, reply_id, reply_nick_name, msg, status, 
-    created_at, updated_at
+    created_at, updated_at, topic_id
   </sql>
   <insert id="insertSelective" parameterType="com.personalblog.dataobject.MessageLeaveDO">
     insert into message_leave
@@ -106,6 +107,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="topicId != null">
+        topic_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -135,18 +139,21 @@
       <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
+      <if test="topicId != null">
+        #{topicId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <insert id="batchInsert" parameterType="com.personalblog.dataobject.MessageLeaveDO">
     insert into message_leave (id, user_id, nick_name, 
       head_img, level, reply_id, 
-      reply_nick_name, msg, status
-      ) values 
+      reply_nick_name, msg, status, 
+      topic_id) values 
     <foreach collection="items" item="item" separator=",">
       (#{item.id,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.nickName,jdbcType=VARCHAR},
         #{item.headImg,jdbcType=VARCHAR},#{item.level,jdbcType=INTEGER},#{item.replyId,jdbcType=INTEGER},
-        #{item.replyNickName,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT}
-        )
+        #{item.replyNickName,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT},
+        #{item.topicId,jdbcType=INTEGER})
     </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.personalblog.dataobject.MessageLeaveDO">
@@ -175,6 +182,9 @@
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="topicId != null">
+        topic_id = #{topicId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -208,6 +218,9 @@
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.topicId != null">
+        topic_id = #{record.topicId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
