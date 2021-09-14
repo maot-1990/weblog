@@ -193,7 +193,7 @@
                         <div id="related-img">
                             <div class="r4" th:each="item,itemStart : ${related}">
                                 <div class="related-site">
-                                    <figure class="related-site-img"> <a th:href="@{'/article/show/' + ${item.id}}"> <img th:src="${item.imgPath != null ? '/show-img/' + item.imgPath : '/img/278d462e5f473b21361eb865b6383412.jpeg'}" alt=""> </a> </figure>
+                                    <figure class="related-site-img"> <a th:href="@{'/article/show/' + ${item.id}}"> <img th:src="${(item.imgPath!=null and item.imgPath!='') ? '/show-img/' + item.imgPath : '/img/278d462e5f473b21361eb865b6383412.jpeg'}" alt=""> </a> </figure>
                                     <div class="related-title"> <a th:href="@{'/article/show/' + ${item.id}}" title=""><span th:text="${item.title}"></span></a> </div>
                                 </div>
                             </div>
@@ -217,8 +217,8 @@
                                                                 <div class="wrap">
                                                                     <div class="comment">
                                                                         <div class="head-face">
-                                                                            <img src="/img/1.jpeg">
-                                                                            <p>匿名</p>
+                                                                            <img th:if="${session.user==null}" src="/img/1.jpeg">
+                                                                            <img th:if="${session.user!=null}" th:src="@{'/show-img/' + ${session.user.headImg}}">
                                                                         </div>
                                                                         <div class="content">
                                                                             <div class="cont-box">

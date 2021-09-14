@@ -117,8 +117,8 @@
                                                 <div class="wrap">
                                                     <div class="comment">
                                                         <div class="head-face">
-                                                            <img src="/img/1.jpeg">
-                                                            <p>匿名</p>
+                                                            <img th:if="${session.user==null}" src="/img/1.jpeg">
+                                                            <img th:if="${session.user!=null}" th:src="@{'/show-img/' + ${session.user.headImg}}">
                                                         </div>
                                                         <div class="content">
                                                             <div class="cont-box">
