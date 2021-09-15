@@ -38,6 +38,9 @@ public class ContextFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
+        // 蜘蛛过滤
+        IPUtils.isSpider((HttpServletRequest) servletRequest);
+
         // 记录在线用户数
         ((HttpServletRequest) servletRequest).getSession().setAttribute("online", BlogContext.session.size());
 

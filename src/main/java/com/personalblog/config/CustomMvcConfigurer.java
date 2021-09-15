@@ -51,8 +51,7 @@ public class CustomMvcConfigurer implements WebMvcConfigurer {
         register.setFilter(new ContextFilter());
         register.setName("contextFilter");
         register.setOrder(1);
-        register.setUrlPatterns(Lists.newArrayList("/", "/article/show/*", "/admin/*",
-                "/like", "/article-leave", "/login", "/register", "/todo/*", "/articles"));
+        register.setUrlPatterns(Lists.newArrayList("/*"));
         return register;
     }
 
