@@ -45,13 +45,16 @@ public class ContextFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
+        // 记录在线用户数
+        ((HttpServletRequest) servletRequest).getSession().setAttribute("online", BlogContext.session.size());
+
+        // 统计ip
+        String ip = IPUtils.getOuterIP((HttpServletRequest) servletRequest);
+        collectIp(ip);
+
         // 蜘蛛过滤
         if (!IPUtils.isSpider((HttpServletRequest) servletRequest, blogProperties.getSpiders())) {
 
-            // 记录在线用户数
-            ((HttpServletRequest) servletRequest).getSession().setAttribute("online", BlogContext.session.size());
-
-            String ip = IPUtils.getOuterIP((HttpServletRequest) servletRequest);
             String uri = ((HttpServletRequest) servletRequest).getRequestURI();
 
             UserVO user = BlogContext.getCurrentUser();
@@ -63,8 +66,6 @@ public class ContextFilter implements Filter {
             noticeDTO.setAccessTime(DateUtils.parseDate(new Date(), YYYY_MM_DD_HH_MM_SS));
             NoticeQueue.noticeQueue.offer(noticeDTO);
 
-            // 统计ip
-            collectIp(ip);
         }
 
         // 如果有黑名单，限制用户访问
