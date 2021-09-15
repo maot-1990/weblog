@@ -38,7 +38,8 @@ public class IPUtils {
     public static boolean isSpider(HttpServletRequest request, List<String> spiders) {
         String ip = getOuterIP(request);
         String userAgent = request.getHeader("User-Agent");
-        log.info("【来访ip】- " + ip + " ---【访问地址】- " + request.getRequestURI());
+        log.info("【来访ip】- " + ip + " ---【访问地址】- " + request.getRequestURI()
+                + " ---【userAgent】- " + userAgent);
         if(StringUtils.isNotBlank(userAgent)) {
             for (String name : spiders) {
                 if (userAgent.contains(name)) {
