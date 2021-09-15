@@ -109,8 +109,8 @@
 		let flag = true;
 		setInterval(function () {
 			if(windowObj.closed && flag) {
-				flag = false;
 				if(QC.Login.check()) {
+                    flag = false;
 					let qcOpenId;
 					let qcAccessToken;
 					QC.Login.getMe(function(openId, accessToken){
