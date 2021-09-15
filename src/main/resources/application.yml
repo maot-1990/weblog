@@ -50,6 +50,9 @@ blog:
       appId: wx13c150ad0afd267b
       appSecret: 4c78c21eae967a5d17c9a62ab69a68dc
   config:
+    spiders:
+      - Googlebot
+      - Baiduspider
     baiduIpInfoUrl: https://api.map.baidu.com/location/ip?ak=Y06xludec8KI7L7vg4ulk6lXwrk1IdtE&ip=%s
     ignoreIps:
       - 127.0.0.1

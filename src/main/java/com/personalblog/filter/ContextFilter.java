@@ -1,6 +1,7 @@
 package com.personalblog.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.personalblog.config.BlogProperties;
 import com.personalblog.context.BlogContext;
 import com.personalblog.notice.NoticeDTO;
 import com.personalblog.notice.NoticeQueue;
@@ -30,6 +31,12 @@ import static com.personalblog.util.DateUtils.YYYY_MM_DD_HH_MM_SS;
 @Slf4j
 public class ContextFilter implements Filter {
 
+    private BlogProperties blogProperties;
+
+    public ContextFilter(BlogProperties blogProperties) {
+        this.blogProperties = blogProperties;
+    }
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -39,26 +46,26 @@ public class ContextFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         // 蜘蛛过滤
-        IPUtils.isSpider((HttpServletRequest) servletRequest);
+        if (!IPUtils.isSpider((HttpServletRequest) servletRequest, blogProperties.getSpiders())) {
 
-        // 记录在线用户数
-        ((HttpServletRequest) servletRequest).getSession().setAttribute("online", BlogContext.session.size());
+            // 记录在线用户数
+            ((HttpServletRequest) servletRequest).getSession().setAttribute("online", BlogContext.session.size());
 
-        String ip = IPUtils.getOuterIP((HttpServletRequest) servletRequest);
-        String uri = ((HttpServletRequest) servletRequest).getRequestURI();
+            String ip = IPUtils.getOuterIP((HttpServletRequest) servletRequest);
+            String uri = ((HttpServletRequest) servletRequest).getRequestURI();
 
-        UserVO user = BlogContext.getCurrentUser();
-        NoticeDTO noticeDTO = new NoticeDTO();
-        noticeDTO.setTitle(APP_NAME);
-        noticeDTO.setIp(ip);
-        noticeDTO.setNickName((user != null ? user.getNickName() : "游客"));
-        noticeDTO.setUri(uri);
-        noticeDTO.setAccessTime(DateUtils.parseDate(new Date(), YYYY_MM_DD_HH_MM_SS));
-        NoticeQueue.noticeQueue.offer(noticeDTO);
-        log.info("【来访ip】- " + ip + " ---【访问地址】- " + ((HttpServletRequest) servletRequest).getRequestURI());
+            UserVO user = BlogContext.getCurrentUser();
+            NoticeDTO noticeDTO = new NoticeDTO();
+            noticeDTO.setTitle(APP_NAME);
+            noticeDTO.setIp(ip);
+            noticeDTO.setNickName((user != null ? user.getNickName() : "游客"));
+            noticeDTO.setUri(uri);
+            noticeDTO.setAccessTime(DateUtils.parseDate(new Date(), YYYY_MM_DD_HH_MM_SS));
+            NoticeQueue.noticeQueue.offer(noticeDTO);
 
-        // 统计ip
-        collectIp(ip);
+            // 统计ip
+            collectIp(ip);
+        }
 
         // 如果有黑名单，限制用户访问
         // todo

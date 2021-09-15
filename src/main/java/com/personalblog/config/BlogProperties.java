@@ -17,4 +17,6 @@ public class BlogProperties {
     private List<String> ignoreIps;
 
     private String baiduIpInfoUrl;
+
+    private List<String> spiders;
 }

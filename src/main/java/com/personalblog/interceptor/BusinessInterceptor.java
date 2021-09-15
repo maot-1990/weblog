@@ -70,7 +70,9 @@ public class BusinessInterceptor implements HandlerInterceptor {
         }
 
         // 蜘蛛过滤
-        IPUtils.isSpider(request);
+        if (IPUtils.isSpider(request, blogProperties.getSpiders())) {
+            return true;
+        }
 
         // 阅读自增,同一ip，一个小时有效
         if (pathMatcher.match(ARTICLE_DETAIL_URI, uri)) {
