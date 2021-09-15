@@ -60,8 +60,6 @@ public class ArticleController {
 
         List<ArticleLeaveDO> articleLeaveRecent = articleLeaveService.getRecent(5);
 
-        List<UserVO> authors = userService.getAuthors(5);
-
         mode.addAttribute("recent", recent);
         mode.addAttribute("popular", popular);
         mode.addAttribute("articleLeaveRecent", articleLeaveRecent);
@@ -69,8 +67,6 @@ public class ArticleController {
         mode.addAttribute("page", page);
 
         mode.addAttribute("links", links);
-
-        mode.addAttribute("authors", authors);
 
         return "index";
     }

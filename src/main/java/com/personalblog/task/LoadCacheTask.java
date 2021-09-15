@@ -32,6 +32,6 @@ public class LoadCacheTask {
         articleService.getByIntroType(IntroTypeEnum.RECENT.toString());
         articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
         commonService.getQuickLinks();
-        userService.getAuthors(5);
+        userService.getAuthors(null);
     }
 }

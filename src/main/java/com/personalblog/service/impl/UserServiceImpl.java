@@ -32,7 +32,9 @@ public class UserServiceImpl implements UserService {
         example.createCriteria().andTypeIn(Lists.newArrayList(
                 UserTypeEnum.admin.name(),UserTypeEnum.author.name()))
                 .andStatusEqualTo(StatusEnum.ONE.getStatus());
-        example.setOrderByClause(" level desc,created_at limit " + size);
+        if (size != null) {
+            example.setOrderByClause(" level desc,created_at limit " + size);
+        }
         return userMapper.selectByExample(example).stream().map(
                 user -> BeanUtils.copyProperties(user, UserVO.class))
                 .collect(Collectors.toList());

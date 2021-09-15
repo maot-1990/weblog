@@ -28,7 +28,7 @@ public class ArticleCountTask {
 
     @Scheduled(cron = "0 0/10 * * * ?")
     public void execute() {
-         List<UserVO> users = userService.getAllUser();
+         List<UserVO> users = userService.getAuthors(null);
          for (UserVO user : users) {
              int count = articleService.getArticleCountByUser(user.getNickName());
              UserDO userDO = BeanUtils.copyProperties(user, UserDO.class);
