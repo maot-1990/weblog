@@ -8,6 +8,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,7 +28,7 @@ public class BlogContext {
     public static Map<String, Pair<Integer, Date>> likeCount = new ConcurrentHashMap<>();
 
     // 阅读判定
-    public static Map<String, Pair<Integer, Date>> readCount = new ConcurrentHashMap<>();
+    public static Map<String, List<Integer>> readCount = new ConcurrentHashMap<>();
 
     // session缓存
     public static Map<String, HttpSession> session = new ConcurrentHashMap<>();

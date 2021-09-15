@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 public class IPUtils {
 
     public static String getOuterIP(HttpServletRequest request) {
@@ -26,5 +27,11 @@ public class IPUtils {
         return ip.replaceAll(",", "");
     }
 
+    public static boolean isSpider(HttpServletRequest request) {
+        String userAgent = request.getHeader("User-Agent");
+        log.info("ip=" + getOuterIP(request) + ",userAgent=" + userAgent);
+
+        return false;
+    }
 }
 
