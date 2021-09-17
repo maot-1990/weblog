@@ -78,7 +78,7 @@ public class BaiduSpiderPushTask {
             HttpResponse response = httpClient.execute(post);
             HttpEntity entity = response.getEntity();
             String content = EntityUtils.toString(entity);
-            log.info("推送百度spider结果" + content);
+            log.info("推送百度spider结果:" + content);
             httpClient.close();
         } catch (Exception e) {
             log.error("推送spider异常", e);
