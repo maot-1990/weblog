@@ -114,7 +114,7 @@ public class ArticleServiceImpl implements ArticleService {
         if (articleId != null) {
             criteria.andIdNotEqualTo(articleId);
         }
-        example.setOrderByClause(" created_at desc limit 4");
+        example.setOrderByClause(" created_at desc limit " + size);
         return articleMapper.selectByExample(example);
     }
 
