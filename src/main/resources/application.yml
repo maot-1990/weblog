@@ -53,6 +53,7 @@ blog:
     spiders:
       - Googlebot
       - Baiduspider
+      - 360Spider
     baiduIpInfoUrl: https://api.map.baidu.com/location/ip?ak=Y06xludec8KI7L7vg4ulk6lXwrk1IdtE&ip=%s
     ignoreIps:
       - 127.0.0.1
