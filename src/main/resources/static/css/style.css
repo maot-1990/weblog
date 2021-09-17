@@ -262,7 +262,8 @@ mark {
 
 .blog-text {
     color: #ccc;
-    font-size: 14px； overflow:hidden !important;
+    font-size: 14px;
+    overflow:hidden !important;
     text-overflow: ellipsis;
     margin-bottom: 60px;
     width: 60%;
@@ -778,7 +779,7 @@ select {
 .fa-angle-right,
 .fa-bullhorn {
     margin: 0 4px;
-    font-size: 30px；
+    font-size: 30px;
 }
 
 .slider {
@@ -786,7 +787,7 @@ select {
     margin: 0 auto;
     max-width: 1200px;
     height: 300px !important;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 .slider .slideBox {
@@ -4200,7 +4201,7 @@ ol.comment-list li .respond {
 .vip6,
 .vip7,
 .vp {
-    background: url(../image/vip.png) no-repeat;
+    background: url(/img/vip.png) no-repeat;
     display: inline-block;
     overflow: hidden;
     border: none
@@ -4563,7 +4564,6 @@ ol.comment-list li .respond {
 
 /*作者列表*/
 #divAuthors li a {
-    display: inlin-block;
     display: inline-block;
     padding: 4px 8px;
     border: 1px solid #e5e5e5;
