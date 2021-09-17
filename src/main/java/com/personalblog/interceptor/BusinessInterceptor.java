@@ -15,12 +15,15 @@ import com.personalblog.util.Pair;
 import com.personalblog.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by tao.mao on 2020/8/21.
@@ -55,7 +58,7 @@ public class BusinessInterceptor implements HandlerInterceptor {
 
         // admin用户过滤
         UserVO user = BlogContext.getCurrentUser();
-        if (user != null && user.getType().equals(UserTypeEnum.admin.name())) {
+        if (user != null && UserTypeEnum.getAuthorUsers().contains(user.getType())) {
             return true;
         }
 
@@ -64,6 +67,11 @@ public class BusinessInterceptor implements HandlerInterceptor {
             if (pathMatcher.match(pattern, ip)) {
                 return true;
             }
+        }
+
+        // 蜘蛛过滤
+        if (IPUtils.isSpider(request, blogProperties.getSpiders())) {
+            return true;
         }
 
         // 阅读自增,同一ip，一个小时有效
@@ -90,13 +98,21 @@ public class BusinessInterceptor implements HandlerInterceptor {
     }
 
     private void readCountInc(Integer articleId, String ip) {
+
         if (BlogContext.readCount.containsKey(ip)) {
-            Pair<Integer, Date> pair = BlogContext.readCount.get(ip);
-            if (pair.getKey().equals(articleId))
-            return;
+            if (BlogContext.readCount.get(ip).contains(articleId)) {
+                return;
+            }
         }
         businessService.readCountInc(articleId);
-        BlogContext.readCount.put(ip, new Pair<>(articleId, new Date()));
+        List readDetails = BlogContext.readCount.get(ip);
+        if (CollectionUtils.isEmpty(readDetails)) {
+            readDetails = new ArrayList();
+            readDetails.add(articleId);
+        } else {
+            readDetails.add(articleId);
+        }
+        BlogContext.readCount.put(ip, readDetails);
     }
 
     private void likeCountInc(Integer articleId, String ip) {

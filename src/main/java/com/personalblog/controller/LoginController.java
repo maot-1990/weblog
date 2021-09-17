@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * Created by tao.mao on 2020/11/19.
@@ -41,9 +42,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(
-            @RequestParam("userName") String userName,
-            @RequestParam("passWord") String passWord,
-            @RequestParam("code") String code,
+            @RequestParam("userName") @NotEmpty String userName,
+            @RequestParam("passWord") @NotEmpty String passWord,
+            @RequestParam("code") @NotEmpty String code,
             @RequestParam("uri") String uri,
             HttpServletRequest request) {
         imgService.verifyCode(request, code);

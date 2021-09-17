@@ -109,8 +109,8 @@
 		let flag = true;
 		setInterval(function () {
 			if(windowObj.closed && flag) {
-				flag = false;
 				if(QC.Login.check()) {
+                    flag = false;
 					let qcOpenId;
 					let qcAccessToken;
 					QC.Login.getMe(function(openId, accessToken){
@@ -118,11 +118,45 @@
 						qcOpenId = openId;
 						qcAccessToken = accessToken;
 
+						let call = false;
 						QC.api("get_user_info", {
 							"access_token": qcAccessToken,
 							"oauth_consumer_key" : "101970455",
 							"openid" : qcOpenId}, "json", "GET")
 								.success(function (data){
+								    if (call) {
+								        return;
+									}
+                                    console.log("success,获取用户信息成功：" + JSON.stringify(data))
+
+                                    let paramData = {
+										"id": qcOpenId,
+										"nickName": data.data.nickname,
+										"sex": data.data.gender,
+										"birth": data.data.year,
+										"city": data.data.city,
+										"headImg": data.data.figureurl_qq_2
+									}
+									$.ajax({
+										type: "POST",
+										dataType: "json",
+										url: "/qback-login",
+										data: JSON.stringify(paramData),
+										contentType: "application/json;charset=utf-8",
+										success: function (data) {
+											if (data.success) {
+
+												window.location.reload();
+											}
+										}
+									})
+									call = true;
+								}).complete(function (data) {
+									if (call) {
+										return;
+									}
+									console.log("complete,获取用户信息成功：" + JSON.stringify(data))
+
 									let paramData = {
 										"id": qcOpenId,
 										"nickName": data.data.nickname,
@@ -145,10 +179,10 @@
 											}
 										}
 									})
-								}).error(function (data) {
+									call = true;
+                        		}).error(function (data) {
 									console.log("错误信息：" + JSON.stringify(data))
-								}
-						);
+								});
 					});
 				}
 			}

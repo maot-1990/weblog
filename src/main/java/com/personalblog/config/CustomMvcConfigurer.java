@@ -48,11 +48,12 @@ public class CustomMvcConfigurer implements WebMvcConfigurer {
     @Bean
     public FilterRegistrationBean<ContextFilter> contextFilter() {
         FilterRegistrationBean register = new FilterRegistrationBean();
-        register.setFilter(new ContextFilter());
+        register.setFilter(new ContextFilter(blogProperties));
         register.setName("contextFilter");
         register.setOrder(1);
         register.setUrlPatterns(Lists.newArrayList("/", "/article/show/*", "/admin/*",
-                "/like", "/article-leave", "/login", "/register", "/todo/*", "/articles"));
+                "/like", "/article-leave", "/login", "/register", "/todo/add", "/articles",
+                "/qback-login", "/board-leave"));
         return register;
     }
 
