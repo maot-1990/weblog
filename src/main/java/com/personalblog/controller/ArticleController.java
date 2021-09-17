@@ -116,8 +116,8 @@ public class ArticleController {
         if (article == null) {
             throw new BaseException("你访问的文章不存在", ResponseCode.NOT_FOUND);
         }
-        ArticleDO preArticle = articleService.getById(id - 1);
-        ArticleDO afterArticle = articleService.getById(id + 1);
+        ArticleDO preArticle = articleService.getByIdWithOutContent(id - 1);
+        ArticleDO afterArticle = articleService.getByIdWithOutContent(id + 1);
 
         UserVO user = userService.getUserById(article.getUserId());
         ArticleVO articleVO = BeanUtils.copyProperties(article, ArticleVO.class);
@@ -125,7 +125,7 @@ public class ArticleController {
         articleVO.setArticleTotal(user.getArticleTotal());
         articleVO.setHeadImg(user.getHeadImg());
         articleVO.setCreateAtStr(article.getCreateAtStr());
-        List<ArticleDO> related = articleService.getByCategory(article.getCategory(), article.getId());
+        List<ArticleDO> related = articleService.getByCategory(article.getCategory(), article.getId(), 16);
         ArticleLeaveRequest request = new ArticleLeaveRequest();
         request.setArticleId(id);
         Page<ArticleLeaveBO> articleLeavePage = articleLeaveService.getArticleLeaveHasMore(request);

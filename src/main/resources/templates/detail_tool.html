@@ -191,13 +191,29 @@
                         <div class="title">
                             <h3>相关推荐</h3>
                         </div>
-                        <div id="related-img">
-                            <div class="r4" th:each="item,itemStart : ${related}">
-                                <div class="related-site">
-                                    <figure class="related-site-img"> <a th:href="@{'/article/show/' + ${item.id}}"> <img th:src="${(item.imgPath!=null and item.imgPath!='') ? '/show-img/' + item.imgPath : '/img/278d462e5f473b21361eb865b6383412.jpeg'}" alt=""> </a> </figure>
-                                    <div class="related-title"> <a th:href="@{'/article/show/' + ${item.id}}" title=""><span th:text="${item.title}"></span></a> </div>
-                                </div>
-                            </div>
+                        <div id="related_intro">
+                            <table style="width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 49%;">
+                                        <ul>
+                                            <li th:each="item,itemStart : ${related}" th:if="${itemStart.even}">
+                                                <a th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td style="width: 51%;">
+                                        <ul>
+                                            <li th:each="item,itemStart : ${related}" th:if="not ${itemStart.even}">
+                                                <a th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
                             <div class="clear"> </div>
                         </div>
