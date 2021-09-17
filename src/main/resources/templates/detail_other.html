@@ -198,7 +198,7 @@
                                 <tr>
                                     <td style="width: 49%;">
                                         <ul>
-                                            <li th:each="item,itemStart : ${related}" th:if="${itemStart.even}">
+                                            <li th:each="item,itemStart : ${related}" th:if="not ${itemStart.even}">
                                                 <a th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}">
                                                 </a>
                                             </li>
@@ -206,7 +206,7 @@
                                     </td>
                                     <td style="width: 51%;">
                                         <ul>
-                                            <li th:each="item,itemStart : ${related}" th:if="not ${itemStart.even}">
+                                            <li th:each="item,itemStart : ${related}" th:if="${itemStart.even}">
                                                 <a th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}">
                                                 </a>
                                             </li>
