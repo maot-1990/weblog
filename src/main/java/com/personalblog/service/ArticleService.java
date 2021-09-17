@@ -17,13 +17,15 @@ public interface ArticleService {
 
     ArticleDO getById(Integer id);
 
+    ArticleDO getByIdWithOutContent(Integer id);
+
     ArticleDO getByIdWithOutStatus(Integer id);
 
     List<CategoryGroupBO> getCategoryByGroup(String type);
 
     List<ArticleDO> getByIntroType(String type);
 
-    List<ArticleDO> getByCategory(String category, Integer articleId);
+    List<ArticleDO> getByCategory(String category, Integer articleId, Integer size);
 
     int saveOrUpdateArticle(ArticleDO article, UserVO user);
 

@@ -358,6 +358,7 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectOneByExample" parameterType="com.personalblog.dataobject.ArticleDOExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
@@ -375,6 +376,23 @@
       order by ${orderByClause}
     </if>
      limit 1
+  </select>
+
+  <select id="selectOneWithOutContentByExample" parameterType="com.personalblog.dataobject.ArticleDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
   </select>
   <select id="countByExample" parameterType="com.personalblog.dataobject.ArticleDOExample" resultType="java.lang.Long">
     select count(*) from article

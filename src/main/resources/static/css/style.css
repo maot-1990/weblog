@@ -2576,8 +2576,21 @@ i.fa-rss {
     overflow: hidden;
     background: #fff;
     margin-top: 6px;
-    height: 40px;
+    height: 24px;
     line-height: 20px;
+}
+
+#related_intro ul li {
+    list-style: initial;
+    height: 25px;
+}
+
+#related_intro {
+    margin-left: 20px;
+}
+
+#related_intro a:hover {
+    text-decoration-line: underline;
 }
 
 .related-site {

@@ -74,6 +74,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public ArticleDO getByIdWithOutContent(Integer id) {
+        return null;
+    }
+
+    @Override
     public ArticleDO getByIdWithOutStatus(Integer id) {
         ArticleDOExample example = new ArticleDOExample();
         example.createCriteria().andIdEqualTo(id);
@@ -102,7 +107,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Cacheable(cacheNames = {"blog"}, key = "'getByCategory' + #category", sync = true)
     @Override
-    public List<ArticleDO> getByCategory(String category, Integer articleId) {
+    public List<ArticleDO> getByCategory(String category, Integer articleId, Integer size) {
         ArticleDOExample example = new ArticleDOExample();
         ArticleDOExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(StatusEnum.ONE.getStatus()).andCategoryEqualTo(category);

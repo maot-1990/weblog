@@ -57,6 +57,11 @@ public interface ArticleMapper {
     ArticleDO selectOneByExample(ArticleDOExample example);
 
     /**
+     * get one record by example
+     */
+    ArticleDO selectOneWithOutContentByExample(ArticleDOExample example);
+
+    /**
      * select count(*) from table by example
      */
     long countByExample(ArticleDOExample example);
