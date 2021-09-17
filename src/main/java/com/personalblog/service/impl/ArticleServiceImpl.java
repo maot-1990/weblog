@@ -75,7 +75,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDO getByIdWithOutContent(Integer id) {
-        return null;
+        ArticleDOExample example = new ArticleDOExample();
+        example.createCriteria().andIdEqualTo(id).andStatusEqualTo(StatusEnum.ONE.getStatus());
+        return articleMapper.selectOneWithOutContentByExample(example);
     }
 
     @Override
