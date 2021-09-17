@@ -155,7 +155,11 @@
                 <div id="article_content">
                     <article class="post" th:each="item,itemStart : ${page.items}">
                         <div class="post-img" th:if="${not #strings.isEmpty(item.imgPath)}">
-                            <a class="pic float-left" th:href="@{'/article/show/' + ${item.id}}"><img th:src="@{'/show-img/' + ${item.imgPath}}"></a>
+                            <figure class="related-site-img">
+                                <a class="pic float-left" th:href="@{'/article/show/' + ${item.id}}">
+                                    <img th:src="@{'/show-img/' + ${item.imgPath}}">
+                                </a>
+                            </figure>
                             <div class="mask-tags"> <a href="javascript:void(0)" th:onclick="@{'category(\'' + ${item.category}} +'\')'"><span th:text="${item.category}"></span></a> </div>
                         </div>
                         <header>
