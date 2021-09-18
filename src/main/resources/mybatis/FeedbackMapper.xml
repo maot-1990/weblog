@@ -13,6 +13,7 @@
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, nick_name, phone, mail, weixin, qq, msg, status, created_at, updated_at
+    id, user_id, nick_name, phone, mail, weixin, qq, msg, status, created_at, updated_at, 
+    type
   </sql>
   <insert id="insertSelective" parameterType="com.personalblog.dataobject.FeedbackDO">
     insert into feedback
@@ -105,6 +107,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="type != null">
+        type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -134,18 +139,21 @@
       <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <insert id="batchInsert" parameterType="com.personalblog.dataobject.FeedbackDO">
     insert into feedback (id, user_id, nick_name, 
       phone, mail, weixin, 
-      qq, msg, status
-      ) values 
+      qq, msg, status, 
+      type) values 
     <foreach collection="items" item="item" separator=",">
       (#{item.id,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.nickName,jdbcType=VARCHAR},
         #{item.phone,jdbcType=VARCHAR},#{item.mail,jdbcType=VARCHAR},#{item.weixin,jdbcType=VARCHAR},
-        #{item.qq,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT}
-        )
+        #{item.qq,jdbcType=VARCHAR},#{item.msg,jdbcType=VARCHAR},#{item.status,jdbcType=TINYINT},
+        #{item.type,jdbcType=VARCHAR})
     </foreach>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.personalblog.dataobject.FeedbackDO">
@@ -174,6 +182,9 @@
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -207,6 +218,9 @@
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">

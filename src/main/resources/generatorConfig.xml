@@ -40,7 +40,7 @@
             targetPackage="com.personalblog.dao"
             targetProject="src/main/java" type="XMLMAPPER" />
 
-        <table tableName="message_leave" enableCountByExample="true"
+        <table tableName="feedback" enableCountByExample="true"
             enableUpdateByExample="true" enableDeleteByExample="true"
             enableSelectByExample="true" selectByExampleQueryId="true">
             <columnOverride column="created_at"

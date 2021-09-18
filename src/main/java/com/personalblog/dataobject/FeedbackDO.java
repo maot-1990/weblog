@@ -6,7 +6,7 @@ import java.util.Date;
  * Generate by kucoin generator 
  * 
  * @author kucoin-mybatis-generator
- * @since 2020-11-28
+ * @since 2021-09-18
  */
 public class FeedbackDO {
     private Integer id;
@@ -30,6 +30,8 @@ public class FeedbackDO {
     private Date createdAt;
 
     private Date updatedAt;
+
+    private String type;
 
     public Integer getId() {
         return id;
@@ -119,6 +121,14 @@ public class FeedbackDO {
         this.updatedAt = updatedAt;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -136,6 +146,7 @@ public class FeedbackDO {
         sb.append(", status=").append(status);
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);
+        sb.append(", type=").append(type);
         sb.append("]");
         return sb.toString();
     }
