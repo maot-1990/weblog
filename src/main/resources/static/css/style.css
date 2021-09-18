@@ -2990,7 +2990,6 @@ div.comment-box h4 {
 }
 
 input#author,
-input#email,
 input#url {
     padding: 4px 10px 4px 50px;
     color: #333;
@@ -3100,7 +3099,6 @@ cite.fn {
 #comment_form textarea,
 .post .con .oddli,
 input#author,
-input#email,
 input#url,
 textarea#comment {
     -webkit-box-sizing: border-box;

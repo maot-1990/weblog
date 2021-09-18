@@ -148,11 +148,11 @@ public class ArticleController {
         }
     }
 
-    @GetMapping("/ad")
+    @GetMapping("/about")
     public String ad(ModelMap mode) {
         List<ArticleDO> popular = articleService.getByIntroType(IntroTypeEnum.POPULAR.toString());
         mode.addAttribute("popular", popular);
-        return "ad";
+        return "about";
     }
 
     @GetMapping("/contact-us")
