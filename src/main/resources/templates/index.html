@@ -206,8 +206,10 @@
                     <ul>
                         <li th:each="item,itemStart : ${popular}">
                             <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
-                                <a target="_blank" th:href="@{'/article/show/' + ${item.id}}">
-                                    <img th:src="@{'/show-img/' + ${item.imgPath}}" class="" alt=""></a>
+                                <figure class="related-site-img">
+                                    <a target="_blank" th:href="@{'/article/show/' + ${item.id}}">
+                                        <img th:src="@{'/show-img/' + ${item.imgPath}}" class="" alt=""></a>
+                                </figure>
                             </div>
                             <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
                                 <h4 class="title"><a target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
@@ -226,8 +228,10 @@
                     <ul>
                         <li th:each="item,itemStart : ${recent}">
                             <div class="previous-one-img" th:if="${not #strings.isEmpty(item.imgPath)}">
-                                <a target="_blank" th:href="@{'/article/show/' + ${item.id}}" title="">
-                                    <img th:src="@{'/show-img/' + ${item.imgPath}}" class="" alt=""></a>
+                                <figure class="related-site-img">
+                                    <a target="_blank" th:href="@{'/article/show/' + ${item.id}}" title="">
+                                        <img th:src="@{'/show-img/' + ${item.imgPath}}" class="" alt=""></a>
+                                </figure>
                             </div>
                             <div th:class="${not #strings.isEmpty(item.imgPath)} ? 'previous-recent-title' : 'previous-recent-title margin_left_0'">
                                 <h4 class="title"><a target="_blank" th:href="@{'/article/show/' + ${item.id}}" th:text="${item.title}"></a></h4>
