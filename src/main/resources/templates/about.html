@@ -64,6 +64,15 @@
                                     <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
                                 </ul>
                           b  </li>-->
+                            <li id="navbar-category-30"><a href="javascript:;">用户中心</a>
+                                <ul class="sub-nav">
+                                    <li id="navbar-category-30" th:if="${session.user==null}"><a href="/login">登录</a></li>
+                                    <li id="navbar-category-30" th:if="${session.user!=null}"><a href="javascript:;">[[${session.user.nickName}]]</a></li>
+                                    <li id="navbar-category-30" th:if="${session.user!=null && session.user.type!='user'}"><a href="/admin/add">发布</a></li>
+                                    <li id="navbar-category-30" th:if="${session.user!=null}"><a href="/login-out">注销</a></li>
+
+                                </ul>
+                            </li>
                             <li id="navbar-category-28"><a href="/about">关于我们</a>
                                 <ul class="sub-nav">
                                     <li id="navbar-category-28"><a href="/about">关于我们</a></li>
