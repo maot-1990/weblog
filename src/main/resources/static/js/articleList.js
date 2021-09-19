@@ -34,7 +34,7 @@ function hasMore(isReplace) {
                 content += '<article class="post">';
                 if (obj.imgPath != null && obj.imgPath != '') {
                     content += '<div class="post-img">'
-                        +'<a class="pic float-left" href="/article/show/' + obj.id + '"><img src="/show-img/' + obj.imgPath +'"></a>'
+                        +'<figure class="related-site-img"><a class="pic float-left" href="/article/show/' + obj.id + '"><img src="/show-img/' + obj.imgPath +'"></a></figure>'
                         +'<div class="mask-tags"> <a href="javascript:void(0)" onclick="category(\'' + obj.category + '\')"><span>' + obj.category + '</span></a> </div>'
                         +'</div>';
                 }
