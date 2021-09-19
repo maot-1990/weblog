@@ -259,12 +259,3 @@ button.ghost {
     transform: translateX(20%);
 }
 
-.verify-code-img {
-    display: inline;
-    cursor: pointer;
-    margin-left: 3px;
-    width: 32%;
-    position: relative;
-    top: 13px;
-    height: 38px;
-}

@@ -1,9 +1,9 @@
 function checkLoginParam() {
-    let author = $("#author").val();
-    let password = $("#password").val();
+    let userName = $("#userName").val();
+    let password = $("#passWord").val();
     let code = $("#code").val();
 
-    if (author == "") {
+    if (userName == "") {
         alert("用户名不能为空")
         return false;
     }
