@@ -1056,7 +1056,7 @@ i.fa-rss {
     position: relative;
     float: left;
     margin-right: 3%;
-    height: 145px;
+    padding-top: 6px;
 
 }
 
@@ -1067,7 +1067,7 @@ i.fa-rss {
 
 .post-img .mask-tags {
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 0;
     z-index: 50;
     display: block;
@@ -2604,7 +2604,6 @@ i.fa-rss {
 .related-site-img {
     overflow: hidden;
     width: 178px;
-    height: 120px;
     max-width: 100%
 }
 
