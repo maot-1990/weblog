@@ -710,6 +710,10 @@ select {
     height: 40px !important;
 }
 
+.sub-nav {
+    width: 145px;
+}
+
 .pull-right form input {
     padding: 5px 35px 5px 25px;
     width: 130px;
