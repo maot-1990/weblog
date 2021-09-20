@@ -711,7 +711,7 @@ select {
 }
 
 .sub-nav {
-    width: 145px;
+    width: 145px !important;
 }
 
 .pull-right form input {
