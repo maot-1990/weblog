@@ -437,7 +437,7 @@ textarea.input100 {
 @media (max-width: 992px) {
     .contact100-form {
         width: 50%;
-        padding: 110px 30px 55px 30px;
+        padding: 10px 30px 55px 30px;
     }
 
     .contact100-more {
@@ -457,7 +457,7 @@ textarea.input100 {
 
 @media (max-width: 576px) {
     .contact100-form {
-        padding: 110px 15px 55px 15px;
+        padding: 10px 15px 55px 15px;
     }
 }
 
