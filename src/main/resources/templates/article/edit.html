@@ -66,68 +66,90 @@
 
 <body>
 
-<header id="header" class="movetop sticky my-header" style="background-color: white;">
-    <div class="stick-holder my-header-hidden-m my-header-app">
-        <div>
-            <a href="/" style="position:fixed;top:1px;left: -10px;"><img src="/images/myzs.png" style="height: 48px;"></a>
-        </div>
+<header class="header">
+    <div class="containe">
+        <div id="nav-box" class="nav-bar header-nav right" data-type="index" data-infoid="index">
+            <div class="container">
+                <h1 class="logo"> <a href="/" title="Weblog"> <img src="/img/logo_5.png" alt="Weblog"> </a> </h1>
+                <nav class="nav-bar">
+                    <ul class="nav">
+                        <li id="nvabar-item-index"><a href="/">首页</a></li>
+                        <li id="navbar-category-2"><a href="/articles?type=2">IT技术</a></li>
+                        <li id="navbar-category-3"><a href="/articles?type=3">小工具</a></li>
+                        <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
+                        <li id="navbar-category-4"><a href="/board">留言板</a></li>
+                        <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                        <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                        <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                            <ul class="sub-nav">
+                                <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                            </ul>
+                        </li>-->
+                        <li id="navbar-category-28"><a href="/contact-us">关于我们</a>
+                            <ul class="sub-nav">
+                                <li id="navbar-category-28"><a href="/contact-us">联系我们</a></li>
+                                <li id="navbar-category-28"><a href="/about">关于我们</a></li>
+                                <li id="navbar-category-28"><a href="/contribute">投稿须知</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="mnav">
+                        <li id="nvabar-item-index"><a href="/">首页</a></li>
+                        <li id="navbar-category-2"><a href="/articles?type=2">IT技术</a></li>
+                        <li id="navbar-category-3"><a href="/articles?type=3">小工具</a></li>
+                        <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
+                        <li id="navbar-category-4"><a href="/board">留言板</a></li>
+                        <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
+                        <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
+                        <li id="navbar-category-7"><a href="/lz/">故事语录</a>
+                            <ul class="sub-nav">
+                                <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
+                                <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
+                            </ul>
+                        </li>-->
+                        <li id="navbar-category-30"><a href="javascript:;">用户中心</a>
+                            <ul class="sub-nav">
+                                <li id="navbar-category-30" th:if="${session.user==null}"><a href="/login">登录</a></li>
+                                <li id="navbar-category-30" th:if="${session.user!=null}"><a href="javascript:;">[[${session.user.nickName}]]</a></li>
+                                <li id="navbar-category-30" th:if="${session.user!=null && session.user.type!='user'}"><a href="/admin/add">发布</a></li>
+                                <li id="navbar-category-30" th:if="${session.user!=null}"><a href="/login-out">注销</a></li>
 
-        <span th:if="${session.user!=null}" class="login-button">
-                <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+                            </ul>
+                        </li>
+                        <li id="navbar-category-28"><a href="/contact-us">关于我们</a>
+                            <ul class="sub-nav">
+                                <li id="navbar-category-28"><a href="/contact-us">联系我们</a></li>
+                                <li id="navbar-category-28"><a href="/about">关于我们</a></li>
+                                <li id="navbar-category-28"><a href="/contribute">投稿须知</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="m-btn" class="m-btn"><i class="fa fa-bars"></i></div>
 
-            </span>
+                <div class="login-info">
+                        <span class="login-button">
+                            <ul class="nav">
+                                <div th:if="${session.user==null}" class="login-button">
+                                    <a href="/login" style="color: silver;">登录</a>
+                                </div>
+                                <li id="navbar-category-29">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-9 col-sm-10 nav-holder">
-                    <nav id="nav" class="navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" style="position: fixed; top: 2px; right: 1px;" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="active" data-drop="drop-right">
-                                    <a class="app-menu" href="/">主页</a>
-                                    <a class="app-menu" th:if="${session.user==null}" href="/login-page">登陆</a>
-                                    <a class="app-menu" th:if="${session.user!=null}" href="/login-out">注销</a>
+                                    <img th:if="${session.user!=null}"  th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
+                                    <ul class="sub-nav" th:if="${session.user!=null}">
+                                        <li id="navbar-category-29"><a href="#"><span th:text="${session.user.nickName}" style="overflow: hidden;white-space:nowrap;"></span></a></li>
+                                        <li th:if="${session.user.type!='user'}" id="navbar-category-29"><a href="/admin/add">发布</a></li>
+<li id="navbar-category-29"><a href="/login-out">注销</a></li>
+                                    </ul>
                                 </li>
                             </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="my-header-hidden-w my-header-web">
-        <div style="position: relative;background-color: white;">
-            <a href="/"><img src="/images/myzs.png" height="48px"></a>
-            <span th:if="${session.user==null}">
-                    <a href="/login-page" class="login-button">登陆</a>
-                <!--
-                                    <div class="register-button"><a style="color: white;" href="/register-page">注册</a></div>
-                -->
-                </span>
 
-            <span th:if="${session.user!=null}" class="login-button">
-                    <img th:src="@{'/show-img/' + ${session.user.headImg}}" style="width: 36px;height: 36px;border-radius: 60px;" />
-                <!--
-                                    <span th:text="${session.user.nickName}" style="margin-left: 67%;color: black;text-decoration-line: none;"></span>
-                -->
-                    <a href="/login-out" style="cursor: pointer;"><img style="width: 15px;height: 15px;" src="/images/login-out.jpg"></a>
-                </span>
-            <!--
-                            <a href="/admin/add" style="padding-right: 20px;text-decoration-line: none;position: absolute;right: 0px;"><img style="width: 40px; height: 40px;color: black;" src="/images/pen.png" />写文章</a>
-            -->
-            <div class="article-add">
-                <a href="/admin/add">
-                    <span style="color: white;vertical-align: middle;" class="glyphicon glyphicon-pencil">写作</span>
-                </a>
+                        </span>
+
+                </div>
+
+
             </div>
         </div>
 
