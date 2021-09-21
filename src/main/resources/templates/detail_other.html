@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="/css/comment.css">
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css">
 
-    <link rel="stylesheet" href="/editormd/css/editormd.css">
     <link rel="stylesheet" href="/editormd/css/editormd.min.css">
 
     <!--[if lt IE 9]><div><p class="ie9">您的IE浏览器版本过低</p></div><![endif]-->
@@ -32,11 +31,8 @@
     <script src="/editormd/lib/marked.min.js"></script>
     <script src="/editormd/lib/prettify.min.js"></script>
     <script src="/editormd/editormd.min.js"></script>
-    <script src="/js/plugins.js"></script>
     <script src="/js/jquery.share.min.js"></script>
     <script src="/js/sinaFaceAndEffec.js"></script>
-
-    <style type="text/css"></style>
 
     <style>
         #bdshare_weixin_qrcode_dialog_qr table {
@@ -58,14 +54,6 @@
                             <li id="navbar-category-3"><a href="/articles?type=3">小工具</a></li>
                             <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
                             <li id="navbar-category-4"><a href="/board">留言板</a></li>
-                            <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
-                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
-                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
-                                <ul class="sub-nav">
-                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
-                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
-                                </ul>
-                            </li>-->
                             <li id="navbar-category-28"><a href="/about">关于我们</a>
                                 <ul class="sub-nav">
                                     <li id="navbar-category-28"><a href="/about">关于我们</a></li>
@@ -79,14 +67,6 @@
                             <li id="navbar-category-3"><a href="/articles?type=3">小工具</a></li>
                             <li id="navbar-category-1"><a href="/articles?type=1">好文章</a></li>
                             <li id="navbar-category-4"><a href="/board">留言板</a></li>
-                            <!--<li id="navbar-category-3"><a href="/cygs/">创业故事</a></li>
-                            <li id="navbar-category-4"><a href="/cydz/">创业点子</a></li>
-                            <li id="navbar-category-7"><a href="/lz/">故事语录</a>
-                                <ul class="sub-nav">
-                                    <li id="navbar-category-7"><a href="/lz/lzyl/">励志语录</a></li>
-                                    <li id="navbar-category-7"><a href="/lz/lzgs/">励志故事</a></li>
-                                </ul>
-                            </li>-->
                             <li id="navbar-category-30"><a href="javascript:;">用户中心</a>
                                 <ul class="sub-nav">
                                     <li id="navbar-category-30" th:if="${session.user==null}"><a href="/login">登录</a></li>
@@ -142,9 +122,6 @@
                         <div class="article-meta"> <span><i class="fa fa-user fa-fw"></i><span th:text="${article.author}"></span></span><span><i class="fa fa-clock-o fa-fw"></i><span th:text="${article.createAtStr}"></span></span><span><i class="fa fa-eye fa-fw"></i>
                             <span th:text="${article.readCount}"></span>浏览</span></div>
                     </header>
-                    <!--<div class="pcd_ad">
-                        <script src="/js/thea10.js"></script>
-                    </div>-->
 
                     <article class="article-content">
                         <!--<p th:text="${article.content}"></p>-->
@@ -350,9 +327,6 @@
                 </dd>
             </dl>
 
-            <!--<dl class="function" id="aside_ad">
-                <script src="/js/thea1.js"></script>
-            </dl>-->
             <dl class="function" id="aside_new">
                 <dt class="function_t">热门文章</dt>
                 <dd class="function_c">
@@ -424,7 +398,6 @@
         </div>
     </footer>
     <div id="mask" style="display: none;"></div>
-    <script src="/js/function.js"></script>
     <script src="/js/navigation.js"></script>
     <script src="/js/leaveMsg.js"></script>
     <div id="backtoTop" data-action="gototop">
