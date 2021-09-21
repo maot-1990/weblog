@@ -2327,6 +2327,7 @@ i.fa-rss {
     width: 65px;
     position: relative;
     float: left;
+    top: 6px;
 }
 
 .article_contact .tag_boxer .tag_content {

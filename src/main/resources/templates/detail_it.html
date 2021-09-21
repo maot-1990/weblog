@@ -153,29 +153,31 @@
                         </div>
                     </article>
 
-                    <div class="pcd_ad" style="margin-top:10px">
-                        <script src="/js/thea10.js"></script>
-                    </div>
-                    <div class="mbd_ad" style="margin-top:10px">
-                        <script src="/js/thea10.js"></script>
-                    </div>
-
                     <div class="article_contact">
                         <div class="tag_boxer">
                             <div class="tag_content"> <i class="fa fa-tags"></i> 标签：</div>
                             <span></span>
                         </div>
                         <div class="contact_detail">
-                            <a th:href="@{'/articles?type=2&category=' + ${article.category}}">
-                                <span th:text="${article.category}"></span>
-                            </a>
+                            <div style="position: relative; height:37px; top: 6px;display: inline;">
+                                <a th:href="@{'/articles?type=2&category=' + ${article.category}}">
+                                    [[${article.category}]]
+                                </a>
+                            </div>
 
-                            <div class="bdsharebuttonbox">
+                            <div style="display: inline; height:37px;" class="bdsharebuttonbox">
                                 <div class="social-share" data-sites="wechat,qq,weibo,qzone"></div>
                             </div>
                         </div>
 
                         <div class="clear"></div>
+                    </div>
+
+                    <div class="pcd_ad" style="margin-top:10px">
+                        <script src="/js/thea10.js"></script>
+                    </div>
+                    <div class="mbd_ad" style="margin-top:10px">
+                        <script src="/js/thea10.js"></script>
                     </div>
 
                     <div class="authorbio">
@@ -230,7 +232,7 @@
 
                     <div id="comment" class="post-comment">
                         <p id="comments-title" class="c-title"><span>发表评论（共有 <span style="color: #f90;" id="infocommentnumarea" th:text="${articleLeavePage.totalNum}"></span> 条评论）</span> <span class="comment-num"> </span></p>
-                        <link href="/css/pl.css" rel="stylesheet">
+
                         <div class="showpage" id="plpost">
                             <table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
                                 <tbody>
