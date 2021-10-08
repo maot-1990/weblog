@@ -1,0 +1,1 @@
+document.write("<table width=\"100%\" height=\"100%\" >    <tr align=\"center\">      <td><img width='100%' height='100%' src='/img/zfb_redpaper.jpg'></td>    </tr>  </table>")
